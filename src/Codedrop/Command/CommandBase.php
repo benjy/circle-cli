@@ -112,7 +112,7 @@ abstract class CommandBase extends Command {
   protected function validateConfig($config) {
     foreach ($this->getRequiredRequestConfig() as $config_key) {
       if (!isset($config[$config_key])) {
-        throw new \Exception(sprintf('%s is required for the %s. See circle.cli.yml, key: %s.', $config_key, get_class(), implode(':', $config_key)));
+        throw new \Exception(sprintf('%s is required for the %s. See circle.cli.yml, key: %s.', $config_key, get_called_class(), $config_key));
       }
     }
   }
