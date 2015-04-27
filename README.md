@@ -2,6 +2,17 @@
 
 This is a CLI utility built with Symfony Console to query Circle CI projects.
 
+# Installation
+
+    # Install with composer.
+    composer require "codedrop/circle-cli ~1.0"
+
+    # Copy the sample config file into your home directory (or your project)
+    cp vendor/codedrop/circle-cli/circle-cli.yml ~/
+
+    # Copy the sample private file, then add your token to this file.
+    cp vendor/codedrop/circle-cli/circle-cli.private.yml.sample ./
+
 # Commands
 
 I'm open to adding new commands, feel free to create an issue.
