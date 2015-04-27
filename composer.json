@@ -25,6 +25,9 @@
     }
   },
   "bin": [
-    "app/circle"
-  ]
+    "bin/circle"
+  ],
+  "config": {
+    "bin-dir": "bin"
+  }
 }
