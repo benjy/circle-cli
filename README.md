@@ -24,7 +24,24 @@ to provide a quick status overview of the project.
 
 ### Example;
 
-    circle status
+    circle status [project-name]
+
+## Projects
+
+This commands provides a list of all projects within your Circle CI account.
+
+## Example
+
+    circle projects
+    
+## Retry Build
+
+This commands starts a "retry" of a given build. You can use "latest" to rebuild
+the last build and use can use the "ssh" option to rebuild with SSH enabled.
+
+## Example
+
+    circle retry [build_num or 'latest'] [retry_method 'retry' or 'ssh'] ][project-name]
 
 # Configuration
 
@@ -42,3 +59,9 @@ that you want to be the same across all commands.
 
 Both request and response documentation are available on the Circle CI website at
 [https://circleci.com/docs/api](https://circleci.com/docs/api)
+
+# TODO
+
+* Add some test coverage for the existing commands.
+* Add new command to cancel a running build.    
+* Add a filter to the RetryCommand to filter by branch.
