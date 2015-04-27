@@ -9,8 +9,8 @@
   ],
   "require": {
     "php": ">=5.4.5",
-    "symfony/console": "3.0.*@dev",
-    "symfony/yaml": "3.0.*@dev",
+    "symfony/console": "2.6.*",
+    "symfony/yaml": "2.6.*",
     "guzzlehttp/guzzle": "~5.0",
     "pimple/pimple": "~3.0"
   },
@@ -19,7 +19,6 @@
       "": "src/"
     }
   },
-  "minimum-stability": "dev",
   "extra": {
     "branch-alias": {
       "dev-master": "1.0-dev"
