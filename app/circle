@@ -1,0 +1,33 @@
+#!/usr/bin/env php
+<?php
+
+use Symfony\Component\Console\Application;
+use Codedrop\Command\StatusCommand;
+use Pimple\Container;
+use Codedrop\Circle;
+use Codedrop\CircleConfig;
+use GuzzleHttp\Client;
+use Symfony\Component\Yaml\Yaml;
+
+// Require the autoloader.
+require_once __DIR__ . '/../vendor/autoload.php';
+
+// Register some services.
+$container = new Container();
+$container['guzzle'] = function(Container $container) {
+  return new Client();
+};
+$container['parser'] = function(Container $container) {
+  return new Yaml();
+};
+$container['circle_config'] = function(Container $container) {
+  return new CircleConfig($container['parser']);
+};
+$container['circle'] = function(Container $container) {
+  return new Circle($container['circle_config'], $container['guzzle']);
+};
+
+// Setup the app.
+$app = new Application();
+$app->add(new StatusCommand($container['circle']));
+$app->run();

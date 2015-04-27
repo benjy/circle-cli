@@ -1,0 +1,31 @@
+{
+  "name": "codedrop/circle-cli",
+  "description": "A CLI utility built with Symfony Console to query Circle CI projects.",
+  "authors": [
+    {
+      "name": "Ben Dougherty",
+      "email": "ben@dougherty.net.au"
+    }
+  ],
+  "require": {
+    "php": ">=5.4.5",
+    "symfony/console": "3.0.*@dev",
+    "symfony/yaml": "3.0.*@dev",
+    "guzzlehttp/guzzle": "~5.0",
+    "pimple/pimple": "~3.0"
+  },
+  "autoload": {
+    "psr-0": {
+      "": "src/"
+    }
+  },
+  "minimum-stability": "dev",
+  "extra": {
+    "branch-alias": {
+      "dev-master": "1.0-dev"
+    }
+  },
+  "bin": [
+    "app/circle"
+  ]
+}
