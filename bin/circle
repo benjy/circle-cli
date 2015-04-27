@@ -10,7 +10,7 @@ use GuzzleHttp\Client;
 use Symfony\Component\Yaml\Yaml;
 
 // Require the autoloader.
-require_once __DIR__ . '/../vendor/autoload.php';
+require_once 'vendor/autoload.php';
 
 // Register some services.
 $container = new Container();
