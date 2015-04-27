@@ -1,0 +1,3 @@
+globals:
+  request:
+    circle-token: add-token-here
