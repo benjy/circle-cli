@@ -22,7 +22,7 @@ I'm open to adding new commands, feel free to create an issue.
 This command uses the most [recent builds](https://circleci.com/docs/api#recent-builds-project) endpoint
 to provide a quick status overview of the project.
 
-##### Example;
+##### Example
 
     circle status [project-name]
 
