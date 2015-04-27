@@ -3,6 +3,7 @@
 
 use Symfony\Component\Console\Application;
 use Codedrop\Command\StatusCommand;
+use Codedrop\Command\ProjectsCommand;
 use Pimple\Container;
 use Codedrop\Circle;
 use Codedrop\CircleConfig;
@@ -30,4 +31,5 @@ $container['circle'] = function(Container $container) {
 // Setup the app.
 $app = new Application();
 $app->add(new StatusCommand($container['circle']));
+$app->add(new ProjectsCommand($container['circle']));
 $app->run();

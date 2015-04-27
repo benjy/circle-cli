@@ -7,13 +7,13 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
 
-class StatusCommand extends CommandBase {
+class ProjectsCommand extends CommandBase {
 
   /**
    * {@inheritdoc}
    */
   protected function getEndpointId() {
-    return 'get_recent_builds_single';
+    return 'get_all_projects';
   }
 
   /**
@@ -21,9 +21,9 @@ class StatusCommand extends CommandBase {
    */
   protected function configure() {
     $this
-      ->setName('status')
-      ->setDescription('Get a project status')
-      ->addArgument('project_name', InputArgument::OPTIONAL, 'Project name?');
+      ->setName('projects')
+      ->setDescription('Get a list of all projects');
+    ;
   }
 
   /**
@@ -34,15 +34,8 @@ class StatusCommand extends CommandBase {
     // Grab the request config and build the URL for the status command.
     $config = $this->getRequestConfig();
 
-    // Get the project and username.
-    $project_name = $this->getProjectName($input);
-    $username = $this->getUsername();
-    if (empty($username) || empty($project_name)) {
-      throw new \Exception('username and project name are required for StatusCommand.');
-    }
-
     // Build the endpoint URL and query Circle.
-    $url = $this->buildUrl(['project', $username, $project_name]);
+    $url = $this->buildUrl(['projects']);
     $results = $this->circle->queryCircle($url, $config);
 
     // Render the output as a table.

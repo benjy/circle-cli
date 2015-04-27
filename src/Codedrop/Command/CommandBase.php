@@ -102,6 +102,20 @@ abstract class CommandBase extends Command {
   }
 
   /**
+   * Gets the request config for this endpoint.
+   *
+   * @return mixed
+   *   The configuration array or value.
+   *
+   * @throws \Exception
+   */
+  protected function getRequestConfig() {
+    $config = $this->getConfig(['endpoints', $this->getEndpointId(), 'request']);
+    $this->validateConfig($config);
+    return $config;
+  }
+
+  /**
    * Validate a configuration array for required keys.
    *
    * @param array $config
@@ -185,7 +199,11 @@ abstract class CommandBase extends Command {
    * @return array
    *   An array of required configuration for this request.
    */
-  protected abstract function getRequiredRequestConfig();
+  protected function getRequiredRequestConfig() {
+    return [
+      'circle-token',
+    ];
+  }
 
   /**
    * Gets the display fields for this request.
@@ -193,6 +211,16 @@ abstract class CommandBase extends Command {
    * @return array
    *   An array of fields to display.
    */
-  protected abstract function getDisplayFields();
+  protected function getDisplayFields() {
+    return $this->getConfig(['endpoints', $this->getEndpointId(), 'display']);
+  }
+
+  /**
+   * Gets the endpoint id as declared in the circle-cli.yml config.
+   *
+   * @return string
+   *   The endpoint id.
+   */
+  protected abstract function getEndpointId();
 
 }

@@ -10,13 +10,10 @@ globals:
 endpoints:
   # https://circleci.com/docs/api#projects
   get_all_projects:
-    request:
-      limit: 3
-      offset: 0
-      # Leaving empty defaults to no filter.
-      # filter: successful/failed/running
     display:
       - reponame
+      - vcs_url
+      - username
       - followed
 
   # https://circleci.com/docs/api#recent-builds-project
