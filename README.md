@@ -22,7 +22,7 @@ I'm open to adding new commands, feel free to create an issue.
 This command uses the most [recent builds](https://circleci.com/docs/api#recent-builds-project) endpoint
 to provide a quick status overview of the project.
 
-### Example;
+##### Example;
 
     circle status [project-name]
 
@@ -30,7 +30,7 @@ to provide a quick status overview of the project.
 
 This commands provides a list of all projects within your Circle CI account.
 
-## Example
+##### Example
 
     circle projects
     
@@ -39,7 +39,7 @@ This commands provides a list of all projects within your Circle CI account.
 This commands starts a "retry" of a given build. You can use "latest" to rebuild
 the last build and use can use the "ssh" option to rebuild with SSH enabled.
 
-## Example
+##### Example
 
     circle retry [build_num or 'latest'] [retry_method 'retry' or 'ssh'] ][project-name]
 
