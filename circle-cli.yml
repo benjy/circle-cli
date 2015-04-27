@@ -29,3 +29,11 @@ endpoints:
       - subject
       - branch
       - status
+
+  retry_build:
+    display:
+      - build_num
+      - build_url
+      - branch
+      - subject
+      - status

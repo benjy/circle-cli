@@ -42,7 +42,7 @@ abstract class CommandBase extends Command {
   public function __construct(Circle $circle, $name = null) {
     parent::__construct($name);
     $this->circle = $circle;
-    $this->baseUrl = 'https://circleci.com/api/v1';
+    $this->baseUrl = 'https://circleci.com/api/v1/';
   }
 
   /**
@@ -83,7 +83,7 @@ abstract class CommandBase extends Command {
   }
 
   protected function buildUrl($parts) {
-    return $this->baseUrl . '/' . implode('/', $parts);
+    return $this->baseUrl . implode('/', $parts);
   }
 
   /**
