@@ -62,7 +62,6 @@ Both request and response documentation are available on the Circle CI website a
 
 # TODO
 
-* Add some test coverage for the existing commands.
 * Add new command to cancel a running build.
 * Add a filter to the RetryCommand, StatusCommand & CancelCommand to filter by branch.
 * Add a new command for pushing out an SSH key.
