@@ -59,7 +59,7 @@ abstract class CommandBaseTest extends \PHPUnit_Framework_TestCase {
    * @return \PHPUnit_Framework_MockObject_MockObject
    *   The mock service.
    */
-  protected function getCircleServiceMock($circle_config = [], $query_results = []) {
+  protected function getCircleServiceMock($circle_config, $query_results = []) {
     $circle = $this->getMockBuilder('Codedrop\Circle')
       ->disableOriginalConstructor()
       ->getMock();

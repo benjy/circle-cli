@@ -199,6 +199,34 @@ abstract class CommandBase extends Command {
   }
 
   /**
+   * Check if the build number is the special "latest" and if so, grab the
+   * last build from the API.
+   *
+   * @param \Symfony\Component\Console\Input\InputInterface $input
+   *   The input object from the console.
+   *
+   * @return int
+   *   The build number to use.
+   *
+   * @throws \Exception
+   */
+  protected function getBuildNumber(InputInterface $input) {
+    $build_number = $input->getOption('build-num');
+    if ($build_number === 'latest') {
+      $project_name = $this->getProjectName($input);
+      $url = $this->buildUrl(['project', $this->getUsername($input), $project_name]);
+      $results = $this->circle->queryCircle($url, $this->getConfig(['endpoints', 'get_recent_builds_single', 'request']));
+
+      if (!isset($results[0])) {
+        throw new \Exception('Could not find the last build for %s, is this the first build?', $project_name);
+      }
+      $build_number = $results[0]['build_num'];
+    }
+
+    return $build_number;
+  }
+
+  /**
    * Attempt to parse the git remote, only currently supports Github.
    *
    * @return array|bool
