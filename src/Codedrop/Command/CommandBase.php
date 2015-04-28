@@ -142,7 +142,7 @@ abstract class CommandBase extends Command {
    */
   protected function getProjectName(InputInterface $input) {
     // If the user specified a project name just use that.
-    if ($project_name = $input->getArgument('project_name')) {
+    if ($project_name = $input->getOption('project-name')) {
       return $project_name;
     }
 

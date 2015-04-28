@@ -2,8 +2,8 @@
 
 namespace Codedrop\Command;
 
-use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 
 
@@ -23,7 +23,7 @@ class StatusCommand extends CommandBase {
     $this
       ->setName('status')
       ->setDescription('Get a project status')
-      ->addArgument('project_name', InputArgument::OPTIONAL, 'Project name?');
+      ->addOption('project-name', 'p', InputOption::VALUE_OPTIONAL, 'Project name?');
   }
 
   /**

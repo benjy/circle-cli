@@ -33,6 +33,17 @@ class Circle {
     $this->config = $config;
   }
 
+  /**
+   * @param string $url
+   *   The url for the circle endpoint.
+   * @param array $args
+   *   An array of query arguments.
+   * @param string $method
+   *   The HTTP method to be used for the request.
+   *
+   * @return array
+   *   An array of results.
+   */
   public function queryCircle($url, $args = [], $method = 'GET') {
     $url .= '?' . http_build_query($args);
 
@@ -44,6 +55,12 @@ class Circle {
       ->json();
   }
 
+  /**
+   * Gets the circle configuration object.
+   *
+   * @return \Codedrop\CircleConfig
+   *   The circle configuration object.
+   */
   public function getConfig() {
     return $this->config;
   }

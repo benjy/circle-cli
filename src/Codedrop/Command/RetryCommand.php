@@ -2,8 +2,8 @@
 
 namespace Codedrop\Command;
 
-use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 
 
@@ -23,9 +23,9 @@ class RetryCommand extends CommandBase {
     $this
       ->setName('retry')
       ->setDescription('Retry a build.')
-      ->addArgument('build_num', InputArgument::OPTIONAL, 'The build number or "latest" to retry the last build.', 'latest')
-      ->addArgument('retry_method', InputArgument::OPTIONAL, 'Simply retry or retry with ssh by using "retry" or "ssh"', 'retry')
-      ->addArgument('project_name', InputArgument::OPTIONAL, 'Project name?');
+      ->addOption('build-num', 'n', InputOption::VALUE_OPTIONAL, 'The build number or "latest" to retry the last build.', 'latest')
+      ->addOption('retry-method', 'm', InputOption::VALUE_OPTIONAL, 'Simply retry or retry with ssh by using "retry" or "ssh"', 'retry')
+      ->addOption('project-name', 'p', InputOption::VALUE_OPTIONAL, 'Project name?');
     ;
   }
 
@@ -44,7 +44,7 @@ class RetryCommand extends CommandBase {
       throw new \Exception('username and project name are required for RetryCommand.');
     }
 
-    $build_number = $input->getArgument('build_num');
+    $build_number = $input->getOption('build-num');
     if ($build_number === 'latest') {
       $url = $this->buildUrl(['project', $username, $project_name]);
       $results = $this->circle->queryCircle($url, $this->getConfig(['endpoints', 'get_recent_builds_single', 'request']));
@@ -56,7 +56,7 @@ class RetryCommand extends CommandBase {
     }
 
     // Build the endpoint URL and query Circle.
-    $url = $this->buildUrl(['project', $username, $project_name, $build_number, $input->getArgument('retry_method')]);
+    $url = $this->buildUrl(['project', $username, $project_name, $build_number, $input->getOption('retry-method')]);
     $results = $this->circle->queryCircle($url, $config, 'POST');
 
     // Render the output as a table.
