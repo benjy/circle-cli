@@ -12,7 +12,8 @@
     "symfony/console": "2.6.*",
     "symfony/yaml": "2.6.*",
     "guzzlehttp/guzzle": "~5.0",
-    "pimple/pimple": "~3.0"
+    "pimple/pimple": "~3.0",
+    "phpunit/phpunit": "4.6.*"
   },
   "autoload": {
     "psr-0": {

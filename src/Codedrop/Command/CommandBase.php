@@ -56,6 +56,7 @@ abstract class CommandBase extends Command {
   protected function renderAsTable(array $results, OutputInterface $output) {
     $rows = [];
     $display_fields = $this->getDisplayFields();
+
     foreach ($results as $result) {
       $data = [];
       foreach ($display_fields as $i => $field) {
@@ -149,7 +150,7 @@ abstract class CommandBase extends Command {
     }
 
     // If there is a project name in the config, use that instead.
-    if ($project = $this->getConfig(['globals', 'project'])) {
+    if ($project = $this->getConfig(['endpoints', $this->getEndpointId(), 'request', 'project'])) {
       return $project;
     }
 
@@ -157,7 +158,7 @@ abstract class CommandBase extends Command {
     list($username, $project_name) = $this->parseGitRemote();
 
     if (empty($project_name)) {
-      throw new \Exception('project name is required for %s', get_called_class());
+      throw new \Exception(sprintf('project name is required for %s', get_called_class()));
     }
 
     return $project_name;
@@ -166,23 +167,34 @@ abstract class CommandBase extends Command {
   /**
    * Gets the project username, checking config and the git remote.
    *
+   * @param \Symfony\Component\Console\Input\InputInterface $input
+   *   The input interface to check the command line input.
+   *
    * @return string
    *   The project username.
    *
    * @throws \Exception
    */
-  protected function getUsername() {
+  protected function getUsername(InputInterface $input) {
+    // If the user specified a username just use that.
+    if ($username = $input->getOption('username')) {
+      return $username;
+    }
+
     // If there is a username in the config, use that instead.
-    if ($project = $this->getConfig(['globals', 'username'])) {
-      return $project;
+    if ($username = $this->getConfig(['endpoints', $this->getEndpointId(), 'request', 'username'])) {
+      return $username;
     }
 
     // OK, we're getting desperate, maybe we can parse it out of the Git remote?
-    list($username, $project_name) = $this->parseGitRemote();
+    $git_parts = $this->parseGitRemote();
 
-    if (empty($username)) {
-      throw new \Exception('username is required for %s', get_called_class());
+    if (!is_array($git_parts)) {
+      throw new \Exception(sprintf('username is required for %s', get_called_class()));
     }
+
+    list($username, $project_name) = $git_parts;
+
     return $username;
   }
 
@@ -223,9 +235,15 @@ abstract class CommandBase extends Command {
    *
    * @return array
    *   An array of fields to display.
+   *
+   * @throws \Exception
    */
   protected function getDisplayFields() {
-    return $this->getConfig(['endpoints', $this->getEndpointId(), 'display']);
+    $display_fields = $this->getConfig(['endpoints', $this->getEndpointId(), 'display']);
+    if (empty($display_fields)) {
+      throw new \Exception(sprintf('Command %s must provide at least one display field.', get_called_class()));
+    }
+    return $display_fields;
   }
 
   /**

@@ -25,7 +25,8 @@ class RetryCommand extends CommandBase {
       ->setDescription('Retry a build.')
       ->addOption('build-num', 'n', InputOption::VALUE_OPTIONAL, 'The build number or "latest" to retry the last build.', 'latest')
       ->addOption('retry-method', 'm', InputOption::VALUE_OPTIONAL, 'Simply retry or retry with ssh by using "retry" or "ssh"', 'retry')
-      ->addOption('project-name', 'p', InputOption::VALUE_OPTIONAL, 'Project name?');
+      ->addOption('project-name', 'p', InputOption::VALUE_OPTIONAL, 'Project name?')
+      ->addOption('username', 'u', InputOption::VALUE_OPTIONAL, 'The project username');
     ;
   }
 
@@ -38,7 +39,7 @@ class RetryCommand extends CommandBase {
     $config = $this->getRequestConfig();
 
     // Build the endpoint URL and query Circle.
-    $url = $this->buildUrl(['project', $this->getUsername(), $this->getProjectName($input), $this->getBuildNumber($input), $input->getOption('retry-method')]);
+    $url = $this->buildUrl(['project', $this->getUsername($input), $this->getProjectName($input), $this->getBuildNumber($input), $input->getOption('retry-method')]);
     $results = $this->circle->queryCircle($url, $config, 'POST');
 
     // Render the output as a table.
@@ -62,7 +63,7 @@ class RetryCommand extends CommandBase {
     if ($build_number === 'latest') {
 
       $project_name = $this->getProjectName($input);
-      $url = $this->buildUrl(['project', $this->getUsername(), $project_name]);
+      $url = $this->buildUrl(['project', $this->getUsername($input), $project_name]);
       $results = $this->circle->queryCircle($url, $this->getConfig(['endpoints', 'get_recent_builds_single', 'request']));
 
       if (!isset($results[0])) {

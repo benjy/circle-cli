@@ -23,7 +23,8 @@ class StatusCommand extends CommandBase {
     $this
       ->setName('status')
       ->setDescription('Get a project status')
-      ->addOption('project-name', 'p', InputOption::VALUE_OPTIONAL, 'Project name?');
+      ->addOption('project-name', 'p', InputOption::VALUE_OPTIONAL, 'The project name')
+      ->addOption('username', 'u', InputOption::VALUE_OPTIONAL, 'The project username');
   }
 
   /**
@@ -35,7 +36,7 @@ class StatusCommand extends CommandBase {
     $config = $this->getRequestConfig();
 
     // Build the endpoint URL and query Circle.
-    $url = $this->buildUrl(['project', $this->getUsername(), $this->getProjectName($input)]);
+    $url = $this->buildUrl(['project', $this->getUsername($input), $this->getProjectName($input)]);
     $results = $this->circle->queryCircle($url, $config);
 
     // Render the output as a table.

@@ -59,6 +59,10 @@ class CircleConfig {
     return $this->config;
   }
 
+  public function setAll($config) {
+    $this->config = $config;
+  }
+
   /**
    * @return array
    */
