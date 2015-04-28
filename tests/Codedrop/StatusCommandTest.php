@@ -13,7 +13,7 @@ class StatusCommandTest extends CommandBaseTest {
     $circle_config = $this->getCircleConfigMock();
     $circle = $this->getCircleServiceMock($circle_config);
 
-    $this->runCommand($this->getCommand($circle));
+    $this->runCommand($this->getCommand('Codedrop\Command\StatusCommand', $circle));
   }
 
   /**
@@ -26,7 +26,7 @@ class StatusCommandTest extends CommandBaseTest {
     $circle_config = $this->getCircleConfigMock($config);
     $circle = $this->getCircleServiceMock($circle_config);
 
-    $this->runCommand($this->getCommand($circle));
+    $this->runCommand($this->getCommand('Codedrop\Command\StatusCommand', $circle));
   }
 
   /**
@@ -42,7 +42,7 @@ class StatusCommandTest extends CommandBaseTest {
     $circle_config = $this->getCircleConfigMock($config);
     $circle = $this->getCircleServiceMock($circle_config);
 
-    $this->runCommand($this->getCommand($circle));
+    $this->runCommand($this->getCommand('Codedrop\Command\StatusCommand', $circle));
   }
 
   public function testTableOutput() {
@@ -69,7 +69,7 @@ class StatusCommandTest extends CommandBaseTest {
     $circle_config = $this->getCircleConfigMock($config);
     $circle = $this->getCircleServiceMock($circle_config, $query_results);
 
-    $commandTester = $this->runCommand($this->getCommand($circle));
+    $commandTester = $this->runCommand($this->getCommand('Codedrop\Command\StatusCommand', $circle));
 
     // Assert that all the keys and values appear in the output.
     $displayed_content = $commandTester->getDisplay();
@@ -95,29 +95,9 @@ class StatusCommandTest extends CommandBaseTest {
     $circle_config = $this->getCircleConfigMock($config);
     $circle = $this->getCircleServiceMock($circle_config);
 
-    $commandTester = $this->runCommand($this->getCommand($circle));
+    $commandTester = $this->runCommand($this->getCommand('Codedrop\Command\StatusCommand', $circle));
 
     $this->assertContains('something', $commandTester->getDisplay());
-  }
-
-  /**
-   * A helper so we can certain command methods.
-   *
-   * @param \Codedrop\Circle $circle
-   *   The circle service.
-   *
-   * @return \PHPUnit_Framework_MockObject_MockObject
-   *   The mock command.
-   */
-  protected function getCommand($circle) {
-    // Mock our command to null our the git parsing.
-    $command = $this->getMock('Codedrop\Command\StatusCommand', ['parseGitRemote'], [$circle]);
-    $command
-      ->expects($this->any())
-      ->method('parseGitRemote') //null
-      ->willReturn(FALSE);
-
-    return $command;
   }
 
 }
