@@ -139,6 +139,8 @@ abstract class CommandBase extends Command {
    *
    * @return string
    *   The project name.
+   *
+   * @throws \Exception
    */
   protected function getProjectName(InputInterface $input) {
     // If the user specified a project name just use that.
@@ -153,6 +155,11 @@ abstract class CommandBase extends Command {
 
     // OK, we're getting desperate, maybe we can parse it out of the Git remote?
     list($username, $project_name) = $this->parseGitRemote();
+
+    if (empty($project_name)) {
+      throw new \Exception('project name is required for %s', get_called_class());
+    }
+
     return $project_name;
   }
 
@@ -161,6 +168,8 @@ abstract class CommandBase extends Command {
    *
    * @return string
    *   The project username.
+   *
+   * @throws \Exception
    */
   protected function getUsername() {
     // If there is a username in the config, use that instead.
@@ -170,6 +179,10 @@ abstract class CommandBase extends Command {
 
     // OK, we're getting desperate, maybe we can parse it out of the Git remote?
     list($username, $project_name) = $this->parseGitRemote();
+
+    if (empty($username)) {
+      throw new \Exception('username is required for %s', get_called_class());
+    }
     return $username;
   }
 

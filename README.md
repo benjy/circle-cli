@@ -65,6 +65,5 @@ Both request and response documentation are available on the Circle CI website a
 * Add some test coverage for the existing commands.
 * Add new command to cancel a running build.
 * Add a filter to the RetryCommand, StatusCommand & CancelCommand to filter by branch.
-* Make the projectname and username getters validate they're not empty.
 * Add a new command for pushing out an SSH key.
 * Add realtime progress indicator for a build.

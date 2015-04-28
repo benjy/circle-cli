@@ -37,16 +37,32 @@ class RetryCommand extends CommandBase {
     // Grab the request config and build the URL for the status command.
     $config = $this->getRequestConfig();
 
-    // Get the project and username.
-    $project_name = $this->getProjectName($input);
-    $username = $this->getUsername();
-    if (empty($username) || empty($project_name)) {
-      throw new \Exception('username and project name are required for RetryCommand.');
-    }
+    // Build the endpoint URL and query Circle.
+    $url = $this->buildUrl(['project', $this->getUsername(), $this->getProjectName($input), $this->getBuildNumber($input), $input->getOption('retry-method')]);
+    $results = $this->circle->queryCircle($url, $config, 'POST');
 
+    // Render the output as a table.
+    $this->renderAsTable([$results], $output);
+  }
+
+  /**
+   * Check if the build number is the special "latest" and if so, grab the
+   * last build from the API.
+   *
+   * @param \Symfony\Component\Console\Input\InputInterface $input
+   *   The input object from the console.
+   *
+   * @return int
+   *   The build number to use.
+   *
+   * @throws \Exception
+   */
+  protected function getBuildNumber(InputInterface $input) {
     $build_number = $input->getOption('build-num');
     if ($build_number === 'latest') {
-      $url = $this->buildUrl(['project', $username, $project_name]);
+
+      $project_name = $this->getProjectName($input);
+      $url = $this->buildUrl(['project', $this->getUsername(), $project_name]);
       $results = $this->circle->queryCircle($url, $this->getConfig(['endpoints', 'get_recent_builds_single', 'request']));
 
       if (!isset($results[0])) {
@@ -55,12 +71,7 @@ class RetryCommand extends CommandBase {
       $build_number = $results[0]['build_num'];
     }
 
-    // Build the endpoint URL and query Circle.
-    $url = $this->buildUrl(['project', $username, $project_name, $build_number, $input->getOption('retry-method')]);
-    $results = $this->circle->queryCircle($url, $config, 'POST');
-
-    // Render the output as a table.
-    $this->renderAsTable([$results], $output);
+    return $build_number;
   }
 
 }

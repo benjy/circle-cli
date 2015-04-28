@@ -34,15 +34,8 @@ class StatusCommand extends CommandBase {
     // Grab the request config and build the URL for the status command.
     $config = $this->getRequestConfig();
 
-    // Get the project and username.
-    $project_name = $this->getProjectName($input);
-    $username = $this->getUsername();
-    if (empty($username) || empty($project_name)) {
-      throw new \Exception('username and project name are required for StatusCommand.');
-    }
-
     // Build the endpoint URL and query Circle.
-    $url = $this->buildUrl(['project', $username, $project_name]);
+    $url = $this->buildUrl(['project', $this->getUsername(), $this->getProjectName($input)]);
     $results = $this->circle->queryCircle($url, $config);
 
     // Render the output as a table.
