@@ -2,13 +2,13 @@
 
 namespace Codedrop\Tests;
 
-use Symfony\Component\Console\Application;
-use Symfony\Component\Console\Tester\CommandTester;
-
 // Autoloader doesn't work our test command :/
 require_once "TestCommand.php";
+require_once "TestSetupTrait.php";
 
 class CommandBaseTest extends \PHPUnit_Framework_TestCase {
+
+  use TestSetupTrait;
 
   /**
    * @expectedException \Exception
@@ -116,6 +116,29 @@ class CommandBaseTest extends \PHPUnit_Framework_TestCase {
 
   /**
    * @expectedException \Exception
+   * @expectedExceptionMessage Could not find the last build for project-name, is this the first build?
+   */
+  public function testBuildNumberLatestFailsForFirstBuild() {
+    $config['endpoints']['test_command'] = [
+      'request' => [
+        'circle-token' => '',
+      ],
+      'display' => ['committer_name'],
+    ];
+    $circle_config = $this->getCircleConfigMock($config);
+    // Test that 'latest' queries the API for the last build.
+    $circle = $this->getCircleServiceMock($circle_config, []);
+    $command = $this->getCommand('Codedrop\Tests\TestCommand', $circle);
+    $args = [
+      '--build-num' => 'latest',
+      '--username' => 'codedrop',
+      '--project-name' => 'project-name',
+    ];
+    $this->runCommand($command, $args);
+  }
+
+  /**
+   * @expectedException \Exception
    * @expectedExceptionMessage project name is required
    */
   public function testProjectNameRequired() {
@@ -175,7 +198,7 @@ class CommandBaseTest extends \PHPUnit_Framework_TestCase {
    */
   public function testDisplayFieldsRequired() {
     // Get the mock circle config and service.
-    $config['endpoints']['get_recent_builds_single']['request'] = [
+    $config['endpoints']['test_command']['request'] = [
       'circle-token' => '',
       'username' => 'code-drop',
       'project' => 'Code-Drop'
@@ -183,99 +206,10 @@ class CommandBaseTest extends \PHPUnit_Framework_TestCase {
     $circle_config = $this->getCircleConfigMock($config);
     $circle = $this->getCircleServiceMock($circle_config);
 
-    $commandTester = $this->runCommand($this->getCommand('Codedrop\Command\StatusCommand', $circle));
+    $command = $this->getCommand('Codedrop\Tests\TestCommand', $circle);
+    $commandTester = $this->runCommand($command, ['--build-num' => '3']);
 
     $this->assertContains('something', $commandTester->getDisplay());
-  }
-
-  /**
-   * A helper so we can certain command methods.
-   *
-   * @param string $command_name
-   *   The command to get a mock for.
-   * @param \Codedrop\Circle $circle
-   *   The circle service.
-   *
-   * @return \PHPUnit_Framework_MockObject_MockObject
-   *   The mock command.
-   */
-  protected function getCommand($command_name, $circle) {
-    // Mock our command to null our the git parsing.
-    $command = $this->getMock($command_name, ['getGitRemote', 'buildUrl'], [$circle]);
-    $command
-      ->expects($this->any())
-      ->method('parseGitRemote')
-      ->willReturn(FALSE);
-
-    return $command;
-  }
-
-  /**
-   * Run a command and return the command tester.
-   *
-   * @param $command
-   *   The command object.
-   *
-   * @return \Symfony\Component\Console\Tester\CommandTester
-   *   The command tester.
-   */
-  protected function runCommand($command, $execute_args = []) {
-    $application = new Application();
-    $application->add($command);
-    $command = $application->find($command->getName());
-    $commandTester = new CommandTester($command);
-
-    $execute_args += ['command' => $command->getName()];
-    $commandTester->execute($execute_args);
-
-    return $commandTester;
-  }
-
-  /**
-   * Gets a mock circle service.
-   *
-   * @param \Codedrop\CircleConfig $circle_config
-   *   The config object.
-   * @param array $query_results
-   *   The results from queryCircle.
-   *
-   * @return \PHPUnit_Framework_MockObject_MockObject
-   *   The mock service.
-   */
-  protected function getCircleServiceMock($circle_config, $query_results = []) {
-    $circle = $this->getMockBuilder('Codedrop\Circle')
-      ->disableOriginalConstructor()
-      ->getMock();
-    $circle
-      ->expects($this->any())
-      ->method('queryCircle')
-      ->willReturn($query_results);
-    $circle
-      ->expects($this->any())
-      ->method('getConfig')
-      ->willReturn($circle_config);
-
-    return $circle;
-  }
-
-  /**
-   * Gets a mock circle config object.
-   *
-   * @param array $config_array
-   *   An array of configuration.
-   *
-   * @return \PHPUnit_Framework_MockObject_MockObject
-   *   The mock circle config object.
-   */
-  protected function getCircleConfigMock($config_array = []) {
-    $circle_config = $this->getMockBuilder('Codedrop\CircleConfig')
-      ->disableOriginalConstructor()
-      ->setMethods(NULL)
-      ->getMock();
-
-    $circle_config->setAll($config_array);
-
-    return $circle_config;
   }
 
 }
