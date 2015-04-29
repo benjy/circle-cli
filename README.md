@@ -1,3 +1,5 @@
+[![Circle CI](https://circleci.com/gh/code-drop/Circle-CLI.svg?style=svg)](https://circleci.com/gh/code-drop/Circle-CLI)
+
 # Circle CLI
 
 This is a CLI utility built with Symfony Console to query Circle CI projects.
