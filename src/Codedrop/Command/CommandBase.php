@@ -218,7 +218,7 @@ abstract class CommandBase extends Command {
       $results = $this->circle->queryCircle($url, $this->getConfig(['endpoints', 'get_recent_builds_single', 'request']));
 
       if (!isset($results[0])) {
-        throw new \Exception('Could not find the last build for %s, is this the first build?', $project_name);
+        throw new \Exception(sprintf('Could not find the last build for %s, is this the first build?', $project_name));
       }
       $build_number = $results[0]['build_num'];
     }
@@ -236,7 +236,7 @@ abstract class CommandBase extends Command {
     if (isset($this->gitRemoteParts)) {
       return $this->gitRemoteParts;
     }
-    $url = trim(shell_exec('git config --get remote.origin.url'));
+    $url = $this->getGitRemote();
     $url = preg_replace('/^git@github.com:/', '', $url);
     $url = preg_replace('/.git$/', '', $url);
     if (strpos($url, '/') !== FALSE) {
@@ -244,6 +244,16 @@ abstract class CommandBase extends Command {
       return $this->gitRemoteParts;
     }
     return FALSE;
+  }
+
+  /**
+   * Gets the git remote for this project.
+   *
+   * @return string
+   *   Get the git remote.
+   */
+  protected function getGitRemote() {
+    return trim(shell_exec('git config --get remote.origin.url'));
   }
 
   /**
