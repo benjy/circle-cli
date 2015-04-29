@@ -1,0 +1,10 @@
+machine:
+  timezone:
+    Australia/Perth
+  php:
+    version: 5.5.11
+
+dependencies:
+  cache_directories:
+    - vendor
+    - bin
