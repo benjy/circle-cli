@@ -290,6 +290,6 @@ abstract class CommandBase extends Command {
    * @return string
    *   The endpoint id.
    */
-  protected abstract function getEndpointId();
+  abstract protected function getEndpointId();
 
 }
