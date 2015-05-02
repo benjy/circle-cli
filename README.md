@@ -30,6 +30,8 @@ to provide a quick status overview of the project.
 
     circle status [-p|--project-name[="..."]] [-u|--username[="..."]]
 
+![Status command - Table](https://raw.githubusercontent.com/code-drop/Circle-CLI/master/assets/status.jpg)
+
 ### Progress Command
 
 This command allows you to view the live results of a running build by polling the server. The output
