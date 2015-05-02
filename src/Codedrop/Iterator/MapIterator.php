@@ -5,7 +5,7 @@ namespace Codedrop\Iterator;
 class MapIterator extends \ArrayIterator {
 
   /**
-   * @var \callable
+   * @var \Closure
    *   The callback function.
    */
   protected $callback;
