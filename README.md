@@ -43,6 +43,8 @@ can be formatted as either a table with all the results or a simple progress bar
     # and the default format.
     circle progress
 
+[![Progress command - Table](https://raw.githubusercontent.com/code-drop/Circle-CLI/master/assets/progress-table.png)]
+
 ### List Projects Command
 
 This commands provides a list of all projects within your Circle CI account.
