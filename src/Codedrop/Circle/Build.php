@@ -99,4 +99,14 @@ class Build {
     return $this->buildInfo['lifecycle'] === 'finished';
   }
 
+  /**
+   * Gets the build as an array.
+   *
+   * @return array
+   *   The build info.
+   */
+  public function toArray() {
+    return $this->buildInfo;
+  }
+
 }
