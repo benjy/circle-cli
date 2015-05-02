@@ -109,7 +109,7 @@ class Circle {
   /**
    * Gets the circle configuration object.
    *
-   * @return \Codedrop\Config
+   * @return \Codedrop\Circle\Config
    *   The circle configuration object.
    */
   public function getConfig() {

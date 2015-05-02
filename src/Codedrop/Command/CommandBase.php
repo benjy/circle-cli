@@ -155,11 +155,13 @@ abstract class CommandBase extends Command {
     }
 
     // OK, we're getting desperate, maybe we can parse it out of the Git remote?
-    list($username, $project_name) = $this->parseGitRemote();
+    $git_parts = $this->parseGitRemote();
 
-    if (empty($project_name)) {
+    if (is_array($git_parts)) {
       throw new \Exception(sprintf('project name is required for %s', get_called_class()));
     }
+
+    list(, $project_name) = $git_parts;
 
     return $project_name;
   }
@@ -193,7 +195,7 @@ abstract class CommandBase extends Command {
       throw new \Exception(sprintf('username is required for %s', get_called_class()));
     }
 
-    list($username, $project_name) = $git_parts;
+    list($username,) = $git_parts;
 
     return $username;
   }

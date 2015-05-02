@@ -49,7 +49,7 @@ class Config {
   /**
    * Gets the specified config given a key.
    *
-   * @param string $key
+   * @param string|array $key
    *   The config key to retrive.
    *
    * @return mixed
