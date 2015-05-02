@@ -157,7 +157,7 @@ abstract class CommandBase extends Command {
     // OK, we're getting desperate, maybe we can parse it out of the Git remote?
     $git_parts = $this->parseGitRemote();
 
-    if (is_array($git_parts)) {
+    if (!is_array($git_parts)) {
       throw new \Exception(sprintf('project name is required for %s', get_called_class()));
     }
 
