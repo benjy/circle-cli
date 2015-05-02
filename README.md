@@ -21,16 +21,29 @@ This is a CLI utility built with Symfony Console to query Circle CI projects.
 
 I'm open to adding new commands, feel free to create an issue.
 
-## Status
+### Status Command
 
 This command uses the most [recent builds](https://circleci.com/docs/api#recent-builds-project) endpoint
 to provide a quick status overview of the project.
 
 ##### Example
 
-    circle status [project-name]
+    circle status [-p|--project-name[="..."]] [-u|--username[="..."]]
 
-## Projects
+### Progress Command
+
+This command allows you to view the live results of a running build by polling the server. The output
+can be formatted as either a table with all the results or a simple progress bar.
+
+#### Example
+
+    circle progress [-o|--build-num[="..."]] [-p|--project-name[="..."]] [-u|--username[="..."]] [-r|--refresh-interval[="..."]] [-f|--format[="..."]]
+    
+    # Show the progress of the last started build with username/project from config
+    # and the default format.
+    circle progress
+
+### List Projects Command
 
 This commands provides a list of all projects within your Circle CI account.
 
@@ -38,14 +51,14 @@ This commands provides a list of all projects within your Circle CI account.
 
     circle projects
     
-## Retry Build
+### Retry Build Command
 
 This commands starts a "retry" of a given build. You can use "latest" to rebuild
 the last build and use can use the "ssh" option to rebuild with SSH enabled.
 
 ##### Example
 
-    circle retry [build-num or 'latest'] [retry-method 'retry' or 'ssh'] ][project-name]
+    circle retry [-o|--build-num[="..."]] [-m|--retry-method[="..."]] [-p|--project-name[="..."]] [-u|--username[="..."]]
 
 # Configuration
 

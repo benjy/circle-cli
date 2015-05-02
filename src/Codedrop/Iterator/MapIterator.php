@@ -15,7 +15,7 @@ class MapIterator extends \ArrayIterator {
    *
    * @param array $list
    *   The list of data to traverse.
-   * @param \callable|\Closure $callback
+   * @param \Closure $callback
    *   The callback to be called per item.
    *
    * @throws \InvalidArgumentException
