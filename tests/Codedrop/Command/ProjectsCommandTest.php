@@ -1,8 +1,10 @@
 <?php
 
-namespace Codedrop\Tests;
+namespace Codedrop\Tests\Command;
 
-require_once "TestSetupTrait.php";
+require_once __DIR__  . "/../TestSetupTrait.php";
+
+use Codedrop\Tests\TestSetupTrait;
 
 class ProjectsCommandTest extends \PHPUnit_Framework_TestCase {
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace Codedrop\Tests;
+namespace Codedrop\Tests\Command;
 
 use Codedrop\Command\CommandBase;
 use Symfony\Component\Console\Input\InputInterface;

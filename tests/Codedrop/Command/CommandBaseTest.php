@@ -1,10 +1,12 @@
 <?php
 
-namespace Codedrop\Tests;
+namespace Codedrop\Tests\Command;
 
 // Autoloader doesn't work our test command :/
 require_once "TestCommand.php";
-require_once "TestSetupTrait.php";
+require_once __DIR__  . "/../TestSetupTrait.php";
+
+use Codedrop\Tests\TestSetupTrait;
 
 class CommandBaseTest extends \PHPUnit_Framework_TestCase {
 
@@ -19,7 +21,7 @@ class CommandBaseTest extends \PHPUnit_Framework_TestCase {
     $circle_config = $this->getCircleConfigMock();
     $circle = $this->getCircleServiceMock($circle_config);
 
-    $this->runCommand($this->getCommand('Codedrop\Tests\TestCommand', $circle));
+    $this->runCommand($this->getCommand('Codedrop\Tests\Command\TestCommand', $circle));
   }
 
   /**
@@ -32,7 +34,7 @@ class CommandBaseTest extends \PHPUnit_Framework_TestCase {
     $circle_config = $this->getCircleConfigMock($config);
     $circle = $this->getCircleServiceMock($circle_config);
 
-    $this->runCommand($this->getCommand('Codedrop\Tests\TestCommand', $circle));
+    $this->runCommand($this->getCommand('Codedrop\Tests\Command\TestCommand', $circle));
   }
 
   /**
@@ -51,7 +53,7 @@ class CommandBaseTest extends \PHPUnit_Framework_TestCase {
     $circle = $this->getCircleServiceMock($circle_config);
 
     // Test that the cli argument overrides the options in the config.
-    $command = $this->getCommand('Codedrop\Tests\TestCommand', $circle);
+    $command = $this->getCommand('Codedrop\Tests\Command\TestCommand', $circle);
     $command
       ->expects($this->once())
       ->method('buildUrl')
@@ -64,7 +66,7 @@ class CommandBaseTest extends \PHPUnit_Framework_TestCase {
     $this->runCommand($command, $args);
 
     // Test that the config is used when there is no username cli parameter.
-    $command = $this->getCommand('Codedrop\Tests\TestCommand', $circle);
+    $command = $this->getCommand('Codedrop\Tests\Command\TestCommand', $circle);
     $command
       ->expects($this->once())
       ->method('buildUrl')
@@ -82,7 +84,7 @@ class CommandBaseTest extends \PHPUnit_Framework_TestCase {
     $config['endpoints']['test_command']['request']['project'] = '';
     $circle_config = $this->getCircleConfigMock($config);
     $circle = $this->getCircleServiceMock($circle_config);
-    $command = $this->getCommand('Codedrop\Tests\TestCommand', $circle);
+    $command = $this->getCommand('Codedrop\Tests\Command\TestCommand', $circle);
     $command
       ->expects($this->any())
       ->method('getGitRemote')
@@ -98,7 +100,7 @@ class CommandBaseTest extends \PHPUnit_Framework_TestCase {
 
     // Test that 'latest' queries the API for the last build.
     $circle = $this->getCircleServiceMock($circle_config, [['build_num' => '5']]);
-    $command = $this->getCommand('Codedrop\Tests\TestCommand', $circle);
+    $command = $this->getCommand('Codedrop\Tests\Command\TestCommand', $circle);
     $command
       ->expects($this->any())
       ->method('buildUrl')
@@ -128,7 +130,7 @@ class CommandBaseTest extends \PHPUnit_Framework_TestCase {
     $circle_config = $this->getCircleConfigMock($config);
     // Test that 'latest' queries the API for the last build.
     $circle = $this->getCircleServiceMock($circle_config, []);
-    $command = $this->getCommand('Codedrop\Tests\TestCommand', $circle);
+    $command = $this->getCommand('Codedrop\Tests\Command\TestCommand', $circle);
     $args = [
       '--build-num' => 'latest',
       '--username' => 'codedrop',
@@ -150,7 +152,7 @@ class CommandBaseTest extends \PHPUnit_Framework_TestCase {
     $circle_config = $this->getCircleConfigMock($config);
     $circle = $this->getCircleServiceMock($circle_config);
 
-    $this->runCommand($this->getCommand('Codedrop\Tests\TestCommand', $circle));
+    $this->runCommand($this->getCommand('Codedrop\Tests\Command\TestCommand', $circle));
   }
 
   /**
@@ -180,7 +182,7 @@ class CommandBaseTest extends \PHPUnit_Framework_TestCase {
     $circle_config = $this->getCircleConfigMock($config);
     $circle = $this->getCircleServiceMock($circle_config, $query_results);
 
-    $commandTester = $this->runCommand($this->getCommand('Codedrop\Tests\TestCommand', $circle));
+    $commandTester = $this->runCommand($this->getCommand('Codedrop\Tests\Command\TestCommand', $circle));
 
     // Assert that all the keys and values appear in the output.
     $displayed_content = $commandTester->getDisplay();
@@ -206,7 +208,7 @@ class CommandBaseTest extends \PHPUnit_Framework_TestCase {
     $circle_config = $this->getCircleConfigMock($config);
     $circle = $this->getCircleServiceMock($circle_config);
 
-    $command = $this->getCommand('Codedrop\Tests\TestCommand', $circle);
+    $command = $this->getCommand('Codedrop\Tests\Command\TestCommand', $circle);
     $commandTester = $this->runCommand($command, ['--build-num' => '3']);
 
     $this->assertContains('something', $commandTester->getDisplay());
