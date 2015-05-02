@@ -78,9 +78,7 @@ class ProgressCommand extends CommandBase {
       // If the build has already finished lets just render a summary. Maybe
       // we could change this behaviour later?
       if ($build->isFinished()) {
-        $output->writeln('Build has already finished.');
-        $this->renderAsTable([$build->toArray()], $output);
-        return;
+        break;
       }
 
       if ($input->getOption('format') === 'table') {
@@ -102,7 +100,14 @@ class ProgressCommand extends CommandBase {
 
     } while (!$build->isFinished());
 
-    $progress->finish();
+    if ($progress) {
+      $progress->finish();
+    }
+
+    $format = $this->getFormatFromStatus($build->getStatus());
+    $output->writeln($this->formatCell($format, 'Build has finished.'));
+    $this->renderAsTable([$build->toArray()], $output);
+
   }
 
   /**

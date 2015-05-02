@@ -20,14 +20,29 @@ class Config {
    */
   protected $config;
 
+  protected $globalFile;
+  protected $localFile;
+  protected $privateFile;
+
   /**
    * Constructs a new circle config object.
    *
    * @param \Symfony\Component\Yaml\Yaml $parser
    *   The Yaml parser.
+   * @param string $global_file
+   *   The path to the global configuration file.
+   * @param string $local_file
+   *   The path to the local per project configuration file.
+   * @param string $private_file
+   *   The path to the private configuration file.
    */
-  public function __construct(Yaml $parser) {
+  public function __construct(Yaml $parser, $global_file = '', $local_file = 'circle-cli.yml', $private_file = 'circle-cli.private.yml') {
     $this->parser = $parser;
+    $global_file = empty($global_file) ? $_SERVER['HOME'] . '/circle-cli.yml' : $global_file;
+
+    $this->setGlobalFile($global_file);
+    $this->setLocalFile($local_file);
+    $this->setPrivateFile($private_file);
     $this->loadConfig();
   }
 
@@ -74,17 +89,17 @@ class Config {
    */
   protected function loadConfig() {
     // Grab config from any global folders.
-    $global_config = $this->loadConfigFile($_SERVER['HOME'] . '/circle-cli.yml');
+    $global_config = $this->loadConfigFile($this->globalFile);
 
     // Grab config from the current folder.
-    $local_config = $this->loadConfigFile('circle-cli.yml');
+    $local_config = $this->loadConfigFile($this->localFile);
 
     // Merge the local and global config.
     $this->config = array_replace_recursive($global_config, $local_config);
 
     // If there is a private configuration file for the token, merge
     // that in as well.
-    $this->config = array_replace_recursive($this->config, $this->loadConfigFile('circle-cli.private.yml'));
+    $this->config = array_replace_recursive($this->config, $this->loadConfigFile($this->privateFile));
 
     // Merge anything in the "globals" key into each endpoint configuration.
     if (isset($this->config['globals']) && isset($this->config['endpoints'])) {
@@ -141,4 +156,15 @@ class Config {
     return $ref;
   }
 
+  public function setGlobalFile($file_path) {
+    $this->globalFile = $file_path;
+  }
+
+  public function setLocalFile($file_path) {
+    $this->localFile = $file_path;
+  }
+
+  public function setPrivateFile($file_path) {
+    $this->privateFile = $file_path;
+  }
 }

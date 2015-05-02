@@ -3,6 +3,7 @@
 namespace Codedrop;
 
 use Codedrop\Circle\Build;
+use Codedrop\Circle\Config;
 use GuzzleHttp\ClientInterface;
 
 class Circle {
@@ -10,7 +11,7 @@ class Circle {
   /**
    * The configuration object.
    *
-   * @var \Codedrop\Config
+   * @var \Codedrop\Circle\Config
    */
   protected $config;
 
@@ -31,7 +32,7 @@ class Circle {
   /**
    * Construct a new Circle service.
    *
-   * @param \Codedrop\Config $config
+   * @param \Codedrop\Circle\Config $config
    *   The configuration for this circle instance.
    * @param \GuzzleHttp\ClientInterface $http_client
    *   The HTTP client.

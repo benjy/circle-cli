@@ -24,6 +24,16 @@ class Build {
   }
 
   /**
+   * Gets the current build status.
+   *
+   * @return string
+   *   The build status.
+   */
+  public function getStatus() {
+    return $this->buildInfo['status'];
+  }
+
+  /**
    * Gets the last successful build time in seconds.
 
    * @return float

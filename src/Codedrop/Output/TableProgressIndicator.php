@@ -3,6 +3,7 @@
 namespace Codedrop\Output;
 
 use Symfony\Component\Console\Helper\TableSeparator;
+use Console\Helper\Table;
 
 class TableProgressIndicator extends Table {
 
