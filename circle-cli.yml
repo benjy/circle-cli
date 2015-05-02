@@ -37,3 +37,10 @@ endpoints:
       - branch
       - subject
       - status
+
+  get_single_build:
+    display:
+      - build_num
+      - build_url
+      - committer_name
+      - subject

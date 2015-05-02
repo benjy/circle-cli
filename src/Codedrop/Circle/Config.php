@@ -1,10 +1,10 @@
 <?php
 
-namespace Codedrop;
+namespace Codedrop\Circle;
 
 use Symfony\Component\Yaml\Yaml;
 
-class CircleConfig {
+class Config {
 
   /**
    * The config parser.
@@ -59,6 +59,12 @@ class CircleConfig {
     return $this->config;
   }
 
+  /**
+   * Overwrite the entire loaded config.
+   *
+   * @param $config
+   *   The new config array.
+   */
   public function setAll($config) {
     $this->config = $config;
   }

@@ -53,7 +53,7 @@ trait TestSetupTrait {
   /**
    * Gets a mock circle service.
    *
-   * @param \Codedrop\CircleConfig $circle_config
+   * @param \Codedrop\Config $circle_config
    *   The config object.
    * @param array $query_results
    *   The results from queryCircle.
@@ -87,7 +87,7 @@ trait TestSetupTrait {
    *   The mock circle config object.
    */
   protected function getCircleConfigMock($config_array = []) {
-    $circle_config = $this->getMockBuilder('Codedrop\CircleConfig')
+    $circle_config = $this->getMockBuilder('Codedrop\Circle\Config')
       ->disableOriginalConstructor()
       ->setMethods(NULL)
       ->getMock();

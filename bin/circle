@@ -5,9 +5,10 @@ use Symfony\Component\Console\Application;
 use Codedrop\Command\StatusCommand;
 use Codedrop\Command\ProjectsCommand;
 use Codedrop\Command\RetryCommand;
+use Codedrop\Command\ProgressCommand;
 use Pimple\Container;
 use Codedrop\Circle;
-use Codedrop\CircleConfig;
+use Codedrop\Circle\Config;
 use GuzzleHttp\Client;
 use Symfony\Component\Yaml\Yaml;
 
@@ -23,7 +24,7 @@ $container['parser'] = function(Container $container) {
   return new Yaml();
 };
 $container['circle_config'] = function(Container $container) {
-  return new CircleConfig($container['parser']);
+  return new Config($container['parser']);
 };
 $container['circle'] = function(Container $container) {
   return new Circle($container['circle_config'], $container['guzzle']);
@@ -34,4 +35,5 @@ $app = new Application();
 $app->add(new StatusCommand($container['circle']));
 $app->add(new ProjectsCommand($container['circle']));
 $app->add(new RetryCommand($container['circle']));
+$app->add(new ProgressCommand($container['circle']));
 $app->run();
