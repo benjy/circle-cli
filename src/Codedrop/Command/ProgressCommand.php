@@ -54,7 +54,7 @@ class ProgressCommand extends CommandBase {
       ->addOption('project-name', 'p', InputOption::VALUE_OPTIONAL, 'The project name')
       ->addOption('username', 'u', InputOption::VALUE_OPTIONAL, 'The project username')
       ->addOption('refresh-interval', 'r', InputOption::VALUE_OPTIONAL, 'The refresh interval')
-      ->addOption('format', 'f', InputOption::VALUE_OPTIONAL, 'The output format', 'table');
+      ->addOption('format', 'f', InputOption::VALUE_OPTIONAL, 'The output format', 'progress');
   }
 
   /**
