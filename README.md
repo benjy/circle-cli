@@ -89,10 +89,10 @@ from the response under the display fields in the circle-cli.yml configuration f
 
 ## Features
 
-* Add new command to cancel a running build.
+* Add new command to [cancel a running build](https://circleci.com/docs/api#cancel-build).
 * Add a filter to the RetryCommand, StatusCommand & CancelCommand to filter by branch.
-* Add a new command for pushing out an SSH key (if possible).
-* Trigger a new build given any branch.
+* Add a new command for pushing out an SSH key (if possible), maybe via the [Github API](https://developer.github.com/v3/repos/keys/#create)
+* [Trigger a new build](https://circleci.com/docs/api#new-build) given any branch.
 
 ## Improvements
 
