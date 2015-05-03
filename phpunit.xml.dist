@@ -8,7 +8,10 @@
   </testsuites>
   <filter>
     <whitelist>
-        <directory suffix=".php">./src/Codedrop/</directory>
+        <directory suffix=".php">./src/</directory>
+        <exclude>
+          <file>src/Console/Helper/Table.php</file>
+        </exclude>
     </whitelist>
   </filter>
 </phpunit>
