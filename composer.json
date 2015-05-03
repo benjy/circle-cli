@@ -28,7 +28,7 @@
     }
   },
   "bin": [
-    "bin/circle"
+    "circle"
   ],
   "config": {
     "bin-dir": "bin"
