@@ -26,6 +26,7 @@ class ProgressCommandTest extends \PHPUnit_Framework_TestCase {
         'circle-token' => '',
         'username' => 'username-in-config',
         'project' => 'project-name-in-config',
+        'refresh-interval' => '0.1',
       ],
       'display' => ['committer_name'],
     ];
@@ -51,9 +52,9 @@ class ProgressCommandTest extends \PHPUnit_Framework_TestCase {
   }
 
   /**
-   * Test the progress command bar output.
+   * Test the progress command bar and table output.
    */
-  public function testProgressCommandBar() {
+  public function testProgressCommand() {
     // Get the mock circle config and service.
     $build_info = [
       'status' => 'success',
@@ -91,7 +92,7 @@ class ProgressCommandTest extends \PHPUnit_Framework_TestCase {
 
     // Test the table formatter.
     $command = $this->getCommand('Circle\Command\ProgressCommand', $this->circle);
-    $commandTester = $this->runCommand($command, ['--build-num' => '3', '--refresh-interval' => '0.1', '--format' => 'table']);
+    $commandTester = $this->runCommand($command, ['--build-num' => '3', '--format' => 'table']);
 
     $display_output = $commandTester->getDisplay();
     $this->assertContains('00:03', $display_output, 'Run time correct.');
