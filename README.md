@@ -66,16 +66,18 @@ the last build and use can use the "ssh" option to rebuild with SSH enabled.
 
 # Configuration
 
-circle-cli has sensible defaults but is highly configurable. Configuration files can live
+Circle-CLI has sensible defaults but is highly configurable. Configuration files can live
 in three different places.
 
 * ~/circle-cli.yml - A global configuration file in your home directory.
 * circle-cli.yml - A local configuration file that takes precedence over the global file.
 * circle-cli.private.yml  - A local configuration file that can be used for your circle-token and excluded in .gitignore.
 
-Request configuration are the parameters that are passed as the URL params and are different per endpoint.
-Display configuration is a list of display fields from the endpoint response.
-The "globals" configuration key is merged into each endpoint configuration as an easy way to manage request or display config
+*Request configuration* are the parameters that are passed as the URL params and are different per endpoint.
+
+*Display configuration* is a list of display fields from the endpoint response.
+
+*Globals configuration* is merged into each endpoint configuration as an easy way to manage request or display config
 that you want to be the same across all commands.
 
 Both request and response documentation are available on the Circle CI website at
