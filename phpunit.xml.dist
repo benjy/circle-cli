@@ -2,9 +2,8 @@
 
 <phpunit colors="true" bootstrap="vendor/autoload.php" verbose="true">
   <testsuites>
-    <testsuite name="Codedrop">
-      <directory>./tests/</directory>
-      <file>tests/Codedrop/TestCommand.php</file>
+    <testsuite name="Commands">
+      <directory suffix="Test.php">./tests/</directory>
     </testsuite>
   </testsuites>
   <filter>
