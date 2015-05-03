@@ -1,6 +1,6 @@
 <?php
 
-namespace Codedrop\Command;
+namespace Circle\Command;
 
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;

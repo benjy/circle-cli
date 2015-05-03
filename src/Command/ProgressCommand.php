@@ -1,9 +1,9 @@
 <?php
 
-namespace Codedrop\Command;
+namespace Circle\Command;
 
-use Codedrop\Circle\Build;
-use Codedrop\Output\TableProgressIndicator;
+use Circle\Build;
+use Circle\Output\TableProgressIndicator;
 use Symfony\Component\Console\Helper\ProgressBar;
 use Symfony\Component\Console\Helper\TableSeparator;
 use Symfony\Component\Console\Input\InputInterface;
@@ -113,7 +113,7 @@ class ProgressCommand extends CommandBase {
   /**
    * Initialize the Symfony ProgressBar indicator.
    *
-   * @param \Codedrop\Circle\Build $build
+   * @param \Circle\Build $build
    *   The circle build.
    * @param \Symfony\Component\Console\Output\OutputInterface $output
    *   The console output.
@@ -133,7 +133,7 @@ class ProgressCommand extends CommandBase {
   /**
    * Advance the progress bar indicator.
    *
-   * @param \Codedrop\Circle\Build $build
+   * @param \Circle\Build $build
    *   The circle build.
    * @param \Symfony\Component\Console\Helper\ProgressBar $progress
    *   The progress bar indicator to advance.
@@ -148,12 +148,12 @@ class ProgressCommand extends CommandBase {
   /**
    * Initialize a table progress indicator.
    *
-   * @param \Codedrop\Circle\Build $build
+   * @param \Circle\Build $build
    *   The circle build.
    * @param \Symfony\Component\Console\Output\OutputInterface $output
    *   The console output.
    *
-   * @return \Codedrop\Output\TableProgressIndicator
+   * @return \Circle\Output\TableProgressIndicator
    *   The table progress indicator.
    */
   protected function initProgressTable(Build $build, OutputInterface $output) {
@@ -165,9 +165,9 @@ class ProgressCommand extends CommandBase {
   /**
    * Advance the table progress indicator.
    *
-   * @param \Codedrop\Circle\Build $build
+   * @param \Circle\Build $build
    *   The circle build.
-   * @param \Codedrop\Output\TableProgressIndicator $progress
+   * @param \Circle\Output\TableProgressIndicator $progress
    *   The table progress indicator.
    */
   protected function advanceProgressTable(Build $build, TableProgressIndicator $progress) {

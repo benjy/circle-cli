@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Console\Helper;
+namespace Circle\Console\Helper;
 
 use Symfony\Component\Console\Helper\Helper;
 use Symfony\Component\Console\Helper\TableSeparator;

@@ -1,9 +1,7 @@
 <?php
 
-namespace Codedrop;
+namespace Circle;
 
-use Codedrop\Circle\Build;
-use Codedrop\Circle\Config;
 use GuzzleHttp\ClientInterface;
 
 class Circle {
@@ -11,7 +9,7 @@ class Circle {
   /**
    * The configuration object.
    *
-   * @var \Codedrop\Circle\Config
+   * @var \Circle\Config
    */
   protected $config;
 
@@ -32,7 +30,7 @@ class Circle {
   /**
    * Construct a new Circle service.
    *
-   * @param \Codedrop\Circle\Config $config
+   * @param \Circle\Config $config
    *   The configuration for this circle instance.
    * @param \GuzzleHttp\ClientInterface $http_client
    *   The HTTP client.
@@ -79,7 +77,7 @@ class Circle {
    *
    * @throws \InvalidArgumentException
    *
-   * @return \Codedrop\Circle\Build
+   * @return \Circle\Build
    *   The circle build object.
    */
   public function getBuild($username, $project_name, $build_number, $request_config = []) {
@@ -109,7 +107,7 @@ class Circle {
   /**
    * Gets the circle configuration object.
    *
-   * @return \Codedrop\Circle\Config
+   * @return \Circle\Config
    *   The circle configuration object.
    */
   public function getConfig() {

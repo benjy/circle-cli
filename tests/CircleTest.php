@@ -1,9 +1,9 @@
 <?php
 
-namespace Codedrop\Tests\Circle;
+namespace Circle\Tests;
 
-use Codedrop\Circle\Build;
-use Codedrop\Circle\Config;
+use Circle\Build;
+use Circle\Config;
 use GuzzleHttp\Client;
 use Symfony\Component\Yaml\Yaml;
 
@@ -15,7 +15,7 @@ class CircleTest extends \PHPUnit_Framework_TestCase {
   public function testGetBuild() {
     $config = new Config(new Yaml());
     $http_client = new Client();
-    $circle = $this->getMockBuilder('Codedrop\Circle')
+    $circle = $this->getMockBuilder('Circle\Circle')
       ->setConstructorArgs([$config, $http_client])
       ->setMethods(['queryCircle'])
       ->getMock();
@@ -35,7 +35,7 @@ class CircleTest extends \PHPUnit_Framework_TestCase {
    * @expectedExceptionMessage The build could not be found. Check your username, project name and build number.
    */
   public function testGetBuildFail() {
-    $circle = $this->getMockBuilder('Codedrop\Circle')
+    $circle = $this->getMockBuilder('Circle\Circle')
       ->disableOriginalConstructor()
       ->setMethods(['queryCircle'])
       ->getMock();

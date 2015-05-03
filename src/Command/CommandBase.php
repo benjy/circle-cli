@@ -1,9 +1,9 @@
 <?php
 
-namespace Codedrop\Command;
+namespace Circle\Command;
 
+use Circle\Circle;
 use Symfony\Component\Console\Command\Command;
-use Codedrop\Circle;
 use Symfony\Component\Console\Helper\Table;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -13,7 +13,7 @@ abstract class CommandBase extends Command {
   /**
    * The Circle CI service.
    *
-   * @var \Codedrop\Circle
+   * @var \Circle\Circle
    */
   protected $circle;
 
@@ -34,7 +34,7 @@ abstract class CommandBase extends Command {
   /**
    * Constructs a new command.
    *
-   * @param \Codedrop\Circle $circle
+   * @param \Circle\Circle $circle
    *   The circle CI service.
    * @param null|string $name
    *   The name of this command.

@@ -1,6 +1,6 @@
 <?php
 
-namespace Codedrop\Circle;
+namespace Circle;
 
 class Step {
 
@@ -34,7 +34,7 @@ class Step {
   /**
    * Gets the last action in this step.
    *
-   * @return \Codedrop\Circle\Action
+   * @return \Circle\Action
    *   The last action.
    */
   public function getLastAction() {

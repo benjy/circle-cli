@@ -1,8 +1,8 @@
 <?php
 
-namespace Codedrop\Tests\Command;
+namespace Circle\Tests\Command;
 
-use Codedrop\Command\CommandBase;
+use Circle\Command\CommandBase;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;

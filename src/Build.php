@@ -1,8 +1,8 @@
 <?php
 
-namespace Codedrop\Circle;
+namespace Circle;
 
-use Codedrop\Iterator\MapIterator;
+use Circle\Iterator\MapIterator;
 
 class Build {
 
@@ -78,7 +78,7 @@ class Build {
   /**
    * Gets the build steps.
    *
-   * @return \Codedrop\Circle\Step[]
+   * @return \Circle\Step[]
    *   An iterator for the build steps.
    */
   public function getSteps() {
@@ -90,7 +90,7 @@ class Build {
   /**
    * Gets the last step in the build. This can change if a build is running.
    *
-   * @return \Codedrop\Circle\Step
+   * @return \Circle\Step
    *   The current last step in this  build.
    */
   public function getLastStep() {

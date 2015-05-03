@@ -1,6 +1,6 @@
 <?php
 
-namespace Codedrop\Iterator;
+namespace Circle\Iterator;
 
 class MapIterator extends \ArrayIterator {
 

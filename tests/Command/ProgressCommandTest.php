@@ -1,11 +1,9 @@
 <?php
 
-namespace Codedrop\Tests\Command;
+namespace Circle\Tests\Command;
 
-require_once __DIR__  . "/../TestSetupTrait.php";
-
-use Codedrop\Circle\Build;
-use Codedrop\Tests\TestSetupTrait;
+use Circle\Build;
+use Circle\Tests\TestSetupTrait;
 
 class ProgressCommandTest extends \PHPUnit_Framework_TestCase {
 
@@ -47,7 +45,7 @@ class ProgressCommandTest extends \PHPUnit_Framework_TestCase {
       ->with('username-in-config', 'project-name-in-config', '3')
       ->willReturn(new Build($build_info));
 
-    $command = $this->getCommand('Codedrop\Command\ProgressCommand', $this->circle);
+    $command = $this->getCommand('Circle\Command\ProgressCommand', $this->circle);
     $commandTester = $this->runCommand($command, ['--build-num' => '3']);
     $this->assertContains('Build has finished', $commandTester->getDisplay());
   }
@@ -81,7 +79,7 @@ class ProgressCommandTest extends \PHPUnit_Framework_TestCase {
       ->willReturnOnConsecutiveCalls($build1, $build2, $build1, $build2);
 
     // Test the progress formatter.
-    $command = $this->getCommand('Codedrop\Command\ProgressCommand', $this->circle);
+    $command = $this->getCommand('Circle\Command\ProgressCommand', $this->circle);
     $commandTester = $this->runCommand($command, ['--build-num' => '3', '--refresh-interval' => '0.1']);
 
     $display_output = $commandTester->getDisplay();
@@ -92,7 +90,7 @@ class ProgressCommandTest extends \PHPUnit_Framework_TestCase {
     $this->assertContains('100%', $display_output);
 
     // Test the table formatter.
-    $command = $this->getCommand('Codedrop\Command\ProgressCommand', $this->circle);
+    $command = $this->getCommand('Circle\Command\ProgressCommand', $this->circle);
     $commandTester = $this->runCommand($command, ['--build-num' => '3', '--refresh-interval' => '0.1', '--format' => 'table']);
 
     $display_output = $commandTester->getDisplay();

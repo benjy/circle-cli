@@ -1,20 +1,18 @@
 <?php
 
-namespace Codedrop\Tests\Command;
+namespace Circle\Tests\Command;
 
-require_once __DIR__  . "/../TestSetupTrait.php";
+use Circle\Tests\TestSetupTrait;
 
-use Codedrop\Tests\TestSetupTrait;
-
-class ProjectsCommandTest extends \PHPUnit_Framework_TestCase {
+class StatusCommandTest extends \PHPUnit_Framework_TestCase {
 
   use TestSetupTrait;
 
   /**
-   * Test the projects command executes without any issues.
+   * Test the status command executes without any issues.
    */
-  public function testProjectsCommand() {
-    $config['endpoints']['get_all_projects'] = [
+  public function testStatusCommand() {
+    $config['endpoints']['get_recent_builds_single'] = [
       'request' => [
         'circle-token' => '',
         'username' => 'username-in-config',
@@ -26,7 +24,7 @@ class ProjectsCommandTest extends \PHPUnit_Framework_TestCase {
     $circle_config = $this->getCircleConfigMock($config);
     $circle = $this->getCircleServiceMock($circle_config);
 
-    $command = $this->getCommand('Codedrop\Command\ProjectsCommand', $circle);
+    $command = $this->getCommand('Circle\Command\StatusCommand', $circle);
     $this->runCommand($command);
   }
 

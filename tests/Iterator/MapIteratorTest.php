@@ -1,8 +1,8 @@
 <?php
 
-namespace Codedrop\Tests\Iterator;
+namespace Circle\Tests\Iterator;
 
-use Codedrop\Iterator\MapIterator;
+use Circle\Iterator\MapIterator;
 
 class MapIteratorTest extends \PHPUnit_Framework_TestCase {
 

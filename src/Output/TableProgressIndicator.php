@@ -1,9 +1,9 @@
 <?php
 
-namespace Codedrop\Output;
+namespace Circle\Output;
 
 use Symfony\Component\Console\Helper\TableSeparator;
-use Console\Helper\Table;
+use Circle\Console\Helper\Table;
 
 class TableProgressIndicator extends Table {
 

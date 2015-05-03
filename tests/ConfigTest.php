@@ -1,8 +1,8 @@
 <?php
 
-namespace Codedrop\Tests\Circle;
+namespace Circle\Tests;
 
-use Codedrop\Circle\Config;
+use Circle\Config;
 use org\bovigo\vfs\vfsStream;
 use Symfony\Component\Yaml\Yaml;
 
@@ -12,7 +12,7 @@ class ConfigTest extends \PHPUnit_Framework_TestCase {
    * Test our config getter.
    */
   public function testNestedGet() {
-    $config = $this->getMockBuilder('Codedrop\Circle\Config')
+    $config = $this->getMockBuilder('Circle\Config')
       ->disableOriginalConstructor()
       ->setMethods(NULL)
       ->getMock();

@@ -1,6 +1,6 @@
 <?php
 
-namespace Codedrop\Circle;
+namespace Circle;
 
 use Symfony\Component\Yaml\Yaml;
 

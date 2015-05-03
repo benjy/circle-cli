@@ -1,10 +1,8 @@
 <?php
 
-namespace Codedrop\Tests\Command;
+namespace Circle\Tests\Command;
 
-require_once __DIR__  . "/../TestSetupTrait.php";
-
-use Codedrop\Tests\TestSetupTrait;
+use Circle\Tests\TestSetupTrait;
 
 class RetryCommandTest extends \PHPUnit_Framework_TestCase {
 
@@ -26,7 +24,7 @@ class RetryCommandTest extends \PHPUnit_Framework_TestCase {
     $circle_config = $this->getCircleConfigMock($config);
     $circle = $this->getCircleServiceMock($circle_config);
 
-    $command = $this->getCommand('Codedrop\Command\RetryCommand', $circle);
+    $command = $this->getCommand('Circle\Command\RetryCommand', $circle);
     $this->runCommand($command, ['--build-num' => '3']);
   }
 

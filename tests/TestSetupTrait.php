@@ -1,6 +1,6 @@
 <?php
 
-namespace Codedrop\Tests;
+namespace Circle\Tests;
 
 use Symfony\Component\Console\Application;
 use Symfony\Component\Console\Tester\CommandTester;
@@ -12,7 +12,7 @@ trait TestSetupTrait {
    *
    * @param string $command_name
    *   The command to get a mock for.
-   * @param \Codedrop\Circle $circle
+   * @param \Circle\Circle $circle
    *   The circle service.
    *
    * @return \PHPUnit_Framework_MockObject_MockObject
@@ -53,7 +53,7 @@ trait TestSetupTrait {
   /**
    * Gets a mock circle service.
    *
-   * @param \Codedrop\Config $circle_config
+   * @param \Circle\Config $circle_config
    *   The config object.
    * @param array $query_results
    *   The results from queryCircle.
@@ -62,7 +62,7 @@ trait TestSetupTrait {
    *   The mock service.
    */
   protected function getCircleServiceMock($circle_config, $query_results = []) {
-    $circle = $this->getMockBuilder('Codedrop\Circle')
+    $circle = $this->getMockBuilder('Circle\Circle')
       ->disableOriginalConstructor()
       ->getMock();
     $circle
@@ -87,7 +87,7 @@ trait TestSetupTrait {
    *   The mock circle config object.
    */
   protected function getCircleConfigMock($config_array = []) {
-    $circle_config = $this->getMockBuilder('Codedrop\Circle\Config')
+    $circle_config = $this->getMockBuilder('Circle\Config')
       ->disableOriginalConstructor()
       ->setMethods(NULL)
       ->getMock();

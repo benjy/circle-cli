@@ -1,6 +1,6 @@
 <?php
 
-namespace Codedrop\Circle;
+namespace Circle;
 
 class Action {
 
