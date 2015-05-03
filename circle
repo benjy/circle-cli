@@ -2,13 +2,13 @@
 <?php
 
 use Symfony\Component\Console\Application;
-use Codedrop\Command\StatusCommand;
-use Codedrop\Command\ProjectsCommand;
-use Codedrop\Command\RetryCommand;
-use Codedrop\Command\ProgressCommand;
+use Circle\Command\StatusCommand;
+use Circle\Command\ProjectsCommand;
+use Circle\Command\RetryCommand;
+use Circle\Command\ProgressCommand;
 use Pimple\Container;
-use Codedrop\Circle;
-use Codedrop\Circle\Config;
+use Circle\Circle;
+use Circle\Config;
 use GuzzleHttp\Client;
 use Symfony\Component\Yaml\Yaml;
 
