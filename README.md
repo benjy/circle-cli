@@ -23,8 +23,9 @@ I'm open to adding new commands, feel free to create an issue.
 
 ### Status Command
 
-This command uses the most [recent builds](https://circleci.com/docs/api#recent-builds-project) endpoint
-to provide a quick status overview of the project.
+This command uses the [most recent builds](https://circleci.com/docs/api#recent-builds-project) endpoint
+to provide a quick status overview of the project. The table fields and the number of results to display
+is all configurable.
 
 ##### Example
 
@@ -49,7 +50,7 @@ can be formatted as either a table with all the results or a simple progress bar
 
 ### List Projects Command
 
-This commands provides a list of all projects within your Circle CI account.
+This command provides a list of all projects within your Circle CI account.
 
 ##### Example
 
@@ -57,8 +58,8 @@ This commands provides a list of all projects within your Circle CI account.
     
 ### Retry Build Command
 
-This commands starts a "retry" of a given build. You can use "latest" to rebuild
-the last build and use can use the "ssh" option to rebuild with SSH enabled.
+This command starts a "retry" of a given build. You can use "latest" to retry
+the last build and using the "ssh" retry-method option to rebuild with SSH enabled.
 
 ##### Example
 
@@ -81,7 +82,8 @@ in three different places.
 that you want to be the same across all commands.
 
 Both request and response documentation are available on the Circle CI website at
-[https://circleci.com/docs/api](https://circleci.com/docs/api)
+[https://circleci.com/docs/api](https://circleci.com/docs/api). The fields can be used directly
+from the response under the display fields in the circle-cli.yml configuration file.
 
 # TODO
 
