@@ -17,7 +17,7 @@ endpoints:
       - followed
 
   # https://circleci.com/docs/api#recent-builds-project
-  get_recent_builds_single:
+  get_recent_builds:
     request:
       limit: 3
       offset: 0
@@ -44,3 +44,4 @@ endpoints:
       - build_url
       - committer_name
       - subject
+  add_ssh_key:

@@ -34,13 +34,7 @@ class RetryCommand extends CommandBase {
    * {@inheritdoc}
    */
   protected function execute(InputInterface $input, OutputInterface $output) {
-
-    // Grab the request config and build the URL for the status command.
-    $config = $this->getRequestConfig();
-
-    // Build the endpoint URL and query Circle.
-    $url = $this->buildUrl(['project', $this->getUsername($input), $this->getProjectName($input), $this->getBuildNumber($input), $input->getOption('retry-method')]);
-    $results = $this->circle->queryCircle($url, $config, 'POST');
+    $results = $this->circle->retryBuild($this->getUsername($input), $this->getProjectName($input), $this->getBuildNumber($input), $input->getOption('retry-method'));
 
     // Render the output as a table.
     $this->renderAsTable([$results], $output);

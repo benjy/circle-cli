@@ -15,9 +15,9 @@ class RetryCommandTest extends \PHPUnit_Framework_TestCase {
     $config['endpoints']['retry_build'] = [
       'request' => [
         'circle-token' => '',
-        'username' => 'username-in-config',
-        'project' => 'project-name-in-config',
       ],
+      'username' => 'username-in-config',
+      'project' => 'project-name-in-config',
       'display' => ['committer_name'],
     ];
     // Get the mock circle config and service.

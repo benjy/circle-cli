@@ -40,9 +40,9 @@ class CommandBaseTest extends \PHPUnit_Framework_TestCase {
     $config['endpoints']['test_command'] = [
       'request' => [
         'circle-token' => '',
-        'username' => 'username-in-config',
-        'project' => 'project-name-in-config',
       ],
+      'username' => 'username-in-config',
+      'project' => 'project-name-in-config',
       'display' => ['committer_name'],
     ];
     $circle_config = $this->getCircleConfigMock($config);
@@ -50,34 +50,34 @@ class CommandBaseTest extends \PHPUnit_Framework_TestCase {
 
     // Test that the cli argument overrides the options in the config.
     $command = $this->getCommand('Circle\Tests\Command\TestCommand', $circle);
-    $command
-      ->expects($this->once())
-      ->method('buildUrl')
-      ->with(['username-in-input', 'project-name-in-input', '3']);
     $args = [
       '--username' => 'username-in-input',
       '--project-name' => 'project-name-in-input',
       '--build-num' => '3',
     ];
-    $this->runCommand($command, $args);
+    $commandTester = $this->runCommand($command, $args);
+    $output = $commandTester->getDisplay();
+    $this->assertContains('username-in-input', $output);
+    $this->assertContains('project-name-in-input', $output);
+    $this->assertContains('3', $output);
 
     // Test that the config is used when there is no username cli parameter.
     $command = $this->getCommand('Circle\Tests\Command\TestCommand', $circle);
-    $command
-      ->expects($this->once())
-      ->method('buildUrl')
-      ->with(['username-in-config', 'project-name-in-config', '3']);
     $args = [
       '--build-num' => '3',
     ];
-    $this->runCommand($command, $args);
+    $commandTester = $this->runCommand($command, $args);
+    $output = $commandTester->getDisplay();
+    $this->assertContains('username-in-config', $output);
+    $this->assertContains('project-name-in-config', $output);
+    $this->assertContains('3', $output);
 
     // Test that if the config and the cli input is empty, we try grab it from
     // the git remote.
     // Test that the config is used from config when there is no username cli
     // parameter.
-    $config['endpoints']['test_command']['request']['username'] = '';
-    $config['endpoints']['test_command']['request']['project'] = '';
+    $config['endpoints']['test_command']['username'] = '';
+    $config['endpoints']['test_command']['project'] = '';
     $circle_config = $this->getCircleConfigMock($config);
     $circle = $this->getCircleServiceMock($circle_config);
     $command = $this->getCommand('Circle\Tests\Command\TestCommand', $circle);
@@ -85,25 +85,18 @@ class CommandBaseTest extends \PHPUnit_Framework_TestCase {
       ->expects($this->any())
       ->method('getGitRemote')
       ->willReturn('git@github.com:username-in-gitremote/project-name-in-gitremote');
-    $command
-      ->expects($this->once())
-      ->method('buildUrl')
-      ->with(['username-in-gitremote', 'project-name-in-gitremote', '3']);
     $args = [
       '--build-num' => '3',
     ];
-    $this->runCommand($command, $args);
+    $commandTester = $this->runCommand($command, $args);
+    $output = $commandTester->getDisplay();
+    $this->assertContains('username-in-gitremote', $output);
+    $this->assertContains('project-name-in-gitremote', $output);
+    $this->assertContains('3', $output);
 
     // Test that 'latest' queries the API for the last build.
     $circle = $this->getCircleServiceMock($circle_config, [['build_num' => '5']]);
     $command = $this->getCommand('Circle\Tests\Command\TestCommand', $circle);
-    $command
-      ->expects($this->any())
-      ->method('buildUrl')
-      ->withConsecutive(
-        [['project', 'codedrop', 'project-name']],
-        [['codedrop', 'project-name', '5']]
-      );
     $args = [
       '--build-num' => 'latest',
       '--username' => 'codedrop',
@@ -141,8 +134,10 @@ class CommandBaseTest extends \PHPUnit_Framework_TestCase {
    */
   public function testProjectNameRequired() {
     // Get the mock circle config and service.
-    $config['endpoints']['test_command']['request'] = [
-      'circle-token' => '',
+    $config['endpoints']['test_command'] = [
+      'request' => [
+        'circle-token' => '',
+      ],
       'username' => 'code-drop',
     ];
     $circle_config = $this->getCircleConfigMock($config);
@@ -169,9 +164,9 @@ class CommandBaseTest extends \PHPUnit_Framework_TestCase {
     $config['endpoints']['test_command'] = [
       'request' => [
         'circle-token' => '',
-        'username' => 'code-drop',
-        'project' => 'Code-Drop',
       ],
+      'username' => 'code-drop',
+      'project' => 'Code-Drop',
       'display' => array_keys($query_results[0]),
     ];
 
@@ -196,10 +191,12 @@ class CommandBaseTest extends \PHPUnit_Framework_TestCase {
    */
   public function testDisplayFieldsRequired() {
     // Get the mock circle config and service.
-    $config['endpoints']['test_command']['request'] = [
-      'circle-token' => '',
+    $config['endpoints']['test_command'] = [
+      'request' => [
+        'circle-token' => '',
+      ],
       'username' => 'code-drop',
-      'project' => 'Code-Drop'
+      'project' => 'Code-Drop',
     ];
     $circle_config = $this->getCircleConfigMock($config);
     $circle = $this->getCircleServiceMock($circle_config);

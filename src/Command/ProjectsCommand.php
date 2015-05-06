@@ -29,16 +29,7 @@ class ProjectsCommand extends CommandBase {
    * {@inheritdoc}
    */
   protected function execute(InputInterface $input, OutputInterface $output) {
-
-    // Grab the request config and build the URL for the status command.
-    $config = $this->getRequestConfig();
-
-    // Build the endpoint URL and query Circle.
-    $url = $this->buildUrl(['projects']);
-    $results = $this->circle->queryCircle($url, $config);
-
-    // Render the output as a table.
-    $this->renderAsTable($results, $output);
+    $this->renderAsTable($this->circle->getAllProjects(), $output);
   }
 
 }

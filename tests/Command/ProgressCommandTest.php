@@ -15,6 +15,13 @@ class ProgressCommandTest extends \PHPUnit_Framework_TestCase {
   protected $circle;
 
   /**
+   * The mock Circle config object.
+   *
+   * @var \PHPUnit_Framework_MockObject_MockObject
+   */
+  protected $circleConfig;
+
+  /**
    * @var array
    */
   protected $config;
@@ -24,14 +31,13 @@ class ProgressCommandTest extends \PHPUnit_Framework_TestCase {
     $this->config['endpoints']['get_single_build'] = [
       'request' => [
         'circle-token' => '',
-        'username' => 'username-in-config',
-        'project' => 'project-name-in-config',
-        'refresh-interval' => '0.1',
       ],
+      'refresh-interval' => '0.1',
+      'username' => 'username-in-config',
+      'project' => 'project-name-in-config',
       'display' => ['committer_name'],
     ];
-    $circle_config = $this->getCircleConfigMock($this->config);
-    $this->circle = $this->getCircleServiceMock($circle_config);
+    $this->circleConfig = $this->getCircleConfigMock($this->config);
   }
 
   /**
@@ -40,11 +46,11 @@ class ProgressCommandTest extends \PHPUnit_Framework_TestCase {
   public function testProgressCommandFinished() {
     // Get the mock circle config and service.
     $build_info = ['lifecycle' => 'finished', 'status' => 'success'];
-    $this->circle->
-      expects($this->any())
-      ->method('getBuild')
-      ->with('username-in-config', 'project-name-in-config', '3')
-      ->willReturn(new Build($build_info));
+    $this->circle = $this->getCircleServiceMock($this->circleConfig, $build_info);
+    $this->circle
+      ->expects($this->once())
+      ->method('queryCircle')
+      ->willReturn($build_info);
 
     $command = $this->getCommand('Circle\Command\ProgressCommand', $this->circle);
     $commandTester = $this->runCommand($command, ['--build-num' => '3']);
@@ -71,13 +77,11 @@ class ProgressCommandTest extends \PHPUnit_Framework_TestCase {
     $build_info2 = $build_info;
     $build_info2['lifecycle'] = 'finished';
 
-    $build1 = new Build($build_info);
-    $build2 = new Build($build_info2);
-    $this->circle->
-    expects($this->any())
-      ->method('getBuild')
-      ->with('username-in-config', 'project-name-in-config', '3')
-      ->willReturnOnConsecutiveCalls($build1, $build2, $build1, $build2);
+    $this->circle = $this->getCircleServiceMock($this->circleConfig, FALSE);
+    $this->circle
+      ->expects($this->any())
+      ->method('queryCircle')
+      ->willReturnOnConsecutiveCalls($build_info, $build_info2, $build_info, $build_info2);
 
     // Test the progress formatter.
     $command = $this->getCommand('Circle\Command\ProgressCommand', $this->circle);

@@ -26,7 +26,7 @@ class TestCommand extends CommandBase {
    */
   protected function execute(InputInterface $input, OutputInterface $output) {
     $this->getRequestConfig();
-    $this->buildUrl([$this->getUsername($input), $this->getProjectName($input), $this->getBuildNumber($input)]);
+    $output->writeln(implode(',', [$this->getUsername($input), $this->getProjectName($input), $this->getBuildNumber($input)]));
     $results = $this->circle->queryCircle('', []);
     $this->renderAsTable($results, $output);
   }

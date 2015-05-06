@@ -10,6 +10,8 @@ use Symfony\Component\Yaml\Yaml;
 
 class CircleTest extends \PHPUnit_Framework_TestCase {
 
+  use TestSetupTrait;
+
   /**
    * Test the get build endpoint.
    */
@@ -36,8 +38,11 @@ class CircleTest extends \PHPUnit_Framework_TestCase {
    * @expectedExceptionMessage The build could not be found. Check your username, project name and build number.
    */
   public function testGetBuildFail() {
+    $config = [
+      'endpoints' => ['get_single_build' => []],
+    ];
     $circle = $this->getMockBuilder('Circle\Circle')
-      ->disableOriginalConstructor()
+      ->setConstructorArgs([$this->getCircleConfigMock($config), $this->getHttpClientMock()])
       ->setMethods(['queryCircle'])
       ->getMock();
 
@@ -70,11 +75,11 @@ class CircleTest extends \PHPUnit_Framework_TestCase {
       ->method('json')
       ->willReturn(['result' => 'value']);
 
-    $client = $this->getMock('GuzzleHttp\Client', ['createRequest', 'send']);
+    $client = $this->getHttpClientMock();
     $client
       ->expects($this->once())
       ->method('createRequest')
-      ->with( 'GET', 'circle.com/endpoint?circle-token=private')
+      ->with('GET', 'circle.com/endpoint?circle-token=private')
       ->willReturn($request);
 
     $client
@@ -87,4 +92,26 @@ class CircleTest extends \PHPUnit_Framework_TestCase {
     $circle = new Circle($config, $client);
     $this->assertEquals(['result' => 'value'], $circle->queryCircle('circle.com/endpoint', ['circle-token' => 'private'], 'GET'));
   }
+
+  /**
+   * @expectedException \InvalidArgumentException
+   * @expectedExceptionMessage The circle-token is required for all endpoints.
+   */
+  public function testQueryCircleEnforcesToken() {
+    $client = $this->getHttpClientMock();
+    $config = $this->getMock('Circle\Config', NULL, [new Yaml()]);
+    $circle = new Circle($config, $client);
+    $circle->queryCircle('test', []);
+  }
+
+  /**
+   * Gets a mock client.
+   *
+   * @return \PHPUnit_Framework_MockObject_MockObject
+   *   The Guzzle Http Client mock.
+   */
+  protected function getHttpClientMock() {
+    return $this->getMock('GuzzleHttp\Client', ['createRequest', 'send']);
+  }
+
 }

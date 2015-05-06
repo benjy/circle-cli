@@ -104,9 +104,14 @@ class Config {
     // Merge anything in the "globals" key into each endpoint configuration.
     if (isset($this->config['globals']) && isset($this->config['endpoints'])) {
       foreach ($this->config['endpoints'] as $endpoint => $endpoint_config) {
+        // @TODO, this needs test coverage.
+        if (!is_array($this->config['endpoints'][$endpoint])) {
+          $this->config['endpoints'][$endpoint] = ['request' => [] , 'display' => []];
+        }
         $this->config['endpoints'][$endpoint] = array_replace_recursive($this->config['globals'], $this->config['endpoints'][$endpoint]);
       }
     }
+
     return $this->config;
   }
 

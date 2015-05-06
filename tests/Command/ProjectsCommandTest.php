@@ -15,14 +15,19 @@ class ProjectsCommandTest extends \PHPUnit_Framework_TestCase {
     $config['endpoints']['get_all_projects'] = [
       'request' => [
         'circle-token' => '',
-        'username' => 'username-in-config',
-        'project' => 'project-name-in-config',
       ],
+      'username' => 'username-in-config',
+      'project' => 'project-name-in-config',
       'display' => ['committer_name'],
     ];
     // Get the mock circle config and service.
     $circle_config = $this->getCircleConfigMock($config);
     $circle = $this->getCircleServiceMock($circle_config);
+
+    $circle
+      ->expects($this->once())
+      ->method('queryCircle')
+      ->willReturn(['results' => []]);
 
     $command = $this->getCommand('Circle\Command\ProjectsCommand', $circle);
     $this->runCommand($command);

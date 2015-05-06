@@ -83,10 +83,6 @@ abstract class CommandBase extends Command {
     $table->render();
   }
 
-  protected function buildUrl($parts) {
-    return $this->baseUrl . implode('/', $parts);
-  }
-
   /**
    * Gets the requested configuration.
    *
@@ -114,6 +110,16 @@ abstract class CommandBase extends Command {
     $config = $this->getConfig(['endpoints', $this->getEndpointId(), 'request']);
     $this->validateConfig($config);
     return $config;
+  }
+
+  /**
+   * Gets this endpoints configuration.
+   *
+   * @return array
+   *   The configuration for this endpoint.
+   */
+  protected function getEndpointConfig() {
+    return $this->getConfig(['endpoints', $this->getEndpointId()]);
   }
 
   /**
@@ -150,7 +156,7 @@ abstract class CommandBase extends Command {
     }
 
     // If there is a project name in the config, use that instead.
-    if ($project = $this->getConfig(['endpoints', $this->getEndpointId(), 'request', 'project'])) {
+    if ($project = $this->getConfig(['endpoints', $this->getEndpointId(), 'project'])) {
       return $project;
     }
 
@@ -184,7 +190,7 @@ abstract class CommandBase extends Command {
     }
 
     // If there is a username in the config, use that instead.
-    if ($username = $this->getConfig(['endpoints', $this->getEndpointId(), 'request', 'username'])) {
+    if ($username = $this->getConfig(['endpoints', $this->getEndpointId(), 'username'])) {
       return $username;
     }
 
@@ -216,8 +222,7 @@ abstract class CommandBase extends Command {
     $build_number = $input->getOption('build-num');
     if ($build_number === 'latest') {
       $project_name = $this->getProjectName($input);
-      $url = $this->buildUrl(['project', $this->getUsername($input), $project_name]);
-      $results = $this->circle->queryCircle($url, $this->getConfig(['endpoints', 'get_recent_builds_single', 'request']));
+      $results = $this->circle->getRecentBuilds($this->getUsername($input), $project_name);
 
       if (!isset($results[0])) {
         throw new \Exception(sprintf('Could not find the last build for %s, is this the first build?', $project_name));

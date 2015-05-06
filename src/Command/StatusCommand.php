@@ -13,7 +13,7 @@ class StatusCommand extends CommandBase {
    * {@inheritdoc}
    */
   protected function getEndpointId() {
-    return 'get_recent_builds_single';
+    return 'get_recent_builds';
   }
 
   /**
@@ -31,13 +31,7 @@ class StatusCommand extends CommandBase {
    * {@inheritdoc}
    */
   protected function execute(InputInterface $input, OutputInterface $output) {
-
-    // Grab the request config and build the URL for the status command.
-    $config = $this->getRequestConfig();
-
-    // Build the endpoint URL and query Circle.
-    $url = $this->buildUrl(['project', $this->getUsername($input), $this->getProjectName($input)]);
-    $results = $this->circle->queryCircle($url, $config);
+    $results = $this->circle->getRecentBuilds($this->getUsername($input), $this->getProjectName($input));
 
     // Render the output as a table.
     $this->renderAsTable($results, $output);

@@ -63,7 +63,6 @@ class ProgressCommand extends CommandBase {
   protected function execute(InputInterface $input, OutputInterface $output) {
 
     // Grab the request config and build the URL for the status command.
-    $config = $this->getRequestConfig();
     $username = $this->getUsername($input);
     $project_name = $this->getProjectName($input);
     $build_number = $this->getBuildNumber($input);
@@ -73,7 +72,7 @@ class ProgressCommand extends CommandBase {
 
     do {
       // Build the endpoint URL and query Circle.
-      $build = $this->circle->getBuild($username, $project_name, $build_number, $config);
+      $build = $this->circle->getBuild($username, $project_name, $build_number);
 
       // If the build has already finished lets just render a summary. Maybe
       // we could change this behaviour later?
@@ -282,7 +281,7 @@ class ProgressCommand extends CommandBase {
     }
 
     // Check the configuration.
-    $config = $this->getConfig(['endpoints', $this->getEndpointId(), 'request']);
+    $config = $this->getEndpointConfig();
     if (isset($config['refresh-interval'])) {
       return $config['refresh-interval'];
     }

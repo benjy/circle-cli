@@ -20,7 +20,7 @@ trait TestSetupTrait {
    */
   protected function getCommand($command_name, $circle) {
     // Mock our command to null our the git parsing.
-    $command = $this->getMock($command_name, ['getGitRemote', 'buildUrl'], [$circle]);
+    $command = $this->getMock($command_name, ['getGitRemote'], [$circle]);
     $command
       ->expects($this->any())
       ->method('parseGitRemote')
@@ -64,11 +64,14 @@ trait TestSetupTrait {
   protected function getCircleServiceMock($circle_config, $query_results = []) {
     $circle = $this->getMockBuilder('Circle\Circle')
       ->disableOriginalConstructor()
+      ->setMethods(['queryCircle', 'getConfig'])
       ->getMock();
-    $circle
-      ->expects($this->any())
-      ->method('queryCircle')
-      ->willReturn($query_results);
+    if ($query_results !== FALSE) {
+      $circle
+        ->expects($this->any())
+        ->method('queryCircle')
+        ->willReturn($query_results);
+    }
     $circle
       ->expects($this->any())
       ->method('getConfig')
