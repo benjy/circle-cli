@@ -99,20 +99,6 @@ abstract class CommandBase extends Command {
   }
 
   /**
-   * Gets the request config for this endpoint.
-   *
-   * @return mixed
-   *   The configuration array or value.
-   *
-   * @throws \Exception
-   */
-  protected function getRequestConfig() {
-    $config = $this->getConfig(['endpoints', $this->getEndpointId(), 'request']);
-    $this->validateConfig($config);
-    return $config;
-  }
-
-  /**
    * Gets this endpoints configuration.
    *
    * @return array
@@ -120,22 +106,6 @@ abstract class CommandBase extends Command {
    */
   protected function getEndpointConfig() {
     return $this->getConfig(['endpoints', $this->getEndpointId()]);
-  }
-
-  /**
-   * Validate a configuration array for required keys.
-   *
-   * @param array $config
-   *   The configuration to validate.
-   *
-   * @throws \Exception
-   */
-  protected function validateConfig($config) {
-    foreach ($this->getRequiredRequestConfig() as $config_key) {
-      if (!isset($config[$config_key])) {
-        throw new \Exception(sprintf('%s is required for the %s. See circle.cli.yml, key: %s.', $config_key, get_called_class(), $config_key));
-      }
-    }
   }
 
   /**
@@ -261,18 +231,6 @@ abstract class CommandBase extends Command {
    */
   protected function getGitRemote() {
     return trim(shell_exec('git config --get remote.origin.url'));
-  }
-
-  /**
-   * Gets the configuration keys that are required.
-   *
-   * @return array
-   *   An array of required configuration for this request.
-   */
-  protected function getRequiredRequestConfig() {
-    return [
-      'circle-token',
-    ];
   }
 
   /**

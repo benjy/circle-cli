@@ -10,18 +10,6 @@ class CommandBaseTest extends \PHPUnit_Framework_TestCase {
 
   /**
    * @expectedException \Exception
-   * @expectedExceptionMessage circle-token is required
-   */
-  public function testCircleTokenRequired() {
-    // Get the mock circle config and service.
-    $circle_config = $this->getCircleConfigMock();
-    $circle = $this->getCircleServiceMock($circle_config);
-
-    $this->runCommand($this->getCommand('Circle\Tests\Command\TestCommand', $circle));
-  }
-
-  /**
-   * @expectedException \Exception
    * @expectedExceptionMessage username is required
    */
   public function testUsernameRequired() {
