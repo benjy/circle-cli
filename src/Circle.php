@@ -48,6 +48,8 @@ class Circle {
    *   An array of query arguments.
    * @param string $method
    *   The HTTP method to be used for the request.
+   * @param array $request_options
+   *   The Guzzle request options.
    *
    * @return array
    *   An array of results.
@@ -135,7 +137,7 @@ class Circle {
   }
 
   /**
-   * Gets a list of all proejcts.
+   * Gets a list of all projects.
    *
    * https://circleci.com/docs/api#projects
    *
