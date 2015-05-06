@@ -69,6 +69,8 @@ class Circle {
   /**
    * Gets the most recent builds for a project.
    *
+   * https://circleci.com/docs/api#recent-builds-project
+   *
    * @param string $username
    *   The project username.
    * @param string $project_name
@@ -84,6 +86,8 @@ class Circle {
 
   /**
    * Retry a previous build.
+   *
+   * https://circleci.com/docs/api#retry-build
    *
    * @param string $username
    *   The project username.
@@ -104,6 +108,8 @@ class Circle {
 
   /**
    * Gets a build from Circle.
+   *
+   * https://circleci.com/docs/api#build
    *
    * @param string $username
    *   The project username.
@@ -131,6 +137,8 @@ class Circle {
   /**
    * Gets a list of all proejcts.
    *
+   * https://circleci.com/docs/api#projects
+   *
    * @return array
    *   An array of all projects in Circle.
    */
@@ -141,6 +149,8 @@ class Circle {
 
   /**
    * Add a new SSH key to a project.
+   *
+   * https://circleci.com/docs/api#summary
    *
    * @param string $username
    *   The username that owns the project.
@@ -162,6 +172,26 @@ class Circle {
       ],
     ];
     $this->queryCircle($url, $this->getQueryArgs('add_ssh_key'), 'POST', $request_options);
+  }
+
+  /**
+   * Trigger a new build on a branch.
+   *
+   * https://circleci.com/api/v1/project/:username/:project/tree/:branch?circle-token=:token
+   *
+   * @param string $username
+   *   The username that owns the project.
+   * @param string $project_name
+   *   The project name to add the key.
+   * @param string $branch
+   *   The branch to trigger the build on.
+   *
+   * @return array
+   *   The build info for the new build.
+   */
+  public function triggerBuild($username, $project_name, $branch) {
+    $url = $this->buildUrl(['project', $username, $project_name, 'tree', $branch]);
+    return $this->queryCircle($url, $this->getQueryArgs('trigger_build'), 'POST');
   }
 
   /**
