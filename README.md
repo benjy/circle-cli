@@ -48,6 +48,14 @@ can be formatted as either a table with all the results or a simple progress bar
 
 ![Progress command - Table](https://raw.githubusercontent.com/code-drop/Circle-CLI/master/assets/progress-table.jpg)
 
+### Add SSH Key
+
+This command allows you to add an SSH deploy key to a project.
+
+### Example
+
+    circle add-key [-u|--username[="..."]] [-p|--project-name[="..."]] [-f|--private-key[="..."]] [--hostname[="..."]]
+
 ### List Projects Command
 
 This command provides a list of all projects within your Circle CI account.
@@ -91,7 +99,6 @@ from the response under the display fields in the circle-cli.yml configuration f
 
 * Add new command to [cancel a running build](https://circleci.com/docs/api#cancel-build).
 * Add a filter to the RetryCommand, StatusCommand & CancelCommand to filter by branch.
-* Add a new command for pushing out an SSH key (if possible), maybe via the [Github API](https://developer.github.com/v3/repos/keys/#create)
 * [Trigger a new build](https://circleci.com/docs/api#new-build) given any branch.
 
 ## Improvements

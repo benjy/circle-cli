@@ -21,7 +21,7 @@ class SshKeyCommand extends CommandBase {
    */
   protected function configure() {
     $this
-      ->setName('key-add')
+      ->setName('add-key')
       ->setDescription('Add an SSH key to a project')
       ->addOption('username', 'u', InputOption::VALUE_OPTIONAL, 'The project username')
       ->addOption('project-name', 'p', InputOption::VALUE_OPTIONAL, 'The project name')
