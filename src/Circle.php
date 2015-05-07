@@ -179,7 +179,7 @@ class Circle {
   /**
    * Trigger a new build on a branch.
    *
-   * https://circleci.com/api/v1/project/:username/:project/tree/:branch?circle-token=:token
+   * https://circleci.com/docs/api#new-build
    *
    * @param string $username
    *   The username that owns the project.

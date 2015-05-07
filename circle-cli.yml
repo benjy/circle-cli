@@ -44,4 +44,13 @@ endpoints:
       - build_url
       - committer_name
       - subject
+
+  trigger_build:
+    display:
+      - build_num
+      - build_url
+      - branch
+      - subject
+
+  # All endpoints currently require a config entry, even if empty.
   add_ssh_key:

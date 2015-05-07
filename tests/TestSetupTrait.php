@@ -20,7 +20,7 @@ trait TestSetupTrait {
    */
   protected function getCommand($command_name, $circle) {
     // Mock our command to null our the git parsing.
-    $command = $this->getMock($command_name, ['getGitRemote'], [$circle]);
+    $command = $this->getMock($command_name, ['getGitRemote', 'parseGitBranch'], [$circle]);
     $command
       ->expects($this->any())
       ->method('parseGitRemote')

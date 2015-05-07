@@ -52,9 +52,17 @@ can be formatted as either a table with all the results or a simple progress bar
 
 This command allows you to add an SSH deploy key to a project.
 
-### Example
+#### Example
 
     circle add-key [-u|--username[="..."]] [-p|--project-name[="..."]] [-f|--private-key[="..."]] [--hostname[="..."]]
+
+### Build Command
+
+This command allows you to trigger a new build on a given branch.
+
+#### Example
+
+    circle build [-u|--username[="..."]] [-p|--project-name[="..."]] [-b|--branch[="..."]]
 
 ### List Projects Command
 
@@ -104,3 +112,4 @@ from the response under the display fields in the circle-cli.yml configuration f
 ## Improvements
 
 * See if trigger new build endpoint can help with "latest" feature.
+* Don't require empty config entries for endpoints that don't need any.
