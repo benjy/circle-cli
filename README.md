@@ -18,6 +18,11 @@ This is a CLI utility built with Symfony Console to query Circle CI projects.
     # Copy the sample private file, then add your token to this file.
     cp vendor/codedrop/circle-cli/circle-cli.private.yml.sample ./
 
+# Documentation
+
+The docs are [available here](http://code-drop.github.io/Circle-CLI/Circle/Command.html). In the near future, everything
+from this readme will be moved there.
+
 # Commands
 
 I'm open to adding new commands, feel free to create an issue.
