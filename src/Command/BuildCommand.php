@@ -6,7 +6,13 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 
-
+/**
+ * This command allows you to trigger a new build on a given branch.
+ *
+ * #### Example
+ *
+ *     circle build [-u|--username[="..."]] [-p|--project-name[="..."]] [-b|--branch[="..."]]
+ */
 class BuildCommand extends CommandBase {
 
   /**

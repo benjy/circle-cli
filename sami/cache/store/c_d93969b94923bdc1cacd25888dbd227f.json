@@ -1,0 +1,26 @@
+{
+    "name": "Circle\\Command\\StatusCommand",
+    "line": 21,
+    "short_desc": "This command uses the [most recent builds](https:\/\/circleci.com\/docs\/api#recent-builds-project) endpoint\nto provide a quick status overview of the project. The table fields and the\nnumber of results to display is all configurable.",
+    "long_desc": "##### Example\n    circle status [-p|--project-name[=\"...\"]] [-u|--username[=\"...\"]]\n\n#### Sample Output\n\n![Status command - Table](https:\/\/raw.githubusercontent.com\/code-drop\/Circle-CLI\/master\/assets\/status.jpg)",
+    "hint": null,
+    "tags": [],
+    "namespace": "Circle\\Command",
+    "file": ".\/src\/Command\/StatusCommand.php",
+    "hash": "0078eafaa49508495a89fee64afe99a26d78f68b",
+    "parent": "Circle\\Command\\CommandBase",
+    "modifiers": "Stmt_Class",
+    "is_trait": false,
+    "is_interface": false,
+    "aliases": {
+        "InputInterface": "Symfony\\Component\\Console\\Input\\InputInterface",
+        "InputOption": "Symfony\\Component\\Console\\Input\\InputOption",
+        "OutputInterface": "Symfony\\Component\\Console\\Output\\OutputInterface"
+    },
+    "errors": [],
+    "interfaces": [],
+    "traits": [],
+    "properties": [],
+    "methods": [],
+    "constants": []
+}

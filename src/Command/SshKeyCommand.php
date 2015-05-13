@@ -6,7 +6,13 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 
-
+/**
+ * This command allows you to add an SSH deploy key to a project.
+ *
+ * #### Example
+ *
+ *     circle add-key [-u|--username[="..."]] [-p|--project-name[="..."]] [-f|--private-key[="..."]] [--hostname[="..."]]
+ */
 class SshKeyCommand extends CommandBase {
 
   /**

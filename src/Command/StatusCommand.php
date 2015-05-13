@@ -6,7 +6,18 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 
-
+/**
+ * This command uses the [most recent builds](https://circleci.com/docs/api#recent-builds-project) endpoint
+ * to provide a quick status overview of the project. The table fields and the
+ * number of results to display is all configurable.
+ *
+ * ##### Example
+ *     circle status [-p|--project-name[="..."]] [-u|--username[="..."]]
+ *
+ * #### Sample Output
+ *
+ * ![Status command - Table](https://raw.githubusercontent.com/code-drop/Circle-CLI/master/assets/status.jpg)
+ */
 class StatusCommand extends CommandBase {
 
   /**

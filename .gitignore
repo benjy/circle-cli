@@ -2,3 +2,4 @@
 vendor
 circle-cli.private.yml
 bin
+/docs

@@ -1,0 +1,26 @@
+{
+    "name": "Circle\\Command\\BuildCommand",
+    "line": 16,
+    "short_desc": "This command allows you to trigger a new build on a given branch.",
+    "long_desc": "#### Example\n\n    circle build [-u|--username[=\"...\"]] [-p|--project-name[=\"...\"]] [-b|--branch[=\"...\"]]",
+    "hint": null,
+    "tags": [],
+    "namespace": "Circle\\Command",
+    "file": ".\/src\/Command\/BuildCommand.php",
+    "hash": "966afff1a5cfebe5c2285f649ec845ade8caa7aa",
+    "parent": "Circle\\Command\\CommandBase",
+    "modifiers": "Stmt_Class",
+    "is_trait": false,
+    "is_interface": false,
+    "aliases": {
+        "InputInterface": "Symfony\\Component\\Console\\Input\\InputInterface",
+        "InputOption": "Symfony\\Component\\Console\\Input\\InputOption",
+        "OutputInterface": "Symfony\\Component\\Console\\Output\\OutputInterface"
+    },
+    "errors": [],
+    "interfaces": [],
+    "traits": [],
+    "properties": [],
+    "methods": [],
+    "constants": []
+}

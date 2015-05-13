@@ -1,0 +1,240 @@
+{
+    "name": "Circle\\Build",
+    "line": 7,
+    "short_desc": "",
+    "long_desc": "",
+    "hint": null,
+    "tags": [],
+    "namespace": "Circle",
+    "file": ".\/src\/Build.php",
+    "hash": "b82a647649e5a318796988581f1ed869fbeee5a4",
+    "parent": null,
+    "modifiers": "Stmt_Class",
+    "is_trait": false,
+    "is_interface": false,
+    "aliases": {
+        "MapIterator": "Circle\\Iterator\\MapIterator"
+    },
+    "errors": [],
+    "interfaces": [],
+    "traits": [],
+    "properties": [],
+    "methods": {
+        "__construct": {
+            "name": "__construct",
+            "line": 29,
+            "short_desc": "Construct a new Circle Build.",
+            "long_desc": "",
+            "hint": null,
+            "hint_desc": null,
+            "tags": [],
+            "modifiers": "1",
+            "is_by_ref": "",
+            "exceptions": [],
+            "errors": [
+                "\"2\" @param tags are expected but only \"1\" found"
+            ],
+            "parameters": {
+                "build": {
+                    "name": "build",
+                    "line": 29,
+                    "short_desc": null,
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "array",
+                            false
+                        ]
+                    ],
+                    "tags": [],
+                    "modifiers": "array",
+                    "default": null,
+                    "is_by_ref": false
+                },
+                "display_fields": {
+                    "name": "display_fields",
+                    "line": 29,
+                    "short_desc": null,
+                    "long_desc": null,
+                    "hint": null,
+                    "tags": [],
+                    "modifiers": "",
+                    "default": "array()",
+                    "is_by_ref": false
+                }
+            }
+        },
+        "getStatus": {
+            "name": "getStatus",
+            "line": 40,
+            "short_desc": "Gets the current build status.",
+            "long_desc": "",
+            "hint": [
+                [
+                    "string",
+                    false
+                ]
+            ],
+            "hint_desc": "The build status.",
+            "tags": [],
+            "modifiers": "1",
+            "is_by_ref": "",
+            "exceptions": [],
+            "errors": [],
+            "parameters": []
+        },
+        "getPreviousSuccessfulBuildTime": {
+            "name": "getPreviousSuccessfulBuildTime",
+            "line": 50,
+            "short_desc": "Gets the last successful build time in seconds.",
+            "long_desc": "",
+            "hint": [
+                [
+                    "float",
+                    false
+                ]
+            ],
+            "hint_desc": "The build time.",
+            "tags": [],
+            "modifiers": "1",
+            "is_by_ref": "",
+            "exceptions": [],
+            "errors": [],
+            "parameters": []
+        },
+        "getPreviousSuccessfulBuildTimeFormatted": {
+            "name": "getPreviousSuccessfulBuildTimeFormatted",
+            "line": 60,
+            "short_desc": "Gets the last successful build formatted as minutes:seconds.",
+            "long_desc": "",
+            "hint": [
+                [
+                    "string",
+                    false
+                ]
+            ],
+            "hint_desc": "The build time formatted.",
+            "tags": [],
+            "modifiers": "1",
+            "is_by_ref": "",
+            "exceptions": [],
+            "errors": [],
+            "parameters": []
+        },
+        "getStartTime": {
+            "name": "getStartTime",
+            "line": 70,
+            "short_desc": "Gets the build start time as a unix timestamp.",
+            "long_desc": "",
+            "hint": [
+                [
+                    "int",
+                    false
+                ]
+            ],
+            "hint_desc": "The unix timestamp for when the build begun.",
+            "tags": [],
+            "modifiers": "1",
+            "is_by_ref": "",
+            "exceptions": [],
+            "errors": [],
+            "parameters": []
+        },
+        "getLastActionStatus": {
+            "name": "getLastActionStatus",
+            "line": 80,
+            "short_desc": "Gets the very last step, last action's status.",
+            "long_desc": "",
+            "hint": [
+                [
+                    "string",
+                    false
+                ]
+            ],
+            "hint_desc": "The status string.",
+            "tags": [],
+            "modifiers": "1",
+            "is_by_ref": "",
+            "exceptions": [],
+            "errors": [],
+            "parameters": []
+        },
+        "getSteps": {
+            "name": "getSteps",
+            "line": 92,
+            "short_desc": "Gets the build steps.",
+            "long_desc": "",
+            "hint": [
+                [
+                    "\\Circle\\Step",
+                    true
+                ]
+            ],
+            "hint_desc": "An iterator for the build steps.",
+            "tags": [],
+            "modifiers": "1",
+            "is_by_ref": "",
+            "exceptions": [],
+            "errors": [],
+            "parameters": []
+        },
+        "getLastStep": {
+            "name": "getLastStep",
+            "line": 104,
+            "short_desc": "Gets the last step in the build. This can change if a build is running.",
+            "long_desc": "",
+            "hint": [
+                [
+                    "\\Circle\\Step",
+                    false
+                ]
+            ],
+            "hint_desc": "The current last step in this  build.",
+            "tags": [],
+            "modifiers": "1",
+            "is_by_ref": "",
+            "exceptions": [],
+            "errors": [],
+            "parameters": []
+        },
+        "isFinished": {
+            "name": "isFinished",
+            "line": 116,
+            "short_desc": "Check if our build is finished.",
+            "long_desc": "",
+            "hint": [
+                [
+                    "bool",
+                    false
+                ]
+            ],
+            "hint_desc": "TRUE is the build is finished otherwise FALSE.",
+            "tags": [],
+            "modifiers": "1",
+            "is_by_ref": "",
+            "exceptions": [],
+            "errors": [],
+            "parameters": []
+        },
+        "toArray": {
+            "name": "toArray",
+            "line": 126,
+            "short_desc": "Gets the build as an array.",
+            "long_desc": "",
+            "hint": [
+                [
+                    "array",
+                    false
+                ]
+            ],
+            "hint_desc": "The build info.",
+            "tags": [],
+            "modifiers": "1",
+            "is_by_ref": "",
+            "exceptions": [],
+            "errors": [],
+            "parameters": []
+        }
+    },
+    "constants": []
+}

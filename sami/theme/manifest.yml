@@ -1,0 +1,4 @@
+name: circle
+parent: default
+static:
+  'css/styles.css': 'css/styles.css'

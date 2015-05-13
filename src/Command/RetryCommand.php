@@ -6,7 +6,15 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 
-
+/**
+ * This command starts a "retry" of a given build. You can use "latest" to retry
+ * the last build and using the "ssh" retry-method option to rebuild with SSH
+ * enabled.
+ *
+ * ##### Example
+ *
+ * circle retry [-o|--build-num[="..."]] [-m|--retry-method[="..."]] [-p|--project-name[="..."]] [-u|--username[="..."]]
+ */
 class RetryCommand extends CommandBase {
 
   /**

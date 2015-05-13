@@ -3,3 +3,5 @@
 /.gitignore         export-ignore
 /circle.yml         export-ignore
 /phpunit.xml.dist   export-ignore
+/sami               export-ignore
+/sami.php           export-ignore

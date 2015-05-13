@@ -1,0 +1,62 @@
+body {
+  font-family: "ProximaNova","Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+h1, h2, h3 {
+  font-weight: 300;
+  color: #343434;
+}
+h2 {
+  font-weight: 300;
+  background: none;
+  border-bottom: 1px solid #DDD;
+}
+a {
+  color: #337ab7;
+}
+img {
+  max-width: 100%;
+}
+
+/* Layout related styles. */
+#site-nav {
+  border: 0;
+  border-bottom: 1px solid #DDD;
+  box-shadow: none;
+  background: #fbfbfb !important;
+}
+#left-column {
+  background: #fbfbfb;
+  border-right: 1px solid #DDD;
+}
+
+#control-panel {
+  background: none;
+  border: 0;
+}
+
+#api-tree {
+  background: none;
+}
+#api-tree a {
+  color: #337ab7;
+}
+
+.namespace-breadcrumbs .breadcrumb {
+  background: #fbfbfb;
+  border-bottom: 1px solid #DDD;
+}
+
+/* Code Styles */
+.method-item h3,
+.method-item h3 code {
+  background: #fbfbfb;
+}
+.method-item h3 {
+  border-top: 1px solid #DDD;
+  border-bottom: 1px solid #DDD;
+  padding: 7px;
+}
+.description {
+  background: #EEE;
+  border: 1px solid #DDD;
+}

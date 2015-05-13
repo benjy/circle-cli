@@ -10,7 +10,22 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 
-
+/**
+ * This command allows you to view the live results of a running build by
+ * polling the server. The output can be formatted as either a table with all
+ * the results or a simple progress bar.
+ *
+ * #### Examples
+ *     circle progress [-o|--build-num[="..."]] [-p|--project-name[="..."]] [-u|--username[="..."]] [-r|--refresh-interval[="..."]] [-f|--format[="..."]]
+ *
+ *     # Show the progress of the last started build with username/project from
+ *     # config and the default format.
+ *     circle progress
+ *
+ * #### Sample Output
+ *
+ * ![Progress command - Table](https://raw.githubusercontent.com/code-drop/Circle-CLI/master/assets/progress-table.jpg)
+ */
 class ProgressCommand extends CommandBase {
 
   /**

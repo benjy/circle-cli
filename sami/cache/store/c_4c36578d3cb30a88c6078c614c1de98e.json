@@ -1,0 +1,267 @@
+{
+    "name": "Circle\\Config",
+    "line": 7,
+    "short_desc": "",
+    "long_desc": "",
+    "hint": null,
+    "tags": [],
+    "namespace": "Circle",
+    "file": ".\/src\/Config.php",
+    "hash": "97a5f4a9d4a1261659ad528c68932d015c0d73f0",
+    "parent": null,
+    "modifiers": "Stmt_Class",
+    "is_trait": false,
+    "is_interface": false,
+    "aliases": {
+        "Yaml": "Symfony\\Component\\Yaml\\Yaml"
+    },
+    "errors": [],
+    "interfaces": [],
+    "traits": [],
+    "properties": [],
+    "methods": {
+        "__construct": {
+            "name": "__construct",
+            "line": 39,
+            "short_desc": "Constructs a new circle config object.",
+            "long_desc": "",
+            "hint": null,
+            "hint_desc": null,
+            "tags": [],
+            "modifiers": "1",
+            "is_by_ref": "",
+            "exceptions": [],
+            "errors": [],
+            "parameters": {
+                "parser": {
+                    "name": "parser",
+                    "line": 39,
+                    "short_desc": "The Yaml parser.",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "Circle\\Symfony\\Component\\Yaml\\Yaml",
+                            false
+                        ]
+                    ],
+                    "tags": [],
+                    "modifiers": "Symfony\\Component\\Yaml\\Yaml",
+                    "default": null,
+                    "is_by_ref": false
+                },
+                "global_file": {
+                    "name": "global_file",
+                    "line": 39,
+                    "short_desc": "The path to the global configuration file.",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "string",
+                            false
+                        ]
+                    ],
+                    "tags": [],
+                    "modifiers": "",
+                    "default": "''",
+                    "is_by_ref": false
+                },
+                "local_file": {
+                    "name": "local_file",
+                    "line": 39,
+                    "short_desc": "The path to the local per project configuration file.",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "string",
+                            false
+                        ]
+                    ],
+                    "tags": [],
+                    "modifiers": "",
+                    "default": "'circle-cli.yml'",
+                    "is_by_ref": false
+                },
+                "private_file": {
+                    "name": "private_file",
+                    "line": 39,
+                    "short_desc": "The path to the private configuration file.",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "string",
+                            false
+                        ]
+                    ],
+                    "tags": [],
+                    "modifiers": "",
+                    "default": "'circle-cli.private.yml'",
+                    "is_by_ref": false
+                }
+            }
+        },
+        "get": {
+            "name": "get",
+            "line": 57,
+            "short_desc": "Gets the specified config given a key.",
+            "long_desc": "",
+            "hint": [
+                [
+                    "mixed",
+                    false
+                ]
+            ],
+            "hint_desc": "",
+            "tags": [],
+            "modifiers": "1",
+            "is_by_ref": "",
+            "exceptions": [],
+            "errors": [],
+            "parameters": {
+                "key": {
+                    "name": "key",
+                    "line": 57,
+                    "short_desc": "The config key to retrieve.",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "string",
+                            false
+                        ],
+                        [
+                            "array",
+                            false
+                        ]
+                    ],
+                    "tags": [],
+                    "modifiers": "",
+                    "default": null,
+                    "is_by_ref": false
+                }
+            }
+        },
+        "getAll": {
+            "name": "getAll",
+            "line": 73,
+            "short_desc": "Gets the entire config array.",
+            "long_desc": "",
+            "hint": [
+                [
+                    "mixed",
+                    false
+                ]
+            ],
+            "hint_desc": "The loaded config.",
+            "tags": [],
+            "modifiers": "1",
+            "is_by_ref": "",
+            "exceptions": [],
+            "errors": [],
+            "parameters": []
+        },
+        "setAll": {
+            "name": "setAll",
+            "line": 83,
+            "short_desc": "Overwrite the entire loaded config.",
+            "long_desc": "",
+            "hint": null,
+            "hint_desc": null,
+            "tags": [],
+            "modifiers": "1",
+            "is_by_ref": "",
+            "exceptions": [],
+            "errors": [],
+            "parameters": {
+                "config": {
+                    "name": "config",
+                    "line": 83,
+                    "short_desc": "The new config array.",
+                    "long_desc": null,
+                    "hint": [],
+                    "tags": [],
+                    "modifiers": "",
+                    "default": null,
+                    "is_by_ref": false
+                }
+            }
+        },
+        "setGlobalFile": {
+            "name": "setGlobalFile",
+            "line": 164,
+            "short_desc": "",
+            "long_desc": "",
+            "hint": null,
+            "hint_desc": null,
+            "tags": [],
+            "modifiers": "1",
+            "is_by_ref": "",
+            "exceptions": [],
+            "errors": [],
+            "parameters": {
+                "file_path": {
+                    "name": "file_path",
+                    "line": 164,
+                    "short_desc": null,
+                    "long_desc": null,
+                    "hint": null,
+                    "tags": [],
+                    "modifiers": "",
+                    "default": null,
+                    "is_by_ref": false
+                }
+            }
+        },
+        "setLocalFile": {
+            "name": "setLocalFile",
+            "line": 168,
+            "short_desc": "",
+            "long_desc": "",
+            "hint": null,
+            "hint_desc": null,
+            "tags": [],
+            "modifiers": "1",
+            "is_by_ref": "",
+            "exceptions": [],
+            "errors": [],
+            "parameters": {
+                "file_path": {
+                    "name": "file_path",
+                    "line": 168,
+                    "short_desc": null,
+                    "long_desc": null,
+                    "hint": null,
+                    "tags": [],
+                    "modifiers": "",
+                    "default": null,
+                    "is_by_ref": false
+                }
+            }
+        },
+        "setPrivateFile": {
+            "name": "setPrivateFile",
+            "line": 172,
+            "short_desc": "",
+            "long_desc": "",
+            "hint": null,
+            "hint_desc": null,
+            "tags": [],
+            "modifiers": "1",
+            "is_by_ref": "",
+            "exceptions": [],
+            "errors": [],
+            "parameters": {
+                "file_path": {
+                    "name": "file_path",
+                    "line": 172,
+                    "short_desc": null,
+                    "long_desc": null,
+                    "hint": null,
+                    "tags": [],
+                    "modifiers": "",
+                    "default": null,
+                    "is_by_ref": false
+                }
+            }
+        }
+    },
+    "constants": []
+}

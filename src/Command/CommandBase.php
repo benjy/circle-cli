@@ -32,14 +32,14 @@ abstract class CommandBase extends Command {
   protected $gitRemoteParts;
 
   /**
-   * Constructs a new command.
+   * Constructs a new command object.
    *
    * @param \Circle\Circle $circle
    *   The circle CI service.
    * @param null|string $name
    *   The name of this command.
    */
-  public function __construct(Circle $circle, $name = null) {
+  public function __construct(Circle $circle, $name = NULL) {
     parent::__construct($name);
     $this->circle = $circle;
     $this->baseUrl = 'https://circleci.com/api/v1/';
