@@ -121,7 +121,7 @@ class ProgressCommand extends CommandBase {
    *   A Symfony progress bar indicator.
    */
   protected function initProgressBar(Build $build, OutputInterface $output) {
-    $progress = new ProgressBar($output, $build->getPreviousSuccessfulBuildTime());
+    $progress = new ProgressBar($output, $build->getPreviousSuccessfulBuildTime() / 60);
     $progress->setFormat(' %step_name% %current%/%max% [%bar%] %percent:3s%%');
     $progress->setMessage("Starting build", 'step_name');
     $progress->start();
@@ -141,7 +141,7 @@ class ProgressCommand extends CommandBase {
     $status = $build->getLastActionStatus();
     $format = $this->getFormatFromStatus($status);
     $progress->setMessage($this->formatCell($format, $this->renderAtLength($build->getLastStep()->getName(), 25)), 'step_name');
-    $progress->setProgress(time() - $build->getStartTime());
+    $progress->setProgress((time() - $build->getStartTime()) / 60);
   }
 
   /**

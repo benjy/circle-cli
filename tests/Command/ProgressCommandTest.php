@@ -90,8 +90,8 @@ class ProgressCommandTest extends \PHPUnit_Framework_TestCase {
     $display_output = $commandTester->getDisplay();
     $this->assertContains('Build has finished', $display_output, 'Build marked as finished');
     $this->assertContains('Committer Name', $display_output, 'Committer name appeared in build output.');
-    $this->assertContains('0/600', $display_output, 'Build started at 0 from 600 seconds.');
-    $this->assertContains('600/600', $display_output, 'Build finished with ...');
+    $this->assertContains('0/10', $display_output, 'Build started at 0 from 10 minutes.');
+    $this->assertContains('10/10', $display_output, 'Build finished with ...');
     $this->assertContains('100%', $display_output);
 
     // Test the table formatter.
