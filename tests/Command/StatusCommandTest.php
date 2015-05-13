@@ -18,14 +18,22 @@ class StatusCommandTest extends \PHPUnit_Framework_TestCase {
       ],
       'username' => 'username-in-config',
       'project' => 'project-name-in-config',
-      'display' => ['committer_name'],
+      'display' => ['committer_name', 'subject'],
     ];
     // Get the mock circle config and service.
     $circle_config = $this->getCircleConfigMock($config);
-    $circle = $this->getCircleServiceMock($circle_config);
+    $circle = $this->getCircleServiceMock($circle_config, [[
+      'committer_name' => 'Ben Dougherty',
+      'subject' => 'this is the commit message',
+      'not-displayed' => 'this should not be output'
+    ]]);
 
     $command = $this->getCommand('Circle\Command\StatusCommand', $circle);
-    $this->runCommand($command);
-  }
+    $commandTester = $this->runCommand($command);
 
+    $output = $commandTester->getDisplay();
+    $this->assertContains('Ben Dougherty', $output);
+    $this->assertContains('this is the commit message', $output);
+    $this->assertNotContains('this should not be output', $output);
+  }
 }

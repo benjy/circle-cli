@@ -33,6 +33,8 @@ class CommandBaseTest extends \PHPUnit_Framework_TestCase {
       'project' => 'project-name-in-config',
       'display' => ['committer_name'],
     ];
+    // Setup the get_recent_builds config which is used by getBuildNumber().
+    $config['endpoints']['get_recent_builds']['display'] = ['build_num'];
     $circle_config = $this->getCircleConfigMock($config);
     $circle = $this->getCircleServiceMock($circle_config);
 
@@ -132,67 +134,6 @@ class CommandBaseTest extends \PHPUnit_Framework_TestCase {
     $circle = $this->getCircleServiceMock($circle_config);
 
     $this->runCommand($this->getCommand('Circle\Tests\Command\TestCommand', $circle));
-  }
-
-  /**
-   * Test the generated table output.
-   */
-  public function testTableOutput() {
-    $query_results = [
-      [
-        'build_num' => "123",
-        'committer_name' => 'Ben',
-        'subject' => 'New build',
-        'branch' => 'master',
-        'status' => 'failed',
-      ],
-    ];
-
-    // Get the mock circle config and service.
-    $config['endpoints']['test_command'] = [
-      'request' => [
-        'circle-token' => '',
-      ],
-      'username' => 'code-drop',
-      'project' => 'Code-Drop',
-      'display' => array_keys($query_results[0]),
-    ];
-
-    $circle_config = $this->getCircleConfigMock($config);
-    $circle = $this->getCircleServiceMock($circle_config, $query_results);
-
-    $commandTester = $this->runCommand($this->getCommand('Circle\Tests\Command\TestCommand', $circle));
-
-    // Assert that all the keys and values appear in the output.
-    $displayed_content = $commandTester->getDisplay();
-    foreach ($query_results as $result) {
-      foreach ($result as $key => $value) {
-        $this->assertContains($key, $displayed_content);
-        $this->assertContains($value, $displayed_content);
-      }
-    }
-  }
-
-  /**
-   * @expectedException \Exception
-   * @expectedExceptionMessage must provide at least one display field
-   */
-  public function testDisplayFieldsRequired() {
-    // Get the mock circle config and service.
-    $config['endpoints']['test_command'] = [
-      'request' => [
-        'circle-token' => '',
-      ],
-      'username' => 'code-drop',
-      'project' => 'Code-Drop',
-    ];
-    $circle_config = $this->getCircleConfigMock($config);
-    $circle = $this->getCircleServiceMock($circle_config);
-
-    $command = $this->getCommand('Circle\Tests\Command\TestCommand', $circle);
-    $commandTester = $this->runCommand($command, ['--build-num' => '3']);
-
-    $this->assertContains('something', $commandTester->getDisplay());
   }
 
 }

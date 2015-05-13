@@ -18,14 +18,23 @@ class RetryCommandTest extends \PHPUnit_Framework_TestCase {
       ],
       'username' => 'username-in-config',
       'project' => 'project-name-in-config',
-      'display' => ['committer_name'],
+      'display' => ['committer_name', 'subject'],
     ];
     // Get the mock circle config and service.
     $circle_config = $this->getCircleConfigMock($config);
-    $circle = $this->getCircleServiceMock($circle_config);
+    $circle = $this->getCircleServiceMock($circle_config, [
+      'committer_name' => 'Ben',
+      'subject' => 'test subject',
+      'hidden_field' => 'should not be output',
+    ]);
 
     $command = $this->getCommand('Circle\Command\RetryCommand', $circle);
-    $this->runCommand($command, ['--build-num' => '3']);
+    $commandTester = $this->runCommand($command, ['--build-num' => '3']);
+
+    $display = $commandTester->getDisplay();
+    $this->assertContains('Ben', $display);
+    $this->assertContains('test subject', $display);
+    $this->assertNotContains('should not be output', $display);
   }
 
 }

@@ -52,8 +52,9 @@ class BuildCommand extends CommandBase {
       return $branch;
     }
 
-    if ($branch = $this->getConfig(['endpoints', $this->getEndpointId(), 'branch'])) {
-      return $branch;
+    $config = $this->getEndpointConfig();
+    if (!empty($config['branch'])) {
+      return $config['branch'];
     }
 
     // OK, we're getting desperate, maybe we can parse it out of git?
@@ -69,6 +70,8 @@ class BuildCommand extends CommandBase {
    *
    * @return string
    *   The branch from the repo.
+   *
+   * @codeCoverageIgnore
    */
   protected function parseGitBranch() {
     return trim(shell_exec('git branch'));

@@ -82,8 +82,11 @@ class Circle {
    *   An array of build info for the specified project.
    */
   public function getRecentBuilds($username, $project_name) {
+    $endpoint = 'get_recent_builds';
     $url = $this->buildUrl(['project', $username, $project_name]);
-    return $this->queryCircle($url, $this->getQueryArgs('get_recent_builds'));
+    $builds = $this->queryCircle($url, $this->getQueryArgs($endpoint));
+
+    return $this->filterResults($builds, $this->getDisplayFields($endpoint));
   }
 
   /**
@@ -104,8 +107,12 @@ class Circle {
    *   An array of build info for the restarted build.
    */
   public function retryBuild($username, $project_name, $build_num, $method = 'retry') {
+    $endpoint = 'retry_build';
     $url = $this->buildUrl(['project', $username, $project_name, $build_num, $method]);
-    return $this->queryCircle($url, $this->getQueryArgs('retry_build'), 'POST');
+    $build = $this->queryCircle($url, $this->getQueryArgs($endpoint), 'POST');
+
+    $filtered = $this->filterResults([$build], $this->getDisplayFields($endpoint));
+    return array_pop($filtered);
   }
 
   /**
@@ -126,10 +133,11 @@ class Circle {
    *   The circle build object.
    */
   public function getBuild($username, $project_name, $build_number) {
+    $endpoint = 'get_single_build';
     $url = $this->buildUrl(['project', $username, $project_name, $build_number]);
     try {
-      $result = $this->queryCircle($url, $this->getQueryArgs('get_single_build'));
-      return new Build($result);
+      $result = $this->queryCircle($url, $this->getQueryArgs($endpoint));
+      return new Build($result, $this->getDisplayFields($endpoint));
     }
     catch (\Exception $e) {
       throw new \InvalidArgumentException('The build could not be found. Check your username, project name and build number.');
@@ -145,8 +153,11 @@ class Circle {
    *   An array of all projects in Circle.
    */
   public function getAllProjects() {
+    $endpoint = 'get_all_projects';
     $url = $this->buildUrl(['projects']);
-    return $this->queryCircle($url, $this->getQueryArgs('get_all_projects'));
+    $projects = $this->queryCircle($url, $this->getQueryArgs($endpoint));
+
+    return $this->filterResults($projects, $this->getDisplayFields($endpoint));
   }
 
   /**
@@ -192,8 +203,20 @@ class Circle {
    *   The build info for the new build.
    */
   public function triggerBuild($username, $project_name, $branch) {
+    $endpoint = 'trigger_build';
     $url = $this->buildUrl(['project', $username, $project_name, 'tree', $branch]);
-    return $this->queryCircle($url, $this->getQueryArgs('trigger_build'), 'POST');
+    $build = $this->queryCircle($url, $this->getQueryArgs($endpoint), 'POST');
+
+    $filtered_build = $this->filterResults([$build], $this->getDisplayFields($endpoint));
+    return array_pop($filtered_build);
+  }
+
+  protected function filterResults($results, $display_fields) {
+    $filtered_results = [];
+    foreach ($results as $result) {
+      $filtered_results[] = array_intersect_key($result, array_flip($display_fields));
+    }
+    return $filtered_results;
   }
 
   /**
@@ -207,6 +230,10 @@ class Circle {
    */
   protected function getQueryArgs($endpoint) {
     return $this->getConfig()->get(['endpoints', $endpoint, 'request']);
+  }
+
+  protected function getDisplayFields($endpoint) {
+    return $this->getConfig()->get(['endpoints', $endpoint, 'display']);
   }
 
   /**

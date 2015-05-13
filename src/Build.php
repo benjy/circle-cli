@@ -14,13 +14,21 @@ class Build {
   protected $buildInfo;
 
   /**
+   * An array of fields to use when rendering this build as an array.
+   *
+   * @var array
+   */
+  protected $displayFields;
+
+  /**
    * Construct a new Circle Build.
    *
    * @param array $build
    *   The build info.
    */
-  public function __construct(array $build) {
+  public function __construct(array $build, $display_fields = []) {
     $this->buildInfo = $build;
+    $this->displayFields = $display_fields;
   }
 
   /**
@@ -116,7 +124,7 @@ class Build {
    *   The build info.
    */
   public function toArray() {
-    return $this->buildInfo;
+    return array_intersect_key($this->buildInfo, array_flip($this->displayFields));
   }
 
 }

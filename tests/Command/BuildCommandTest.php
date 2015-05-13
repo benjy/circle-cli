@@ -83,7 +83,7 @@ class BuildCommandTest extends \PHPUnit_Framework_TestCase {
       ->expects($this->once())
       ->method('queryCircle')
       ->with('project/username-in-config/project-name-in-config/tree/master', ['circle-token' => ''], 'POST')
-      ->willReturn(['build_num' => '5', 'build_url' => 'https://example.com/build/url', 'subject' => 'commit message', 'branch' => 'master']);
+      ->willReturn(['build_num' => '5', 'build_url' => 'https://example.com/build/url', 'subject' => 'commit message', 'branch' => 'master', 'hidden' => 'should not be output']);
     $command = $this->getCommand('Circle\Command\BuildCommand', $circle);
     $commandTester = $this->runCommand($command);
     $output = $commandTester->getDisplay();
@@ -91,6 +91,7 @@ class BuildCommandTest extends \PHPUnit_Framework_TestCase {
     $this->assertContains('https://example.com/build/url', $output);
     $this->assertContains('commit message', $output);
     $this->assertContains('master', $output);
+    $this->assertNotContains('should not be output', $output);
   }
 
   /**

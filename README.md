@@ -42,7 +42,7 @@ can be formatted as either a table with all the results or a simple progress bar
 #### Example
 
     circle progress [-o|--build-num[="..."]] [-p|--project-name[="..."]] [-u|--username[="..."]] [-r|--refresh-interval[="..."]] [-f|--format[="..."]]
-    
+
     # Show the progress of the last started build with username/project from config
     # and the default format.
     circle progress
@@ -72,7 +72,7 @@ This command provides a list of all projects within your Circle CI account.
 ##### Example
 
     circle projects
-    
+
 ### Retry Build Command
 
 This command starts a "retry" of a given build. You can use "latest" to retry
@@ -106,8 +106,6 @@ from the response under the display fields in the circle-cli.yml configuration f
 
 ## Features
 
-* Add a license.
-* Fix up tests for testing output once filtering is moved to the circle service or the build.
 * Add new command to [cancel a running build](https://circleci.com/docs/api#cancel-build).
 * Add a filter to the RetryCommand, StatusCommand & CancelCommand to filter by branch.
 * [Trigger a new build](https://circleci.com/docs/api#new-build) given any branch.
@@ -117,3 +115,7 @@ from the response under the display fields in the circle-cli.yml configuration f
 
 * See if trigger new build endpoint can help with "latest" feature.
 * Don't require empty config entries for endpoints that don't need any.
+* Update progress to be minutes rather than seconds.
+* Investigate solutions for redrawing errors with Symfony progress bar.
+* Status output after a cancelled during the progress command should highlight the build that was cancelled.
+* Improve output filtering, using $build->toArray() more often.

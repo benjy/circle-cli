@@ -54,31 +54,17 @@ abstract class CommandBase extends Command {
    *   The output interface to render the table on.
    */
   protected function renderAsTable(array $results, OutputInterface $output) {
-    $rows = [];
-    $display_fields = $this->getDisplayFields();
+    //$display_fields = $this->getDisplayFields();
 
-    foreach ($results as $result) {
-      $data = [];
-      foreach ($display_fields as $i => $field) {
-        // If the requested display field appears in the results then grab the
-        // value.
-        if (isset($result[$field])) {
-          $data[] = $result[$field];
-        }
-        else {
-          // Remove is so we don't get it in the headers.
-          $output->writeln("Missing display field . $field");
-          unset($display_fields[$i]);
-        }
-      }
-      $rows[] = $data;
+    if (!isset($results[0]) || count($results[0]) === 0) {
+      return;
     }
 
     // Build the table and render the output.
     $table = new Table($output);
     $table
-      ->setHeaders($display_fields)
-      ->setRows($rows);
+      ->setHeaders(array_keys($results[0]))
+      ->setRows($results);
 
     $table->render();
   }
@@ -126,8 +112,9 @@ abstract class CommandBase extends Command {
     }
 
     // If there is a project name in the config, use that instead.
-    if ($project = $this->getConfig(['endpoints', $this->getEndpointId(), 'project'])) {
-      return $project;
+    $config = $this->getEndpointConfig();
+    if (!empty($config['project'])) {
+      return $config['project'];
     }
 
     // OK, we're getting desperate, maybe we can parse it out of the Git remote?
@@ -160,8 +147,9 @@ abstract class CommandBase extends Command {
     }
 
     // If there is a username in the config, use that instead.
-    if ($username = $this->getConfig(['endpoints', $this->getEndpointId(), 'username'])) {
-      return $username;
+    $config = $this->getEndpointConfig();
+    if (!empty($config['username'])) {
+      return $config['username'];
     }
 
     // OK, we're getting desperate, maybe we can parse it out of the Git remote?
@@ -228,25 +216,11 @@ abstract class CommandBase extends Command {
    *
    * @return string
    *   Get the git remote.
+   *
+   * @codeCoverageIgnore
    */
   protected function getGitRemote() {
     return trim(shell_exec('git config --get remote.origin.url'));
-  }
-
-  /**
-   * Gets the display fields for this request.
-   *
-   * @return array
-   *   An array of fields to display.
-   *
-   * @throws \Exception
-   */
-  protected function getDisplayFields() {
-    $display_fields = $this->getConfig(['endpoints', $this->getEndpointId(), 'display']);
-    if (empty($display_fields)) {
-      throw new \Exception(sprintf('Command %s must provide at least one display field.', get_called_class()));
-    }
-    return $display_fields;
   }
 
   /**
