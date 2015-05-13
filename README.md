@@ -108,7 +108,6 @@ from the response under the display fields in the circle-cli.yml configuration f
 
 * Add new command to [cancel a running build](https://circleci.com/docs/api#cancel-build).
 * Add a filter to the RetryCommand, StatusCommand & CancelCommand to filter by branch.
-* [Trigger a new build](https://circleci.com/docs/api#new-build) given any branch.
 * Release a phar download? Use box?
 
 ## Improvements
