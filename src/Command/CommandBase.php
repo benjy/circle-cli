@@ -54,9 +54,9 @@ abstract class CommandBase extends Command {
    *   The output interface to render the table on.
    */
   protected function renderAsTable(array $results, OutputInterface $output) {
-    //$display_fields = $this->getDisplayFields();
 
-    if (!isset($results[0]) || count($results[0]) === 0) {
+    // Guard statement for results with no rows.
+    if (!isset($results[0])) {
       return;
     }
 

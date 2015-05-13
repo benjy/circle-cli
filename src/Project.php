@@ -36,7 +36,18 @@ class Project {
    *   The filtered project info.
    */
   public function toArray() {
-    return array_intersect_key($this->projectInfo, array_flip($this->displayFields));
+    $results = array_intersect_key($this->projectInfo, array_flip($this->displayFields));
+    $display_fields = $this->displayFields;
+
+    // We sort the output using the keys so the result is the same as what is
+    // defined in config.
+    uksort($results, function($a, $b) use ($display_fields) {
+      // We don't need to check for equality because we cannot have two keys
+      // with the exact same value.
+      return array_search($a, $display_fields) > array_search($b, $display_fields);
+    });
+
+    return $results;
   }
 
 }

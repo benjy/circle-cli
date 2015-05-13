@@ -44,6 +44,7 @@ endpoints:
       - build_url
       - committer_name
       - subject
+      - status
 
   trigger_build:
     display:

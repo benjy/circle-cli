@@ -112,8 +112,5 @@ from the response under the display fields in the circle-cli.yml configuration f
 
 ## Improvements
 
-* See if trigger new build endpoint can help with "latest" feature.
 * Don't require empty config entries for endpoints that don't need any.
-* Update progress to be minutes rather than seconds.
 * Investigate solutions for redrawing errors with Symfony progress bar.
-* Status output after a cancelled during the progress command should highlight the build that was cancelled.
