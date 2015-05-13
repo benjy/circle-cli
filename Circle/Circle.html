@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="index, follow, all" />
+    <title>Circle\Circle | API</title>
+
+            <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="../css/sami.css">
+        <link rel="stylesheet" type="text/css" href="../css/styles.css">
+        <script src="../js/jquery-1.11.1.min.js"></script>
+        <script src="../js/bootstrap.min.js"></script>
+        <script src="../js/typeahead.min.js"></script>
+        <script src="../sami.js"></script>
+    
+    
+    </head>
+
+    <body id="class" data-name="class:Circle_Circle" data-root-path="../">
+            <div id="content">
+        <div id="left-column">
+                <div id="control-panel">
+                <form id="search-form" action="../search.html" method="GET">
+            <span class="glyphicon glyphicon-search"></span>
+            <input name="search"
+                   class="typeahead form-control"
+                   type="search"
+                   placeholder="Search">
+        </form>
+    </div>
+
+                <div id="api-tree"></div>
+
+        </div>
+        <div id="right-column">
+                <nav id="site-nav" class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-elements">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../index.html">API</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-elements">
+                <ul class="nav navbar-nav">
+                    <li><a href="../classes.html">Classes</a></li>
+                                            <li><a href="../namespaces.html">Namespaces</a></li>
+                                        <li><a href="../interfaces.html">Interfaces</a></li>
+                    <li><a href="../traits.html">Traits</a></li>
+                    <li><a href="../doc-index.html">Index</a></li>
+                    <li><a href="../search.html">Search</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+                        <div class="namespace-breadcrumbs">
+            <ol class="breadcrumb">
+                <li><span class="label label-default">class</span></li>
+                                                            <li><a href="../Circle.html">Circle</a></li>
+    
+                <li>Circle</li>
+            </ol>
+        </div>
+                <div id="page-content">
+                
+    <div class="page-header">
+        <h1>Circle</h1>
+    </div>
+
+    
+    <p>    class
+    <strong>Circle</strong>        implements
+        <a href="../Circle/CircleInterface.html"><abbr title="Circle\CircleInterface">CircleInterface</abbr></a></p>
+
+    
+    
+    
+            <h2>Methods</h2>
+
+            <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method___construct">__construct</a>(<abbr title="Circle\Circle\Config">Config</abbr> $config, <abbr title="Circle\GuzzleHttp\ClientInterface">ClientInterface</abbr> $http_client)
+                                            <p>Construct a new Circle service.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_queryCircle">queryCircle</a>(string $url, array $query_args = array(), string $method = &#039;GET&#039;, array $request_options = array())
+                                            <p>Query the Circle API with the given request options.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getRecentBuilds">getRecentBuilds</a>(string $username, string $project_name)
+                                            <p>Gets the most recent builds for a project.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_retryBuild">retryBuild</a>(string $username, string $project_name, int $build_num, string $method = &#039;retry&#039;)
+                                            <p>Retry a previous build.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../Circle/Build.html"><abbr title="Circle\Build">Build</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getBuild">getBuild</a>(string $username, string $project_name, int $build_number)
+                                            <p>Gets a build from Circle.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getAllProjects">getAllProjects</a>()
+                                            <p>Gets a list of all projects.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_addSshKey">addSshKey</a>(string $username, string $project_name, string $private_key_file, string $hostname = &#039;&#039;)
+                                            <p>Add a new SSH key to a project.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_triggerBuild">triggerBuild</a>(string $username, string $project_name, string $branch)
+                                            <p>Trigger a new build on a branch.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../Circle/Config.html"><abbr title="Circle\Config">Config</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getConfig">getConfig</a>()
+                                            <p>Gets the circle configuration object.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+            </div>
+
+
+        <h2>Details</h2>
+
+            <div id="method-details">
+                    <div class="method-item">
+                    <h3 id="method___construct">
+        <div class="location">at line 38</div>
+        <code>                    
+    <strong>__construct</strong>(<abbr title="Circle\Circle\Config">Config</abbr> $config, <abbr title="Circle\GuzzleHttp\ClientInterface">ClientInterface</abbr> $http_client)</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Construct a new Circle service.</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><abbr title="Circle\Circle\Config">Config</abbr></td>
+                <td>$config</td>
+                <td>The configuration for this circle instance.</td>
+            </tr>
+                    <tr>
+                <td><abbr title="Circle\GuzzleHttp\ClientInterface">ClientInterface</abbr></td>
+                <td>$http_client</td>
+                <td>The HTTP client.</td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_queryCircle">
+        <div class="location">at line 47</div>
+        <code>                    array
+    <strong>queryCircle</strong>(string $url, array $query_args = array(), string $method = &#039;GET&#039;, array $request_options = array())</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Query the Circle API with the given request options.</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$url</td>
+                <td>The url for the circle endpoint.</td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$query_args</td>
+                <td>An array of query arguments.</td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$method</td>
+                <td>The HTTP method to be used for the request.</td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$request_options</td>
+                <td>The Guzzle request options.</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td>An array of results.</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getRecentBuilds">
+        <div class="location">at line 64</div>
+        <code>                    array
+    <strong>getRecentBuilds</strong>(string $username, string $project_name)</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Gets the most recent builds for a project.</p>                    <p>https://circleci.com/docs/api#recent-builds-project</p>            </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$username</td>
+                <td>The project username.</td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$project_name</td>
+                <td>The project name to retrieve the builds for.</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td>An array of build info for the specified project.</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_retryBuild">
+        <div class="location">at line 77</div>
+        <code>                    array
+    <strong>retryBuild</strong>(string $username, string $project_name, int $build_num, string $method = &#039;retry&#039;)</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Retry a previous build.</p>                    <p>https://circleci.com/docs/api#retry-build</p>            </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$username</td>
+                <td>The project username.</td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$project_name</td>
+                <td>The project name to retry the build for.</td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$build_num</td>
+                <td>The build number to retry.</td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$method</td>
+                <td>The method to retry. Either "retry" or "ssh"</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td>An array of build info for the restarted build.</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getBuild">
+        <div class="location">at line 88</div>
+        <code>                    <a href="../Circle/Build.html"><abbr title="Circle\Build">Build</abbr></a>
+    <strong>getBuild</strong>(string $username, string $project_name, int $build_number)</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Gets a build from Circle.</p>                    <p>https://circleci.com/docs/api#build</p>            </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$username</td>
+                <td>The project username.</td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$project_name</td>
+                <td>The project name to retrieve the build for.</td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$build_number</td>
+                <td>The build to retrieve.</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../Circle/Build.html"><abbr title="Circle\Build">Build</abbr></a></td>
+            <td>The circle build object.</td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a target="_blank" href="http://php.net/InvalidArgumentException"><abbr title="InvalidArgumentException">InvalidArgumentException</abbr></a></td>
+                <td>
+</td>
+            </tr>
+            </table>
+
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getAllProjects">
+        <div class="location">at line 103</div>
+        <code>                    array
+    <strong>getAllProjects</strong>()</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Gets a list of all projects.</p>                    <p>https://circleci.com/docs/api#projects</p>            </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td>An array of all projects in Circle.</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_addSshKey">
+        <div class="location">at line 116</div>
+        <code>                    
+    <strong>addSshKey</strong>(string $username, string $project_name, string $private_key_file, string $hostname = &#039;&#039;)</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Add a new SSH key to a project.</p>                    <p>https://circleci.com/docs/api#summary</p>            </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$username</td>
+                <td>The username that owns the project.</td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$project_name</td>
+                <td>The project name to add the key.</td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$private_key_file</td>
+                <td>The path to the private key file that must be readable.</td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$hostname</td>
+                <td>The hostname for the key.</td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_triggerBuild">
+        <div class="location">at line 132</div>
+        <code>                    array
+    <strong>triggerBuild</strong>(string $username, string $project_name, string $branch)</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Trigger a new build on a branch.</p>                    <p>https://circleci.com/docs/api#new-build</p>            </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$username</td>
+                <td>The username that owns the project.</td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$project_name</td>
+                <td>The project name to add the key.</td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$branch</td>
+                <td>The branch to trigger the build on.</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td>The build info for the new build.</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getConfig">
+        <div class="location">at line 182</div>
+        <code>                    <a href="../Circle/Config.html"><abbr title="Circle\Config">Config</abbr></a>
+    <strong>getConfig</strong>()</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Gets the circle configuration object.</p>                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../Circle/Config.html"><abbr title="Circle\Config">Config</abbr></a></td>
+            <td>The circle configuration object.</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+            </div>
+
+    
+            </div>
+                <div id="footer">
+        Generated by <a href="http://sami.sensiolabs.org/">Sami, the API Documentation Generator</a>.
+    </div>
+
+        </div>
+    </div>
+    </body>
+
+</html>
