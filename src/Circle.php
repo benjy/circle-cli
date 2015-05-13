@@ -86,7 +86,9 @@ class Circle {
     $url = $this->buildUrl(['project', $username, $project_name]);
     $builds = $this->queryCircle($url, $this->getQueryArgs($endpoint));
 
-    return $this->filterResults($builds, $this->getDisplayFields($endpoint));
+    return array_map(function($build) use ($endpoint) {
+      return (new Build($build, $this->getDisplayFields($endpoint)))->toArray();
+    }, $builds);
   }
 
   /**
@@ -111,8 +113,7 @@ class Circle {
     $url = $this->buildUrl(['project', $username, $project_name, $build_num, $method]);
     $build = $this->queryCircle($url, $this->getQueryArgs($endpoint), 'POST');
 
-    $filtered = $this->filterResults([$build], $this->getDisplayFields($endpoint));
-    return array_pop($filtered);
+    return (new Build($build, $this->getDisplayFields($endpoint)))->toArray();
   }
 
   /**
@@ -157,7 +158,9 @@ class Circle {
     $url = $this->buildUrl(['projects']);
     $projects = $this->queryCircle($url, $this->getQueryArgs($endpoint));
 
-    return $this->filterResults($projects, $this->getDisplayFields($endpoint));
+    return array_map(function($build) use ($endpoint) {
+      return (new Project($build, $this->getDisplayFields($endpoint)))->toArray();
+    }, $projects);
   }
 
   /**
@@ -207,16 +210,7 @@ class Circle {
     $url = $this->buildUrl(['project', $username, $project_name, 'tree', $branch]);
     $build = $this->queryCircle($url, $this->getQueryArgs($endpoint), 'POST');
 
-    $filtered_build = $this->filterResults([$build], $this->getDisplayFields($endpoint));
-    return array_pop($filtered_build);
-  }
-
-  protected function filterResults($results, $display_fields) {
-    $filtered_results = [];
-    foreach ($results as $result) {
-      $filtered_results[] = array_intersect_key($result, array_flip($display_fields));
-    }
-    return $filtered_results;
+    return (new Build($build, $this->getDisplayFields($endpoint)))->toArray();
   }
 
   /**
