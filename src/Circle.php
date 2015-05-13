@@ -226,6 +226,15 @@ class Circle {
     return $this->getConfig()->get(['endpoints', $endpoint, 'request']);
   }
 
+  /**
+   * Gets the display fields for this endpoint.
+   *
+   * @param string $endpoint
+   *   The endpoint id.
+   *
+   * @return array
+   *   An array of fields to be displayed for this endpoint.
+   */
   protected function getDisplayFields($endpoint) {
     return $this->getConfig()->get(['endpoints', $endpoint, 'display']);
   }
