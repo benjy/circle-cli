@@ -2,5 +2,4 @@
 vendor
 circle-cli.private.yml
 bin
-/docs
 /sami/cache
