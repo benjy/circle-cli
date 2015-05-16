@@ -102,7 +102,7 @@ class Config {
     $this->config = array_replace_recursive($this->config, $this->loadConfigFile($this->privateFile));
 
     // Make sure all endpoints have at least this config.
-    $default_config = ['request' => [] , 'display' => []];
+    $default_config = ['request' => [], 'display' => []];
 
     // Merge anything in the "globals" key into each endpoint configuration.
     if (isset($this->config['globals']) && isset($this->config['endpoints'])) {
