@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="robots" content="index, follow, all" />
-    <title>Circle\Command\RetryCommand | API</title>
+    <title>Circle\Command\RetryCommand | Circle CLI</title>
 
             <link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="../../css/bootstrap-theme.min.css">
@@ -43,14 +43,13 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="../../index.html">API</a>
+                <a class="navbar-brand" href="../../index.html">Circle CLI</a>
             </div>
             <div class="collapse navbar-collapse" id="navbar-elements">
                 <ul class="nav navbar-nav">
+                    <li><a href="../../index.html">Home</a></li>
+                    <li><a href="../../https://github.com/code-drop/Circle-CLI">Download</a></li>
                     <li><a href="../../classes.html">Classes</a></li>
-                                            <li><a href="../../namespaces.html">Namespaces</a></li>
-                                        <li><a href="../../interfaces.html">Interfaces</a></li>
-                    <li><a href="../../traits.html">Traits</a></li>
                     <li><a href="../../doc-index.html">Index</a></li>
                     <li><a href="../../search.html">Search</a></li>
                 </ul>
@@ -74,13 +73,17 @@
     </div>
 
             <h3>Usage</h3>
-        <div class="description">
-            <p>This command starts a "retry" of a given build. You can use "latest" to retry
-the last build and using the "ssh" retry-method option to rebuild with SSH
-enabled.</p>            <p><h5>Example</h5>
+        <p>This command starts a "retry" of a given build using the
+<a href="https://circleci.com/docs/api#retry-build">retry-build</a> endpoint. You can
+use "latest" to retry the last build and using the "ssh" retry-method option
+to rebuild with SSH enabled.</p>        <div class="description">
+            <p><h5>Example</h5>
 
-<p>circle retry [-o|--build-num[="..."]] [-m|--retry-method[="..."]] [-p|--project-name[="..."]] [-u|--username[="..."]]</p>        </div>
+<pre><code>circle retry [-o|--build-num[="..."]] [-m|--retry-method[="..."]] [-p|--project-name[="..."]] [-u|--username[="..."]]
+</code></pre>
+</p>        </div>
     
+    <br/>
     <p>    class
     <strong>RetryCommand</strong>        extends <a href="../../Circle/Command/CommandBase.html"><abbr title="Circle\Command\CommandBase">CommandBase</abbr></a></p>
 

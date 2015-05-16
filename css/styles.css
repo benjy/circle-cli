@@ -9,12 +9,16 @@ h2 {
   font-weight: 300;
   background: none;
   border-bottom: 1px solid #DDD;
+  padding-left: 0;
 }
 a {
   color: #337ab7;
 }
 img {
   max-width: 100%;
+}
+code {
+  font-size: 14px;
 }
 
 /* Layout related styles. */

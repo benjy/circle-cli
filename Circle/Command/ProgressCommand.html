@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="robots" content="index, follow, all" />
-    <title>Circle\Command\ProgressCommand | API</title>
+    <title>Circle\Command\ProgressCommand | Circle CLI</title>
 
             <link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="../../css/bootstrap-theme.min.css">
@@ -43,14 +43,13 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="../../index.html">API</a>
+                <a class="navbar-brand" href="../../index.html">Circle CLI</a>
             </div>
             <div class="collapse navbar-collapse" id="navbar-elements">
                 <ul class="nav navbar-nav">
+                    <li><a href="../../index.html">Home</a></li>
+                    <li><a href="../../https://github.com/code-drop/Circle-CLI">Download</a></li>
                     <li><a href="../../classes.html">Classes</a></li>
-                                            <li><a href="../../namespaces.html">Namespaces</a></li>
-                                        <li><a href="../../interfaces.html">Interfaces</a></li>
-                    <li><a href="../../traits.html">Traits</a></li>
                     <li><a href="../../doc-index.html">Index</a></li>
                     <li><a href="../../search.html">Search</a></li>
                 </ul>
@@ -74,10 +73,10 @@
     </div>
 
             <h3>Usage</h3>
-        <div class="description">
-            <p>This command allows you to view the live results of a running build by
+        <p>This command allows you to view the live results of a running build by
 polling the server. The output can be formatted as either a table with all
-the results or a simple progress bar.</p>            <p><h4>Examples</h4>
+the results or a simple progress bar.</p>        <div class="description">
+            <p><h4>Examples</h4>
 
 <pre><code>circle progress [-o|--build-num[="..."]] [-p|--project-name[="..."]] [-u|--username[="..."]] [-r|--refresh-interval[="..."]] [-f|--format[="..."]]
 
@@ -90,6 +89,7 @@ circle progress
 
 <p><img src="https://raw.githubusercontent.com/code-drop/Circle-CLI/master/assets/progress-table.jpg" alt="Progress command - Table" /></p>        </div>
     
+    <br/>
     <p>    class
     <strong>ProgressCommand</strong>        extends <a href="../../Circle/Command/CommandBase.html"><abbr title="Circle\Command\CommandBase">CommandBase</abbr></a></p>
 

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="robots" content="index, follow, all" />
-    <title>Circle\Command\StatusCommand | API</title>
+    <title>Circle\Command\StatusCommand | Circle CLI</title>
 
             <link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="../../css/bootstrap-theme.min.css">
@@ -43,14 +43,13 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="../../index.html">API</a>
+                <a class="navbar-brand" href="../../index.html">Circle CLI</a>
             </div>
             <div class="collapse navbar-collapse" id="navbar-elements">
                 <ul class="nav navbar-nav">
+                    <li><a href="../../index.html">Home</a></li>
+                    <li><a href="../../https://github.com/code-drop/Circle-CLI">Download</a></li>
                     <li><a href="../../classes.html">Classes</a></li>
-                                            <li><a href="../../namespaces.html">Namespaces</a></li>
-                                        <li><a href="../../interfaces.html">Interfaces</a></li>
-                    <li><a href="../../traits.html">Traits</a></li>
                     <li><a href="../../doc-index.html">Index</a></li>
                     <li><a href="../../search.html">Search</a></li>
                 </ul>
@@ -74,10 +73,10 @@
     </div>
 
             <h3>Usage</h3>
-        <div class="description">
-            <p>This command uses the <a href="https://circleci.com/docs/api#recent-builds-project">most recent builds</a> endpoint
+        <p>This command uses the <a href="https://circleci.com/docs/api#recent-builds-project">most recent builds</a> endpoint
 to provide a quick status overview of the project. The table fields and the
-number of results to display is all configurable.</p>            <p><h5>Example</h5>
+number of results to display is all configurable.</p>        <div class="description">
+            <p><h5>Example</h5>
 
 <pre><code>circle status [-p|--project-name[="..."]] [-u|--username[="..."]]
 </code></pre>
@@ -86,6 +85,7 @@ number of results to display is all configurable.</p>            <p><h5>Example<
 
 <p><img src="https://raw.githubusercontent.com/code-drop/Circle-CLI/master/assets/status.jpg" alt="Status command - Table" /></p>        </div>
     
+    <br/>
     <p>    class
     <strong>StatusCommand</strong>        extends <a href="../../Circle/Command/CommandBase.html"><abbr title="Circle\Command\CommandBase">CommandBase</abbr></a></p>
 
