@@ -5,3 +5,4 @@
 /phpunit.xml.dist   export-ignore
 /sami               export-ignore
 /sami.php           export-ignore
+/gendocs.sh         export-ignore
