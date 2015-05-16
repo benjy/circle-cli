@@ -56,6 +56,23 @@ interface CircleInterface {
   public function retryBuild($username, $project_name, $build_num, $method = 'retry');
 
   /**
+   * Cancel running build.
+   *
+   * https://circleci.com/docs/api#cancel-build
+   *
+   * @param string $username
+   *   The project username.
+   * @param string $project_name
+   *   The project name to cancel the build for.
+   * @param int $build_num
+   *   The build number to retry.
+   *
+   * @return array
+   *   An array of build info for the cancelled build.
+   */
+  public function cancelBuild($username, $project_name, $build_num);
+
+  /**
    * Gets a build from Circle.
    *
    * https://circleci.com/docs/api#build

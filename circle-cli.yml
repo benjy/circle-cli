@@ -52,6 +52,15 @@ endpoints:
       - build_url
       - branch
       - subject
+      - status
+
+  cancel_build:
+    display:
+      - build_num
+      - build_url
+      - branch
+      - subject
+      - status
 
   # All endpoints currently require a config entry, even if empty.
   add_ssh_key:

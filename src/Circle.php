@@ -85,6 +85,17 @@ class Circle implements CircleInterface {
   /**
    * {@inheritdoc}
    */
+  public function cancelBuild($username, $project_name, $build_num) {
+    $endpoint = 'cancel_build';
+    $url = $this->buildUrl(['project', $username, $project_name, $build_num, 'cancel']);
+    $build = $this->queryCircle($url, $this->getQueryArgs($endpoint), 'POST');
+
+    return (new Build($build, $this->getDisplayFields($endpoint)))->toArray();
+  }
+
+  /**
+   * {@inheritdoc}
+   */
   public function getBuild($username, $project_name, $build_number) {
     $endpoint = 'get_single_build';
     $url = $this->buildUrl(['project', $username, $project_name, $build_number]);

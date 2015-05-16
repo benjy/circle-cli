@@ -2,17 +2,18 @@
 <?php
 
 use Symfony\Component\Console\Application;
+use Pimple\Container;
+use Circle\Circle;
+use Circle\Config;
+use GuzzleHttp\Client;
+use Symfony\Component\Yaml\Yaml;
 use Circle\Command\StatusCommand;
 use Circle\Command\ProjectsCommand;
 use Circle\Command\RetryCommand;
 use Circle\Command\ProgressCommand;
 use Circle\Command\SshKeyCommand;
 use Circle\Command\BuildCommand;
-use Pimple\Container;
-use Circle\Circle;
-use Circle\Config;
-use GuzzleHttp\Client;
-use Symfony\Component\Yaml\Yaml;
+use Circle\Command\CancelCommand;
 
 // Require the autoloader.
 require_once 'vendor/autoload.php';
@@ -40,4 +41,5 @@ $app->add(new RetryCommand($container['circle']));
 $app->add(new ProgressCommand($container['circle']));
 $app->add(new SshKeyCommand($container['circle']));
 $app->add(new BuildCommand($container['circle']));
+$app->add(new CancelCommand($container['circle']));
 $app->run();
