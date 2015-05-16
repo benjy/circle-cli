@@ -41,7 +41,6 @@ is some example output from the status and progress commands.
 ## Features
 
 * Add new command to [cancel a running build](https://circleci.com/docs/api#cancel-build).
-* Add a filter to the RetryCommand, StatusCommand & CancelCommand to filter by branch.
 
 ## Improvements
 
