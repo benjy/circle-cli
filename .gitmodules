@@ -1,0 +1,4 @@
+[submodule "docs"]
+	path = docs
+	url = git@github.com:code-drop/Circle-CLI.git
+	branch = gh-pages
