@@ -1,0 +1,35 @@
+<project name="circle-cli" default="default">
+
+  <target name="default">
+      <echo message="DONE"/>
+  </target>
+
+  <target name="docs">
+    <property name="tempdocs" value="./docs-temp"/>
+
+    <!-- Generate the docs into a temporary folder. -->
+    <exec command="./bin/sami.php update ./sami/config.php --force" passthru="true"/>
+
+    <!-- Clean out the docs -->
+    <delete failonerror="true" includeemptydirs="true">
+      <fileset dir="./docs" defaultexcludes="false">
+        <include name="**"/>
+        <exclude name=".git"/>
+        <exclude name="circle.yml"/>
+      </fileset>
+    </delete>
+
+    <!-- Move new docs into place and then clean-up. -->
+    <exec command="mv ${tempdocs}/* ./docs" passthru="true" checkreturn="true"/>
+    <exec command="rmdir ${tempdocs}" passthru="true" checkreturn="true"/>
+  </target>
+
+  <target name="tests">
+    <exec command="./bin/phpunit" passthru="true" checkreturn="true"/>
+  </target>
+
+  <target name="tests:coverage">
+    <exec command="./bin/phpunit --coverage-html coverage" passthru="true" checkreturn="true"/>
+  </target>
+
+</project>
