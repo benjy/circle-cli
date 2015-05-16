@@ -96,6 +96,7 @@
             {"type": "Class", "fromName": "Circle\\Iterator", "fromLink": "Circle/Iterator.html", "link": "Circle/Iterator/MapIterator.html", "name": "Circle\\Iterator\\MapIterator", "doc": "&quot;\n&quot;"},
                                                         {"type": "Method", "fromName": "Circle\\Iterator\\MapIterator", "fromLink": "Circle/Iterator/MapIterator.html", "link": "Circle/Iterator/MapIterator.html#method___construct", "name": "Circle\\Iterator\\MapIterator::__construct", "doc": "&quot;Construct a new MapIterator.&quot;"},
                     {"type": "Method", "fromName": "Circle\\Iterator\\MapIterator", "fromLink": "Circle/Iterator/MapIterator.html", "link": "Circle/Iterator/MapIterator.html#method_current", "name": "Circle\\Iterator\\MapIterator::current", "doc": "&quot;{@inheritdoc}&quot;"},
+                    {"type": "Method", "fromName": "Circle\\Iterator\\MapIterator", "fromLink": "Circle/Iterator/MapIterator.html", "link": "Circle/Iterator/MapIterator.html#method_offsetGet", "name": "Circle\\Iterator\\MapIterator::offsetGet", "doc": "&quot;{@inheritdoc}&quot;"},
             
             {"type": "Class", "fromName": "Circle", "fromLink": "Circle.html", "link": "Circle/Project.html", "name": "Circle\\Project", "doc": "&quot;\n&quot;"},
                                                         {"type": "Method", "fromName": "Circle\\Project", "fromLink": "Circle/Project.html", "link": "Circle/Project.html#method___construct", "name": "Circle\\Project::__construct", "doc": "&quot;Construct a new Circle Build.&quot;"},

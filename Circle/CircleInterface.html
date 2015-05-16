@@ -96,7 +96,7 @@
                     array
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_getRecentBuilds">getRecentBuilds</a>(string $username, string $project_name)
+                    <a href="#method_getRecentBuilds">getRecentBuilds</a>(string $username, string $project_name, string $filter = &#039;&#039;)
                                             <p>Gets the most recent builds for a project.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
@@ -222,9 +222,9 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_getRecentBuilds">
-        <div class="location">at line 37</div>
+        <div class="location">at line 39</div>
         <code>                    array
-    <strong>getRecentBuilds</strong>(string $username, string $project_name)</code>
+    <strong>getRecentBuilds</strong>(string $username, string $project_name, string $filter = &#039;&#039;)</code>
     </h3>
     <div class="details">
                     <div class="method-description">
@@ -242,6 +242,11 @@
                 <td>string</td>
                 <td>$project_name</td>
                 <td>The project name to retrieve the builds for.</td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$filter</td>
+                <td>One of completed, successful, failed or running. Empty for no filter.</td>
             </tr>
             </table>
 
@@ -263,7 +268,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_retryBuild">
-        <div class="location">at line 56</div>
+        <div class="location">at line 58</div>
         <code>                    array
     <strong>retryBuild</strong>(string $username, string $project_name, int $build_num, string $method = &#039;retry&#039;)</code>
     </h3>
@@ -314,7 +319,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_cancelBuild">
-        <div class="location">at line 73</div>
+        <div class="location">at line 75</div>
         <code>                    array
     <strong>cancelBuild</strong>(string $username, string $project_name, int $build_num)</code>
     </h3>
@@ -360,7 +365,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_getBuild">
-        <div class="location">at line 92</div>
+        <div class="location">at line 94</div>
         <code>                    <a href="../Circle/Build.html"><abbr title="Circle\Build">Build</abbr></a>
     <strong>getBuild</strong>(string $username, string $project_name, int $build_number)</code>
     </h3>
@@ -416,7 +421,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_getAllProjects">
-        <div class="location">at line 102</div>
+        <div class="location">at line 104</div>
         <code>                    array
     <strong>getAllProjects</strong>()</code>
     </h3>
@@ -442,7 +447,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_addSshKey">
-        <div class="location">at line 118</div>
+        <div class="location">at line 120</div>
         <code>                    
     <strong>addSshKey</strong>(string $username, string $project_name, string $private_key_file, string $hostname = &#039;&#039;)</code>
     </h3>
@@ -484,7 +489,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_triggerBuild">
-        <div class="location">at line 135</div>
+        <div class="location">at line 137</div>
         <code>                    array
     <strong>triggerBuild</strong>(string $username, string $project_name, string $branch)</code>
     </h3>
@@ -530,7 +535,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_getConfig">
-        <div class="location">at line 143</div>
+        <div class="location">at line 145</div>
         <code>                    <a href="../Circle/Config.html"><abbr title="Circle\Config">Config</abbr></a>
     <strong>getConfig</strong>()</code>
     </h3>
