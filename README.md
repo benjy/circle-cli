@@ -40,14 +40,12 @@ is some example output from the status and progress commands.
 
 ## Features
 
-* Add new command to [cancel a running build](https://circleci.com/docs/api#cancel-build).
+* [create an issue](https://github.com/code-drop/Circle-CLI/issues)
 
 ## Improvements
 
-* Improve gh-pages docs, and remove everything in this README.
-* Add a phing command or alias for auto-generating the gh-pages branch, maybe
-circle could do that for us?
-* Don't require empty config entries for endpoints that don't need any.
 * Investigate solutions for redrawing errors with Symfony progress bar.
-* Tag version 1.0
+* Create upstream PR for Table helper overrides or, remove table formatter entirely?
+* Don't require empty config entries for endpoints that don't need any. This will likely require a class representing
+each endpoint to store the default definitions? Might not be worth the extra effort.
 * Release a phar download? Use box?
