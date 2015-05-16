@@ -17,6 +17,8 @@ class ProjectsCommand extends CommandBase {
 
   /**
    * {@inheritdoc}
+   *
+   * @codeCoverageIgnore
    */
   protected function getEndpointId() {
     return 'get_all_projects';

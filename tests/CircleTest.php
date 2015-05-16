@@ -39,7 +39,7 @@ class CircleTest extends \PHPUnit_Framework_TestCase {
    */
   public function testGetBuildFail() {
     $config = [
-      'endpoints' => ['get_single_build' => []],
+      'endpoints' => ['get_single_build' => ['request' => [], 'display' => []]],
     ];
     $circle = $this->getMockBuilder('Circle\Circle')
       ->setConstructorArgs([$this->getCircleConfigMock($config), $this->getHttpClientMock()])
@@ -102,6 +102,17 @@ class CircleTest extends \PHPUnit_Framework_TestCase {
     $config = $this->getMock('Circle\Config', NULL, [new Yaml()]);
     $circle = new Circle($config, $client);
     $circle->queryCircle('test', []);
+  }
+
+  /**
+   * @expectedException \InvalidArgumentException
+   * @expectedExceptionMessage You must have a config stub for trigger_build endpoint in your config file
+   */
+  public function testQueryArgsRequiresEndpoint() {
+    $client = $this->getHttpClientMock();
+    $config = $this->getCircleConfigMock([]);
+    $circle = new Circle($config, $client);
+    $circle->triggerBuild('', '', '');
   }
 
   /**

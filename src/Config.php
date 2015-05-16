@@ -101,13 +101,17 @@ class Config {
     // that in as well.
     $this->config = array_replace_recursive($this->config, $this->loadConfigFile($this->privateFile));
 
+    // Make sure all endpoints have at least this config.
+    $default_config = ['request' => [] , 'display' => []];
+
     // Merge anything in the "globals" key into each endpoint configuration.
     if (isset($this->config['globals']) && isset($this->config['endpoints'])) {
       foreach ($this->config['endpoints'] as $endpoint => $endpoint_config) {
-        // @TODO, this needs test coverage.
-        if (!is_array($this->config['endpoints'][$endpoint])) {
-          $this->config['endpoints'][$endpoint] = ['request' => [] , 'display' => []];
-        }
+
+        // Merge in our default configuration.
+        $this->config['endpoints'] = array_merge_recursive([$endpoint => $default_config], $this->config['endpoints']);
+
+        // Merge the global config with the endpoint config.
         $this->config['endpoints'][$endpoint] = array_replace_recursive($this->config['globals'], $this->config['endpoints'][$endpoint]);
       }
     }

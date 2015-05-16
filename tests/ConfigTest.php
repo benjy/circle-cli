@@ -60,6 +60,8 @@ endpoints:
     $local = $vfs_root->url() . '/local.yml';
     $private = $vfs_root->url() . '/private.yml';
     $config = new Config(new Yaml(), $global, $local, $private);
+
+    // Test that our config precedence works.
     $this->assertEquals('global-user-name', $config->get(['globals', 'username']));
     $this->assertEquals('local-project-name', $config->get(['globals', 'project']));
     $this->assertEquals('private-token', $config->get(['globals', 'request', 'circle-token']));
@@ -77,6 +79,7 @@ endpoints:
         'get_projects' => [
           'username' => 'global-user-name',
           'project' => 'local-project-name',
+          'display' => [],
           'request' => [
             'limit' => '3',
             'circle-token' => 'private-token',
@@ -86,6 +89,26 @@ endpoints:
     ];
     $this->assertEquals($expected, $config->getAll());
     $this->assertEquals([], (new Config(new Yaml(), 'doesnt-exist', 'doesnt-exist', 'doesnt-exist'))->getAll());
+  }
+
+  /**
+   * Test that defaults are populated even when config empty.
+   */
+  public function testEmptyConfig() {
+    $yml = 'globals:
+      username: global-user-name
+      project: global-project-name
+      request:
+        circle-token: test-token
+endpoints:
+  test_endpoint:';
+    $vfs_root = vfsStream::setup();
+    vfsStream::newFile('global.yml')->at($vfs_root)->withContent($yml);
+    $global = $vfs_root->url() . '/global.yml';
+    $config = new Config(new Yaml(), $global, '', '');
+
+    $this->assertEquals('test-token', $config->get(['endpoints', 'test_endpoint', 'request', 'circle-token']));
+    $this->assertEquals(FALSE, $config->get(['i', 'dont', 'exist']));
   }
 
 }

@@ -158,7 +158,11 @@ class Circle implements CircleInterface {
    *   The query arguments for this endpoint.
    */
   protected function getQueryArgs($endpoint) {
-    return $this->getConfig()->get(['endpoints', $endpoint, 'request']);
+    $endpoint_config = $this->getConfig()->get(['endpoints', $endpoint]);
+    if ($endpoint_config === FALSE) {
+      throw new \InvalidArgumentException(sprintf('You must have a config stub for %s endpoint in your config file', $endpoint));
+    }
+    return $endpoint_config['request'];
   }
 
   /**

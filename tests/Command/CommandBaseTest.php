@@ -35,6 +35,7 @@ class CommandBaseTest extends \PHPUnit_Framework_TestCase {
     ];
     // Setup the get_recent_builds config which is used by getBuildNumber().
     $config['endpoints']['get_recent_builds']['display'] = ['build_num'];
+    $config['endpoints']['get_recent_builds']['request'] = [];
     $circle_config = $this->getCircleConfigMock($config);
     $circle = $this->getCircleServiceMock($circle_config);
 
@@ -100,11 +101,9 @@ class CommandBaseTest extends \PHPUnit_Framework_TestCase {
    * @expectedExceptionMessage Could not find the last build for project-name, is this the first build?
    */
   public function testBuildNumberLatestFailsForFirstBuild() {
-    $config['endpoints']['test_command'] = [
-      'request' => [
-        'circle-token' => '',
-      ],
-      'display' => ['committer_name'],
+    $config['endpoints'] = [
+      'test_command' => ['request' => ['circle-token' => ''], 'display' => ['committer_name']],
+      'get_recent_builds' => ['request' => [], 'display' => []],
     ];
     $circle_config = $this->getCircleConfigMock($config);
     // Test that 'latest' queries the API for the last build.
