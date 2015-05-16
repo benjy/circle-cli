@@ -4,11 +4,6 @@ machine:
   php:
     version: 5.5.11
 
-general:
-  branches:
-    ignore:
-      - gh-pages
-
 dependencies:
   cache_directories:
     - vendor
