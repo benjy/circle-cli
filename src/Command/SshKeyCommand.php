@@ -7,7 +7,8 @@ use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 
 /**
- * This command allows you to add an SSH deploy key to a project.
+ * This command allows you to add an SSH deploy key to a project using the
+ * [ssh-key](https://circleci.com/docs/api#summary) endpoint.
  *
  * #### Example
  *

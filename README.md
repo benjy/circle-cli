@@ -20,92 +20,21 @@ This is a CLI utility built with Symfony Console to query Circle CI projects.
 
 # Documentation
 
-The docs are [available here](http://code-drop.github.io/Circle-CLI/Circle/Command.html). In the near future, everything
-from this readme will be moved there.
+The docs are [available here](http://code-drop.github.io/Circle-CLI/index.html).
 
 # Commands
 
-I'm open to adding new commands, feel free to create an issue.
+All available commands are documented [here](http://code-drop.github.io/Circle-CLI/Circle/Command.html) below
+is some example output from the status and progress commands.
 
-### Status Command
-
-This command uses the [most recent builds](https://circleci.com/docs/api#recent-builds-project) endpoint
-to provide a quick status overview of the project. The table fields and the number of results to display
-is all configurable.
-
-##### Example
-
-    circle status [-p|--project-name[="..."]] [-u|--username[="..."]]
+*Example [Status Command](http://code-drop.github.io/Circle-CLI/Circle/Command/StatusCommand.html) with Table output*
 
 ![Status command - Table](https://raw.githubusercontent.com/code-drop/Circle-CLI/master/assets/status.jpg)
 
-### Progress Command
-
-This command allows you to view the live results of a running build by polling the server. The output
-can be formatted as either a table with all the results or a simple progress bar.
-
-#### Example
-
-    circle progress [-o|--build-num[="..."]] [-p|--project-name[="..."]] [-u|--username[="..."]] [-r|--refresh-interval[="..."]] [-f|--format[="..."]]
-
-    # Show the progress of the last started build with username/project from config
-    # and the default format.
-    circle progress
+*Example [Progress Command](http://code-drop.github.io/Circle-CLI/Circle/Command/ProgressCommand.html)*
 
 ![Progress command - Table](https://raw.githubusercontent.com/code-drop/Circle-CLI/master/assets/progress-table.jpg)
 
-### Add SSH Key
-
-This command allows you to add an SSH deploy key to a project.
-
-#### Example
-
-    circle add-key [-u|--username[="..."]] [-p|--project-name[="..."]] [-f|--private-key[="..."]] [--hostname[="..."]]
-
-### Build Command
-
-This command allows you to trigger a new build on a given branch.
-
-#### Example
-
-    circle build [-u|--username[="..."]] [-p|--project-name[="..."]] [-b|--branch[="..."]]
-
-### List Projects Command
-
-This command provides a list of all projects within your Circle CI account.
-
-##### Example
-
-    circle projects
-
-### Retry Build Command
-
-This command starts a "retry" of a given build. You can use "latest" to retry
-the last build and using the "ssh" retry-method option to rebuild with SSH enabled.
-
-##### Example
-
-    circle retry [-o|--build-num[="..."]] [-m|--retry-method[="..."]] [-p|--project-name[="..."]] [-u|--username[="..."]]
-
-# Configuration
-
-Circle-CLI has sensible defaults but is highly configurable. Configuration files can live
-in three different places.
-
-* ~/circle-cli.yml - A global configuration file in your home directory.
-* circle-cli.yml - A local configuration file that takes precedence over the global file.
-* circle-cli.private.yml  - A local configuration file that can be used for your circle-token and excluded in .gitignore.
-
-*Request configuration* are the parameters that are passed as the URL params and are different per endpoint.
-
-*Display configuration* is a list of display fields from the endpoint response.
-
-*Globals configuration* is merged into each endpoint configuration as an easy way to manage request or display config
-that you want to be the same across all commands.
-
-Both request and response documentation are available on the Circle CI website at
-[https://circleci.com/docs/api](https://circleci.com/docs/api). The fields can be used directly
-from the response under the display fields in the circle-cli.yml configuration file.
 
 # TODO
 
@@ -113,9 +42,13 @@ from the response under the display fields in the circle-cli.yml configuration f
 
 * Add new command to [cancel a running build](https://circleci.com/docs/api#cancel-build).
 * Add a filter to the RetryCommand, StatusCommand & CancelCommand to filter by branch.
-* Release a phar download? Use box?
 
 ## Improvements
 
+* Improve gh-pages docs, and remove everything in this README.
+* Add a phing command or alias for auto-generating the gh-pages branch, maybe
+circle could do that for us?
 * Don't require empty config entries for endpoints that don't need any.
 * Investigate solutions for redrawing errors with Symfony progress bar.
+* Tag version 1.0
+* Release a phar download? Use box?

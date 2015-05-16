@@ -24,16 +24,17 @@
 
     {% if class.shortdesc or class.longdesc %}
         <h3>Usage</h3>
+        {% if class.shortdesc -%}
+            <p>{{ class.shortdesc|desc(class) }}</p>
+        {%- endif %}
         <div class="description">
-            {% if class.shortdesc -%}
-                <p>{{ class.shortdesc|desc(class) }}</p>
-            {%- endif %}
             {% if class.longdesc -%}
                 <p>{{ class.longdesc|desc(class) }}</p>
             {%- endif %}
         </div>
     {% endif %}
 
+    <br/>
     <p>{{ block('class_signature') }}</p>
 
     {% if traits %}

@@ -7,7 +7,8 @@ use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 
 /**
- * This command allows you to trigger a new build on a given branch.
+ * This command allows you to trigger a new build on a given branch. using the
+ * [new build](https://circleci.com/docs/api#new-build) endpoint
  *
  * #### Example
  *

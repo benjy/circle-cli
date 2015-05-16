@@ -1,0 +1,59 @@
+{% extends "layout/layout.twig" %}
+{% block title %}Circle CLI | {{ parent() }}{% endblock %}
+{% block body_class 'intro' %}
+
+{% block page_content %}
+    <div class="page-header">
+        <h1>Circle CLI Documentation</h1>
+    </div>
+
+    <p>This is a CLI utility built with Symfony Console to query Circle CI. The tool provides commands for most of Circle's <a href="https://circleci.com/docs/api">REST API</a> endpoints
+        although additional commands or any missing endpoints are welcome,
+        <a href="https://github.com/code-drop/Circle-CLI/issues/new">create an issue</a> or a
+        <a href="https://github.com/code-drop/Circle-CLI/compare">pull request</a>.</p>
+
+    <p>Circle CLI is designed to be configurable so you can have per project configuration, global config and overrides from the command line. However, most commands have
+    some sensible defaults built in that work when you're within your project by inspecting the Git remote. This often allows you to run any command without params.</p>
+
+    <h2>Install with composer</h2>
+    <pre>
+composer require "codedrop/circle-cli ~1.0"
+
+# Copy the sample config file into your home directory (or your project)
+cp vendor/codedrop/circle-cli/circle-cli.yml ~/
+    </pre>
+
+    <pre>
+# Copy the sample private file, then add your token to this file.
+cp vendor/codedrop/circle-cli/circle-cli.private.yml.sample ./
+    </pre>
+
+    <h2>Configuration</h2>
+
+    <p>Circle-CLI has sensible defaults but is highly configurable. Configuration files can live
+    in three different places.</p>
+
+    <ul>
+        <li>~/circle-cli.yml - A global configuration file in your home directory.</li>
+        <li>circle-cli.yml - A local configuration file that takes precedence over the global file.</li>
+        <li>circle-cli.private.yml  - A local configuration file that can be used for your circle-token and excluded in .gitignore.</li>
+    </ul>
+
+    <p><strong>Request configuration</strong> are the parameters that are passed as the URL params and are different per endpoint.</p>
+
+    <p><strong>Display configuration</strong> is a list of display fields from the endpoint response.</p>
+
+    <p><strong>Globals configuration</strong> is merged into each endpoint configuration as an easy way to manage request or display config
+    that you want to be the same across all commands.</p>
+
+    <p>Both request and response documentation are available on the Circle CI website (<a href="https://circleci.com/docs/api">https://circleci.com/docs/api</a>.
+        The fields can be used directly from the response under the display fields in the circle-cli.yml configuration file.
+
+    <h2>Getting help</h2>
+
+    <p>Well you're reading the docs so that's a pretty good start. If you are still having problems, feel free to <a href="https://github.com/code-drop/Circle-CLI/issues/new">create an issue</a>.</p>
+
+    <h2>Developers</h2>
+    <a href="https://github.com/benjy">Ben Dougherty</a> did the initial development which was sponsored by <a href="https://codedrop.com.au">Code Drop</a>.
+
+{% endblock %}

@@ -6,7 +6,8 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
 /**
- * This command provides a list of all projects within your Circle CI account.
+ * This command provides a list of all projects within your Circle CI account
+ * using the [projects](https://circleci.com/docs/api#projects) endpoint.
  *
  * ##### Example
  *
