@@ -61,10 +61,16 @@ class Circle implements CircleInterface {
   /**
    * {@inheritdoc}
    */
-  public function getRecentBuilds($username, $project_name) {
+  public function getRecentBuilds($username, $project_name, $filter = '') {
     $endpoint = 'get_recent_builds';
     $url = $this->buildUrl(['project', $username, $project_name]);
-    $builds = $this->queryCircle($url, $this->getQueryArgs($endpoint));
+    $query_args = $this->getQueryArgs($endpoint);
+
+    // If we have a filter passed in then use that.
+    if (!empty($filter)) {
+      $query_args['filter'] = $filter;
+    }
+    $builds = $this->queryCircle($url, $query_args);
 
     return array_map(function($build) use ($endpoint) {
       return (new Build($build, $this->getDisplayFields($endpoint)))->toArray();

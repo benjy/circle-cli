@@ -30,11 +30,13 @@ interface CircleInterface {
    *   The project username.
    * @param string $project_name
    *   The project name to retrieve the builds for.
+   * @param string $filter
+   *   One of completed, successful, failed or running. Empty for no filter.
    *
    * @return array
    *   An array of build info for the specified project.
    */
-  public function getRecentBuilds($username, $project_name);
+  public function getRecentBuilds($username, $project_name, $filter = '');
 
   /**
    * Retry a previous build.

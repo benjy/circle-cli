@@ -81,7 +81,7 @@ class BuildCommand extends CommandBase {
    * @codeCoverageIgnore
    */
   protected function parseGitBranch() {
-    return trim(shell_exec('git branch'));
+    return trim(shell_exec('git rev-parse --abbrev-ref HEAD'));
   }
 
 }
