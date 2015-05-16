@@ -111,6 +111,15 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_cancelBuild">cancelBuild</a>(string $username, string $project_name, int $build_num)
+                                            <p>Cancel running build.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
                     <a href="../Circle/Build.html"><abbr title="Circle\Build">Build</abbr></a>
                 </div>
                 <div class="col-md-8 type">
@@ -304,8 +313,54 @@
 
             </div>
                     <div class="method-item">
+                    <h3 id="method_cancelBuild">
+        <div class="location">at line 73</div>
+        <code>                    array
+    <strong>cancelBuild</strong>(string $username, string $project_name, int $build_num)</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Cancel running build.</p>                    <p>https://circleci.com/docs/api#cancel-build</p>            </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$username</td>
+                <td>The project username.</td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$project_name</td>
+                <td>The project name to cancel the build for.</td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$build_num</td>
+                <td>The build number to retry.</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td>An array of build info for the cancelled build.</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
                     <h3 id="method_getBuild">
-        <div class="location">at line 75</div>
+        <div class="location">at line 92</div>
         <code>                    <a href="../Circle/Build.html"><abbr title="Circle\Build">Build</abbr></a>
     <strong>getBuild</strong>(string $username, string $project_name, int $build_number)</code>
     </h3>
@@ -361,7 +416,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_getAllProjects">
-        <div class="location">at line 85</div>
+        <div class="location">at line 102</div>
         <code>                    array
     <strong>getAllProjects</strong>()</code>
     </h3>
@@ -387,7 +442,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_addSshKey">
-        <div class="location">at line 101</div>
+        <div class="location">at line 118</div>
         <code>                    
     <strong>addSshKey</strong>(string $username, string $project_name, string $private_key_file, string $hostname = &#039;&#039;)</code>
     </h3>
@@ -429,7 +484,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_triggerBuild">
-        <div class="location">at line 118</div>
+        <div class="location">at line 135</div>
         <code>                    array
     <strong>triggerBuild</strong>(string $username, string $project_name, string $branch)</code>
     </h3>
@@ -475,7 +530,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_getConfig">
-        <div class="location">at line 126</div>
+        <div class="location">at line 143</div>
         <code>                    <a href="../Circle/Config.html"><abbr title="Circle\Config">Config</abbr></a>
     <strong>getConfig</strong>()</code>
     </h3>
