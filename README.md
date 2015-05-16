@@ -1,5 +1,4 @@
 [![Circle CI](https://circleci.com/gh/code-drop/Circle-CLI.svg?style=svg)](https://circleci.com/gh/code-drop/Circle-CLI)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/code-drop/Circle-CLI/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/code-drop/Circle-CLI/?branch=master)
 [![Code Coverage](https://scrutinizer-ci.com/g/code-drop/Circle-CLI/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/code-drop/Circle-CLI/?branch=master)
 [![License](https://poser.pugx.org/codedrop/circle-cli/license.svg)](https://packagist.org/packages/codedrop/circle-cli)
 
