@@ -17,6 +17,7 @@ class MapIteratorTest extends \PHPUnit_Framework_TestCase {
     foreach ($iterator as $i => $item) {
       $this->assertEquals($values[$i] . '_done', $item);
     }
+    $this->assertEquals($iterator[0], 'value1_done');
   }
 
   /**

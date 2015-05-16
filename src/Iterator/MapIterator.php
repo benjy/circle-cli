@@ -32,8 +32,14 @@ class MapIterator extends \ArrayIterator {
    * {@inheritdoc}
    */
   public function current() {
-    // Call our custom function per item.
     return call_user_func($this->callback, parent::current());
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function offsetGet($offset) {
+    return call_user_func($this->callback, parent::offsetGet($offset));
   }
 
 }
