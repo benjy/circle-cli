@@ -10,4 +10,4 @@ dependencies:
     - bin
 test:
   override:
-    - /bin/phpunit
+    - ./bin/phpunit
