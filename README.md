@@ -15,7 +15,7 @@ This is a CLI utility built with Symfony Console to query Circle CI projects.
     cp vendor/codedrop/circle-cli/circle-cli.yml ~/
 
     # Copy the sample private file, then add your token to this file.
-    cp vendor/codedrop/circle-cli/circle-cli.private.yml.sample ./
+    cp vendor/codedrop/circle-cli/circle-cli.private.yml.sample circle-cli.private.yml
 
 # Documentation
 
