@@ -1,6 +1,6 @@
 [![Circle CI](https://circleci.com/gh/code-drop/Circle-CLI.svg?style=svg)](https://circleci.com/gh/code-drop/Circle-CLI)
 [![Code Coverage](https://scrutinizer-ci.com/g/code-drop/Circle-CLI/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/code-drop/Circle-CLI/?branch=master)
-[![License](https://poser.pugx.org/codedrop/circle-cli/license.svg)](https://packagist.org/packages/codedrop/circle-cli)
+[![License](https://poser.pugx.org/code-drop/circle-cli/license.svg)](https://packagist.org/packages/code-drop/circle-cli)
 
 # Circle CLI
 
@@ -9,13 +9,13 @@ This is a CLI utility built with Symfony Console to query Circle CI projects.
 # Installation
 
     # Install with composer.
-    composer require "codedrop/circle-cli ~1.0"
+    composer require "code-drop/circle-cli ~1.0"
 
     # Copy the sample config file into your home directory (or your project)
-    cp vendor/codedrop/circle-cli/circle-cli.yml.sample ~/circle-cli.yml
+    cp vendor/code-drop/circle-cli/circle-cli.yml.sample ~/circle-cli.yml
 
     # Copy the sample private file, then add your token to this file.
-    cp vendor/codedrop/circle-cli/circle-cli.private.yml.sample circle-cli.private.yml
+    cp vendor/code-drop/circle-cli/circle-cli.private.yml.sample circle-cli.private.yml
 
 # Documentation
 
