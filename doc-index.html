@@ -77,8 +77,8 @@
                                                 <li class="disabled"><a href="#letterK">K</a></li>
                                                 <li class="disabled"><a href="#letterL">L</a></li>
                                                 <li class="disabled"><a href="#letterM">M</a></li>
-                                                <li class="disabled"><a href="#letterN">N</a></li>
-                                                <li class="disabled"><a href="#letterO">O</a></li>
+                                                <li><a href="#letterN">N</a></li>
+                                                <li><a href="#letterO">O</a></li>
                                                 <li><a href="#letterP">P</a></li>
                                                 <li><a href="#letterQ">Q</a></li>
                                                 <li><a href="#letterR">R</a></li>
@@ -109,14 +109,21 @@
                     <dd>Cancel running build.</dd><dt><a href="Circle/CircleInterface.html"><abbr title="Circle\CircleInterface">CircleInterface</abbr></a> &mdash; <em>Class in namespace <a href="Circle.html">Circle</a></em></dt>
                     <dd>
 </dd><dt><a href="Circle/CircleInterface.html#method_cancelBuild"><abbr title="Circle\CircleInterface">CircleInterface</abbr>::cancelBuild</a>() &mdash; <em>Method in class <a href="Circle/CircleInterface.html"><abbr title="Circle\CircleInterface">CircleInterface</abbr></a></em></dt>
-                    <dd>Cancel running build.</dd><dt><a href="Circle/Command/CancelCommand.html"><abbr title="Circle\Command\CancelCommand">CancelCommand</abbr></a> &mdash; <em>Class in namespace <a href="Circle/Command.html">Circle\Command</a></em></dt>
+                    <dd>Cancel running build.</dd><dt><a href="Circle/CommandEvents.html"><abbr title="Circle\CommandEvents">CommandEvents</abbr></a> &mdash; <em>Class in namespace <a href="Circle.html">Circle</a></em></dt>
+                    <dd>Documents available events.</dd><dt><a href="Circle/Command/CancelCommand.html"><abbr title="Circle\Command\CancelCommand">CancelCommand</abbr></a> &mdash; <em>Class in namespace <a href="Circle/Command.html">Circle\Command</a></em></dt>
                     <dd>This command cancels either the last started build or the build specified via
 the build-num paramter. This command uses the
 <a href="https://circleci.com/docs/api#cancel-build">cancel build</a> endpoint.</dd><dt><a href="Circle/Command/CommandBase.html"><abbr title="Circle\Command\CommandBase">CommandBase</abbr></a> &mdash; <em>Class in namespace <a href="Circle/Command.html">Circle\Command</a></em></dt>
                     <dd>
+</dd><dt><a href="Circle/Command/CommandInterface.html"><abbr title="Circle\Command\CommandInterface">CommandInterface</abbr></a> &mdash; <em>Class in namespace <a href="Circle/Command.html">Circle\Command</a></em></dt>
+                    <dd>
 </dd><dt><a href="Circle/Config.html"><abbr title="Circle\Config">Config</abbr></a> &mdash; <em>Class in namespace <a href="Circle.html">Circle</a></em></dt>
                     <dd>
-</dd><dt><a href="Circle/Iterator/MapIterator.html#method_current"><abbr title="Circle\Iterator\MapIterator">MapIterator</abbr>::current</a>() &mdash; <em>Method in class <a href="Circle/Iterator/MapIterator.html"><abbr title="Circle\Iterator\MapIterator">MapIterator</abbr></a></em></dt>
+</dd><dt><a href="Circle/Event/CommandEventBase.html"><abbr title="Circle\Event\CommandEventBase">CommandEventBase</abbr></a> &mdash; <em>Class in namespace <a href="Circle/Event.html">Circle\Event</a></em></dt>
+                    <dd>
+</dd><dt><a href="Circle/Event/CommandFinishedEvent.html"><abbr title="Circle\Event\CommandFinishedEvent">CommandFinishedEvent</abbr></a> &mdash; <em>Class in namespace <a href="Circle/Event.html">Circle\Event</a></em></dt>
+                    <dd>This event is dispatched when the a command completes. This event is used
+for giving the user feedback (notifications) when the command completes.</dd><dt><a href="Circle/Iterator/MapIterator.html#method_current"><abbr title="Circle\Iterator\MapIterator">MapIterator</abbr>::current</a>() &mdash; <em>Method in class <a href="Circle/Iterator/MapIterator.html"><abbr title="Circle\Iterator\MapIterator">MapIterator</abbr></a></em></dt>
                     <dd>{@inheritdoc}</dd>        </dl><h2 id="letterG">G</h2>
         <dl id="index"><dt><a href="Circle/Action.html#method_getStatus"><abbr title="Circle\Action">Action</abbr>::getStatus</a>() &mdash; <em>Method in class <a href="Circle/Action.html"><abbr title="Circle\Action">Action</abbr></a></em></dt>
                     <dd>Gets the action status.</dd><dt><a href="Circle/Action.html#method_getRunTime"><abbr title="Circle\Action">Action</abbr>::getRunTime</a>() &mdash; <em>Method in class <a href="Circle/Action.html"><abbr title="Circle\Action">Action</abbr></a></em></dt>
@@ -130,14 +137,19 @@ the build-num paramter. This command uses the
                     <dd>Gets the last step in the build. This can change if a build is running.</dd><dt><a href="Circle/Circle.html#method_getRecentBuilds"><abbr title="Circle\Circle">Circle</abbr>::getRecentBuilds</a>() &mdash; <em>Method in class <a href="Circle/Circle.html"><abbr title="Circle\Circle">Circle</abbr></a></em></dt>
                     <dd>Gets the most recent builds for a project.</dd><dt><a href="Circle/Circle.html#method_getBuild"><abbr title="Circle\Circle">Circle</abbr>::getBuild</a>() &mdash; <em>Method in class <a href="Circle/Circle.html"><abbr title="Circle\Circle">Circle</abbr></a></em></dt>
                     <dd>Gets a build from Circle.</dd><dt><a href="Circle/Circle.html#method_getAllProjects"><abbr title="Circle\Circle">Circle</abbr>::getAllProjects</a>() &mdash; <em>Method in class <a href="Circle/Circle.html"><abbr title="Circle\Circle">Circle</abbr></a></em></dt>
-                    <dd>Gets a list of all projects.</dd><dt><a href="Circle/Circle.html#method_getConfig"><abbr title="Circle\Circle">Circle</abbr>::getConfig</a>() &mdash; <em>Method in class <a href="Circle/Circle.html"><abbr title="Circle\Circle">Circle</abbr></a></em></dt>
-                    <dd>Gets the circle configuration object.</dd><dt><a href="Circle/CircleInterface.html#method_getRecentBuilds"><abbr title="Circle\CircleInterface">CircleInterface</abbr>::getRecentBuilds</a>() &mdash; <em>Method in class <a href="Circle/CircleInterface.html"><abbr title="Circle\CircleInterface">CircleInterface</abbr></a></em></dt>
+                    <dd>Gets a list of all projects.</dd><dt><a href="Circle/CircleInterface.html#method_getRecentBuilds"><abbr title="Circle\CircleInterface">CircleInterface</abbr>::getRecentBuilds</a>() &mdash; <em>Method in class <a href="Circle/CircleInterface.html"><abbr title="Circle\CircleInterface">CircleInterface</abbr></a></em></dt>
                     <dd>Gets the most recent builds for a project.</dd><dt><a href="Circle/CircleInterface.html#method_getBuild"><abbr title="Circle\CircleInterface">CircleInterface</abbr>::getBuild</a>() &mdash; <em>Method in class <a href="Circle/CircleInterface.html"><abbr title="Circle\CircleInterface">CircleInterface</abbr></a></em></dt>
                     <dd>Gets a build from Circle.</dd><dt><a href="Circle/CircleInterface.html#method_getAllProjects"><abbr title="Circle\CircleInterface">CircleInterface</abbr>::getAllProjects</a>() &mdash; <em>Method in class <a href="Circle/CircleInterface.html"><abbr title="Circle\CircleInterface">CircleInterface</abbr></a></em></dt>
-                    <dd>Gets a list of all projects.</dd><dt><a href="Circle/CircleInterface.html#method_getConfig"><abbr title="Circle\CircleInterface">CircleInterface</abbr>::getConfig</a>() &mdash; <em>Method in class <a href="Circle/CircleInterface.html"><abbr title="Circle\CircleInterface">CircleInterface</abbr></a></em></dt>
-                    <dd>Gets the circle configuration object.</dd><dt><a href="Circle/Config.html#method_get"><abbr title="Circle\Config">Config</abbr>::get</a>() &mdash; <em>Method in class <a href="Circle/Config.html"><abbr title="Circle\Config">Config</abbr></a></em></dt>
+                    <dd>Gets a list of all projects.</dd><dt><a href="Circle/Command/CommandBase.html#method_getResultMessage"><abbr title="Circle\Command\CommandBase">CommandBase</abbr>::getResultMessage</a>() &mdash; <em>Method in class <a href="Circle/Command/CommandBase.html"><abbr title="Circle\Command\CommandBase">CommandBase</abbr></a></em></dt>
+                    <dd>
+</dd><dt><a href="Circle/Command/CommandInterface.html#method_getResultMessage"><abbr title="Circle\Command\CommandInterface">CommandInterface</abbr>::getResultMessage</a>() &mdash; <em>Method in class <a href="Circle/Command/CommandInterface.html"><abbr title="Circle\Command\CommandInterface">CommandInterface</abbr></a></em></dt>
+                    <dd>
+</dd><dt><a href="Circle/Config.html#method_get"><abbr title="Circle\Config">Config</abbr>::get</a>() &mdash; <em>Method in class <a href="Circle/Config.html"><abbr title="Circle\Config">Config</abbr></a></em></dt>
                     <dd>Gets the specified config given a key.</dd><dt><a href="Circle/Config.html#method_getAll"><abbr title="Circle\Config">Config</abbr>::getAll</a>() &mdash; <em>Method in class <a href="Circle/Config.html"><abbr title="Circle\Config">Config</abbr></a></em></dt>
-                    <dd>Gets the entire config array.</dd><dt><a href="Circle/Step.html#method_getName"><abbr title="Circle\Step">Step</abbr>::getName</a>() &mdash; <em>Method in class <a href="Circle/Step.html"><abbr title="Circle\Step">Step</abbr></a></em></dt>
+                    <dd>Gets the entire config array.</dd><dt><a href="Circle/Event/CommandEventBase.html#method_getCommand"><abbr title="Circle\Event\CommandEventBase">CommandEventBase</abbr>::getCommand</a>() &mdash; <em>Method in class <a href="Circle/Event/CommandEventBase.html"><abbr title="Circle\Event\CommandEventBase">CommandEventBase</abbr></a></em></dt>
+                    <dd>
+</dd><dt><a href="Circle/Notification/NotificationBase.html#method_getSubscribedEvents"><abbr title="Circle\Notification\NotificationBase">NotificationBase</abbr>::getSubscribedEvents</a>() &mdash; <em>Method in class <a href="Circle/Notification/NotificationBase.html"><abbr title="Circle\Notification\NotificationBase">NotificationBase</abbr></a></em></dt>
+                    <dd>Returns an array of event names this subscriber wants to listen to.</dd><dt><a href="Circle/Step.html#method_getName"><abbr title="Circle\Step">Step</abbr>::getName</a>() &mdash; <em>Method in class <a href="Circle/Step.html"><abbr title="Circle\Step">Step</abbr></a></em></dt>
                     <dd>Gets the step name.</dd><dt><a href="Circle/Step.html#method_getLastAction"><abbr title="Circle\Step">Step</abbr>::getLastAction</a>() &mdash; <em>Method in class <a href="Circle/Step.html"><abbr title="Circle\Step">Step</abbr></a></em></dt>
                     <dd>Gets the last action in this step.</dd>        </dl><h2 id="letterI">I</h2>
         <dl id="index"><dt><a href="Circle/Build.html#method_isFinished"><abbr title="Circle\Build">Build</abbr>::isFinished</a>() &mdash; <em>Method in class <a href="Circle/Build.html"><abbr title="Circle\Build">Build</abbr></a></em></dt>
@@ -145,9 +157,18 @@ the build-num paramter. This command uses the
                     <dd>Checks the running status.</dd>        </dl><h2 id="letterM">M</h2>
         <dl id="index"><dt><a href="Circle/Iterator/MapIterator.html"><abbr title="Circle\Iterator\MapIterator">MapIterator</abbr></a> &mdash; <em>Class in namespace <a href="Circle/Iterator.html">Circle\Iterator</a></em></dt>
                     <dd>
+</dd>        </dl><h2 id="letterN">N</h2>
+        <dl id="index"><dt><a href="Circle/Command/CommandBase.html#method_notificationsEnabled"><abbr title="Circle\Command\CommandBase">CommandBase</abbr>::notificationsEnabled</a>() &mdash; <em>Method in class <a href="Circle/Command/CommandBase.html"><abbr title="Circle\Command\CommandBase">CommandBase</abbr></a></em></dt>
+                    <dd>Gets the notification status.</dd><dt><a href="Circle/Command/CommandInterface.html#method_notificationsEnabled"><abbr title="Circle\Command\CommandInterface">CommandInterface</abbr>::notificationsEnabled</a>() &mdash; <em>Method in class <a href="Circle/Command/CommandInterface.html"><abbr title="Circle\Command\CommandInterface">CommandInterface</abbr></a></em></dt>
+                    <dd>
+</dd><dt><a href="Circle/Notification/NotificationBase.html"><abbr title="Circle\Notification\NotificationBase">NotificationBase</abbr></a> &mdash; <em>Class in namespace <a href="Circle/Notification.html">Circle\Notification</a></em></dt>
+                    <dd>
 </dd>        </dl><h2 id="letterO">O</h2>
         <dl id="index"><dt><a href="Circle/Iterator/MapIterator.html#method_offsetGet"><abbr title="Circle\Iterator\MapIterator">MapIterator</abbr>::offsetGet</a>() &mdash; <em>Method in class <a href="Circle/Iterator/MapIterator.html"><abbr title="Circle\Iterator\MapIterator">MapIterator</abbr></a></em></dt>
-                    <dd>{@inheritdoc}</dd>        </dl><h2 id="letterP">P</h2>
+                    <dd>{@inheritdoc}</dd><dt><a href="Circle/Notification/NotificationBase.html#method_onCommandFinished"><abbr title="Circle\Notification\NotificationBase">NotificationBase</abbr>::onCommandFinished</a>() &mdash; <em>Method in class <a href="Circle/Notification/NotificationBase.html"><abbr title="Circle\Notification\NotificationBase">NotificationBase</abbr></a></em></dt>
+                    <dd>The command finished event callback.</dd><dt><a href="Circle/Notification/OsaScriptSubscriber.html"><abbr title="Circle\Notification\OsaScriptSubscriber">OsaScriptSubscriber</abbr></a> &mdash; <em>Class in namespace <a href="Circle/Notification.html">Circle\Notification</a></em></dt>
+                    <dd>OSAScript is built into core OS X and can be used to perform a number of
+tasks including sending notifications to the user.</dd>        </dl><h2 id="letterP">P</h2>
         <dl id="index"><dt><a href="Circle/Command/ProgressCommand.html"><abbr title="Circle\Command\ProgressCommand">ProgressCommand</abbr></a> &mdash; <em>Class in namespace <a href="Circle/Command.html">Circle\Command</a></em></dt>
                     <dd>This command allows you to view the live results of a running build by
 polling the server. The output can be formatted as either a table with all
@@ -184,14 +205,17 @@ number of results to display is all configurable.</dd><dt><a href="Circle/Config
         <dl id="index"><dt><a href="Circle/Build.html#method_toArray"><abbr title="Circle\Build">Build</abbr>::toArray</a>() &mdash; <em>Method in class <a href="Circle/Build.html"><abbr title="Circle\Build">Build</abbr></a></em></dt>
                     <dd>Gets the build as an array.</dd><dt><a href="Circle/Circle.html#method_triggerBuild"><abbr title="Circle\Circle">Circle</abbr>::triggerBuild</a>() &mdash; <em>Method in class <a href="Circle/Circle.html"><abbr title="Circle\Circle">Circle</abbr></a></em></dt>
                     <dd>Trigger a new build on a branch.</dd><dt><a href="Circle/CircleInterface.html#method_triggerBuild"><abbr title="Circle\CircleInterface">CircleInterface</abbr>::triggerBuild</a>() &mdash; <em>Method in class <a href="Circle/CircleInterface.html"><abbr title="Circle\CircleInterface">CircleInterface</abbr></a></em></dt>
-                    <dd>Trigger a new build on a branch.</dd><dt><a href="Circle/Project.html#method_toArray"><abbr title="Circle\Project">Project</abbr>::toArray</a>() &mdash; <em>Method in class <a href="Circle/Project.html"><abbr title="Circle\Project">Project</abbr></a></em></dt>
+                    <dd>Trigger a new build on a branch.</dd><dt><a href="Circle/Notification/TerminalNotifySubscriber.html"><abbr title="Circle\Notification\TerminalNotifySubscriber">TerminalNotifySubscriber</abbr></a> &mdash; <em>Class in namespace <a href="Circle/Notification.html">Circle\Notification</a></em></dt>
+                    <dd>terminal-notifier is a command-line tool to send Mac OS X User Notifications,
+which are available in Mac OS X 10.8 and higher.</dd><dt><a href="Circle/Project.html#method_toArray"><abbr title="Circle\Project">Project</abbr>::toArray</a>() &mdash; <em>Method in class <a href="Circle/Project.html"><abbr title="Circle\Project">Project</abbr></a></em></dt>
                     <dd>Gets the project as an array.</dd>        </dl><h2 id="letter_">_</h2>
         <dl id="index"><dt><a href="Circle/Action.html#method___construct"><abbr title="Circle\Action">Action</abbr>::__construct</a>() &mdash; <em>Method in class <a href="Circle/Action.html"><abbr title="Circle\Action">Action</abbr></a></em></dt>
                     <dd>Constructs a new action object.</dd><dt><a href="Circle/Build.html#method___construct"><abbr title="Circle\Build">Build</abbr>::__construct</a>() &mdash; <em>Method in class <a href="Circle/Build.html"><abbr title="Circle\Build">Build</abbr></a></em></dt>
                     <dd>Construct a new Circle Build.</dd><dt><a href="Circle/Circle.html#method___construct"><abbr title="Circle\Circle">Circle</abbr>::__construct</a>() &mdash; <em>Method in class <a href="Circle/Circle.html"><abbr title="Circle\Circle">Circle</abbr></a></em></dt>
                     <dd>Construct a new Circle service.</dd><dt><a href="Circle/Command/CommandBase.html#method___construct"><abbr title="Circle\Command\CommandBase">CommandBase</abbr>::__construct</a>() &mdash; <em>Method in class <a href="Circle/Command/CommandBase.html"><abbr title="Circle\Command\CommandBase">CommandBase</abbr></a></em></dt>
                     <dd>Constructs a new command object.</dd><dt><a href="Circle/Config.html#method___construct"><abbr title="Circle\Config">Config</abbr>::__construct</a>() &mdash; <em>Method in class <a href="Circle/Config.html"><abbr title="Circle\Config">Config</abbr></a></em></dt>
-                    <dd>Constructs a new circle config object.</dd><dt><a href="Circle/Iterator/MapIterator.html#method___construct"><abbr title="Circle\Iterator\MapIterator">MapIterator</abbr>::__construct</a>() &mdash; <em>Method in class <a href="Circle/Iterator/MapIterator.html"><abbr title="Circle\Iterator\MapIterator">MapIterator</abbr></a></em></dt>
+                    <dd>Constructs a new circle config object.</dd><dt><a href="Circle/Event/CommandEventBase.html#method___construct"><abbr title="Circle\Event\CommandEventBase">CommandEventBase</abbr>::__construct</a>() &mdash; <em>Method in class <a href="Circle/Event/CommandEventBase.html"><abbr title="Circle\Event\CommandEventBase">CommandEventBase</abbr></a></em></dt>
+                    <dd>Constructs a new command based event.</dd><dt><a href="Circle/Iterator/MapIterator.html#method___construct"><abbr title="Circle\Iterator\MapIterator">MapIterator</abbr>::__construct</a>() &mdash; <em>Method in class <a href="Circle/Iterator/MapIterator.html"><abbr title="Circle\Iterator\MapIterator">MapIterator</abbr></a></em></dt>
                     <dd>Construct a new MapIterator.</dd><dt><a href="Circle/Project.html#method___construct"><abbr title="Circle\Project">Project</abbr>::__construct</a>() &mdash; <em>Method in class <a href="Circle/Project.html"><abbr title="Circle\Project">Project</abbr></a></em></dt>
                     <dd>Construct a new Circle Build.</dd><dt><a href="Circle/Step.html#method___construct"><abbr title="Circle\Step">Step</abbr>::__construct</a>() &mdash; <em>Method in class <a href="Circle/Step.html"><abbr title="Circle\Step">Step</abbr></a></em></dt>
                     <dd>Constructs a new Step.</dd>        </dl>            </div>

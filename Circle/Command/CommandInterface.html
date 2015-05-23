@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="robots" content="index, follow, all" />
-    <title>Circle\Command\CommandBase | Circle CLI</title>
+    <title>Circle\Command\CommandInterface | Circle CLI</title>
 
             <link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="../../css/bootstrap-theme.min.css">
@@ -17,7 +17,7 @@
     
     </head>
 
-    <body id="class" data-name="class:Circle_Command_CommandBase" data-root-path="../../">
+    <body id="class" data-name="class:Circle_Command_CommandInterface" data-root-path="../../">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
@@ -59,24 +59,23 @@
 
                         <div class="namespace-breadcrumbs">
             <ol class="breadcrumb">
-                <li><span class="label label-default">class</span></li>
+                <li><span class="label label-default">interface</span></li>
                                                             <li><a href="../../Circle.html">Circle</a></li>
                                         <li><a href="../../Circle/Command.html">Command</a></li>
     
-                <li>CommandBase</li>
+                <li>CommandInterface</li>
             </ol>
         </div>
                 <div id="page-content">
                 
     <div class="page-header">
-        <h1>CommandBase</h1>
+        <h1>CommandInterface</h1>
     </div>
 
     
     <br/>
-    <p>    class
-    <strong>CommandBase</strong>        extends <abbr title="Symfony\Component\Console\Command\Command">Command</abbr>        implements
-        <a href="../../Circle/Command/CommandInterface.html"><abbr title="Circle\Command\CommandInterface">CommandInterface</abbr></a></p>
+    <p>    interface
+    <strong>CommandInterface</strong></p>
 
     
     
@@ -89,17 +88,9 @@
                     
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method___construct">__construct</a>(<abbr title="Circle\Command\Circle\Circle">Circle</abbr> $circle, <abbr title="Circle\Command\Circle\Config">Config</abbr> $config, <abbr title="Circle\Command\Symfony\Component\EventDispatcher\EventDispatcherInterface">EventDispatcherInterface</abbr> $dispatcher, null|string $name = NULL)
-                                            <p>Constructs a new command object.</p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    bool
-                </div>
-                <div class="col-md-8 type">
                     <a href="#method_notificationsEnabled">notificationsEnabled</a>()
-                                            <p>Gets the notification status.</p>                </div>
+                                            <p class="no-description">No description</p>
+                                    </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -119,68 +110,14 @@
 
             <div id="method-details">
                     <div class="method-item">
-                    <h3 id="method___construct">
-        <div class="location">at line 68</div>
-        <code>                    
-    <strong>__construct</strong>(<abbr title="Circle\Command\Circle\Circle">Circle</abbr> $circle, <abbr title="Circle\Command\Circle\Config">Config</abbr> $config, <abbr title="Circle\Command\Symfony\Component\EventDispatcher\EventDispatcherInterface">EventDispatcherInterface</abbr> $dispatcher, null|string $name = NULL)</code>
-    </h3>
-    <div class="details">
-                    <div class="method-description">
-                                    <p>Constructs a new command object.</p>                                </div>
-                <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td><abbr title="Circle\Command\Circle\Circle">Circle</abbr></td>
-                <td>$circle</td>
-                <td>The circle CI service.</td>
-            </tr>
-                    <tr>
-                <td><abbr title="Circle\Command\Circle\Config">Config</abbr></td>
-                <td>$config</td>
-                <td>
-</td>
-            </tr>
-                    <tr>
-                <td><abbr title="Circle\Command\Symfony\Component\EventDispatcher\EventDispatcherInterface">EventDispatcherInterface</abbr></td>
-                <td>$dispatcher</td>
-                <td>The event dispatcher.</td>
-            </tr>
-                    <tr>
-                <td>null|string</td>
-                <td>$name</td>
-                <td>The name of this command.</td>
-            </tr>
-            </table>
-
-            
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
                     <h3 id="method_notificationsEnabled">
-        <div class="location">at line 82</div>
-        <code>                    bool
+        <div class="location">at line 7</div>
+        <code>                    
     <strong>notificationsEnabled</strong>()</code>
     </h3>
     <div class="details">
-                    <div class="method-description">
-                                    <p>Gets the notification status.</p>                                </div>
                 <div class="tags">
             
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>bool</td>
-            <td>TRUE if this command has notifications otherwise FALSE.</td>
-        </tr>
-    </table>
-
             
             
                     </div>
@@ -189,7 +126,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_getResultMessage">
-        <div class="location">at line 274</div>
+        <div class="location">at line 9</div>
         <code>                    
     <strong>getResultMessage</strong>()</code>
     </h3>

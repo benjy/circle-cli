@@ -98,9 +98,28 @@ to rebuild with SSH enabled.</p>        <div class="description">
                     
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method___construct">__construct</a>(<abbr title="Circle\Command\Circle\Circle">Circle</abbr> $circle, null|string $name = NULL)
+                    <a href="#method___construct">__construct</a>(<abbr title="Circle\Command\Circle\Circle">Circle</abbr> $circle, <abbr title="Circle\Command\Circle\Config">Config</abbr> $config, <abbr title="Circle\Command\Symfony\Component\EventDispatcher\EventDispatcherInterface">EventDispatcherInterface</abbr> $dispatcher, null|string $name = NULL)
                                             <p>Constructs a new command object.</p>                </div>
                 <div class="col-md-2"><small>from&nbsp;<a href="../../Circle/Command/CommandBase.html#method___construct"><abbr title="Circle\Command\CommandBase">CommandBase</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_notificationsEnabled">notificationsEnabled</a>()
+                                            <p>Gets the notification status.</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Circle/Command/CommandBase.html#method_notificationsEnabled"><abbr title="Circle\Command\CommandBase">CommandBase</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getResultMessage">getResultMessage</a>()
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Circle/Command/CommandBase.html#method_getResultMessage"><abbr title="Circle\Command\CommandBase">CommandBase</abbr></a></small></div>
             </div>
             </div>
 
@@ -110,9 +129,9 @@ to rebuild with SSH enabled.</p>        <div class="description">
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method___construct">
-        <div class="location">in <a href="../../Circle/Command/CommandBase.html#method___construct"><abbr title="Circle\Command\CommandBase">CommandBase</abbr></a> at line 42</div>
+        <div class="location">in <a href="../../Circle/Command/CommandBase.html#method___construct"><abbr title="Circle\Command\CommandBase">CommandBase</abbr></a> at line 68</div>
         <code>                    
-    <strong>__construct</strong>(<abbr title="Circle\Command\Circle\Circle">Circle</abbr> $circle, null|string $name = NULL)</code>
+    <strong>__construct</strong>(<abbr title="Circle\Command\Circle\Circle">Circle</abbr> $circle, <abbr title="Circle\Command\Circle\Config">Config</abbr> $config, <abbr title="Circle\Command\Symfony\Component\EventDispatcher\EventDispatcherInterface">EventDispatcherInterface</abbr> $dispatcher, null|string $name = NULL)</code>
     </h3>
     <div class="details">
                     <div class="method-description">
@@ -127,12 +146,64 @@ to rebuild with SSH enabled.</p>        <div class="description">
                 <td>The circle CI service.</td>
             </tr>
                     <tr>
+                <td><abbr title="Circle\Command\Circle\Config">Config</abbr></td>
+                <td>$config</td>
+                <td>
+</td>
+            </tr>
+                    <tr>
+                <td><abbr title="Circle\Command\Symfony\Component\EventDispatcher\EventDispatcherInterface">EventDispatcherInterface</abbr></td>
+                <td>$dispatcher</td>
+                <td>The event dispatcher.</td>
+            </tr>
+                    <tr>
                 <td>null|string</td>
                 <td>$name</td>
                 <td>The name of this command.</td>
             </tr>
             </table>
 
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_notificationsEnabled">
+        <div class="location">in <a href="../../Circle/Command/CommandBase.html#method_notificationsEnabled"><abbr title="Circle\Command\CommandBase">CommandBase</abbr></a> at line 82</div>
+        <code>                    bool
+    <strong>notificationsEnabled</strong>()</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Gets the notification status.</p>                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td>TRUE if this command has notifications otherwise FALSE.</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getResultMessage">
+        <div class="location">in <a href="../../Circle/Command/CommandBase.html#method_getResultMessage"><abbr title="Circle\Command\CommandBase">CommandBase</abbr></a> at line 274</div>
+        <code>                    
+    <strong>getResultMessage</strong>()</code>
+    </h3>
+    <div class="details">
+                <div class="tags">
             
             
             

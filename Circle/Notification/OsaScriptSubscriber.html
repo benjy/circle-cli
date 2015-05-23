@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="robots" content="index, follow, all" />
-    <title>Circle\Command\CommandBase | Circle CLI</title>
+    <title>Circle\Notification\OsaScriptSubscriber | Circle CLI</title>
 
             <link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="../../css/bootstrap-theme.min.css">
@@ -17,7 +17,7 @@
     
     </head>
 
-    <body id="class" data-name="class:Circle_Command_CommandBase" data-root-path="../../">
+    <body id="class" data-name="class:Circle_Notification_OsaScriptSubscriber" data-root-path="../../">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
@@ -61,22 +61,26 @@
             <ol class="breadcrumb">
                 <li><span class="label label-default">class</span></li>
                                                             <li><a href="../../Circle.html">Circle</a></li>
-                                        <li><a href="../../Circle/Command.html">Command</a></li>
+                                        <li><a href="../../Circle/Notification.html">Notification</a></li>
     
-                <li>CommandBase</li>
+                <li>OsaScriptSubscriber</li>
             </ol>
         </div>
                 <div id="page-content">
                 
     <div class="page-header">
-        <h1>CommandBase</h1>
+        <h1>OsaScriptSubscriber</h1>
     </div>
 
+            <h3>Usage</h3>
+        <p>OSAScript is built into core OS X and can be used to perform a number of
+tasks including sending notifications to the user.</p>        <div class="description">
+                    </div>
     
     <br/>
     <p>    class
-    <strong>CommandBase</strong>        extends <abbr title="Symfony\Component\Console\Command\Command">Command</abbr>        implements
-        <a href="../../Circle/Command/CommandInterface.html"><abbr title="Circle\Command\CommandInterface">CommandInterface</abbr></a></p>
+    <strong>OsaScriptSubscriber</strong>        extends <a href="../../Circle/Notification/NotificationBase.html"><abbr title="Circle\Notification\NotificationBase">NotificationBase</abbr></a>        implements
+        <abbr title="Symfony\Component\EventDispatcher\EventSubscriberInterface">EventSubscriberInterface</abbr></p>
 
     
     
@@ -89,28 +93,18 @@
                     
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method___construct">__construct</a>(<abbr title="Circle\Command\Circle\Circle">Circle</abbr> $circle, <abbr title="Circle\Command\Circle\Config">Config</abbr> $config, <abbr title="Circle\Command\Symfony\Component\EventDispatcher\EventDispatcherInterface">EventDispatcherInterface</abbr> $dispatcher, null|string $name = NULL)
-                                            <p>Constructs a new command object.</p>                </div>
-                <div class="col-md-2"></div>
+                    <a href="#method_onCommandFinished">onCommandFinished</a>(<abbr title="Circle\Notification\Circle\Event\CommandFinishedEvent">CommandFinishedEvent</abbr> $event)
+                                            <p>The command finished event callback.</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Circle/Notification/NotificationBase.html#method_onCommandFinished"><abbr title="Circle\Notification\NotificationBase">NotificationBase</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    bool
+                    static&nbsp;array
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_notificationsEnabled">notificationsEnabled</a>()
-                                            <p>Gets the notification status.</p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_getResultMessage">getResultMessage</a>()
-                                            <p class="no-description">No description</p>
-                                    </div>
-                <div class="col-md-2"></div>
+                    <a href="#method_getSubscribedEvents">getSubscribedEvents</a>()
+                                            <p>Returns an array of event names this subscriber wants to listen to.</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Circle/Notification/NotificationBase.html#method_getSubscribedEvents"><abbr title="Circle\Notification\NotificationBase">NotificationBase</abbr></a></small></div>
             </div>
             </div>
 
@@ -119,38 +113,22 @@
 
             <div id="method-details">
                     <div class="method-item">
-                    <h3 id="method___construct">
-        <div class="location">at line 68</div>
+                    <h3 id="method_onCommandFinished">
+        <div class="location">in <a href="../../Circle/Notification/NotificationBase.html#method_onCommandFinished"><abbr title="Circle\Notification\NotificationBase">NotificationBase</abbr></a> at line 19</div>
         <code>                    
-    <strong>__construct</strong>(<abbr title="Circle\Command\Circle\Circle">Circle</abbr> $circle, <abbr title="Circle\Command\Circle\Config">Config</abbr> $config, <abbr title="Circle\Command\Symfony\Component\EventDispatcher\EventDispatcherInterface">EventDispatcherInterface</abbr> $dispatcher, null|string $name = NULL)</code>
+    <strong>onCommandFinished</strong>(<abbr title="Circle\Notification\Circle\Event\CommandFinishedEvent">CommandFinishedEvent</abbr> $event)</code>
     </h3>
     <div class="details">
                     <div class="method-description">
-                                    <p>Constructs a new command object.</p>                                </div>
+                                    <p>The command finished event callback.</p>                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td><abbr title="Circle\Command\Circle\Circle">Circle</abbr></td>
-                <td>$circle</td>
-                <td>The circle CI service.</td>
-            </tr>
-                    <tr>
-                <td><abbr title="Circle\Command\Circle\Config">Config</abbr></td>
-                <td>$config</td>
-                <td>
-</td>
-            </tr>
-                    <tr>
-                <td><abbr title="Circle\Command\Symfony\Component\EventDispatcher\EventDispatcherInterface">EventDispatcherInterface</abbr></td>
-                <td>$dispatcher</td>
-                <td>The event dispatcher.</td>
-            </tr>
-                    <tr>
-                <td>null|string</td>
-                <td>$name</td>
-                <td>The name of this command.</td>
+                <td><abbr title="Circle\Notification\Circle\Event\CommandFinishedEvent">CommandFinishedEvent</abbr></td>
+                <td>$event</td>
+                <td>The command finished event.</td>
             </tr>
             </table>
 
@@ -162,40 +140,41 @@
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_notificationsEnabled">
-        <div class="location">at line 82</div>
-        <code>                    bool
-    <strong>notificationsEnabled</strong>()</code>
+                    <h3 id="method_getSubscribedEvents">
+        <div class="location">in <a href="../../Circle/Notification/NotificationBase.html#method_getSubscribedEvents"><abbr title="Circle\Notification\NotificationBase">NotificationBase</abbr></a> at line 60</div>
+        <code>        static            array
+    <strong>getSubscribedEvents</strong>()</code>
     </h3>
     <div class="details">
                     <div class="method-description">
-                                    <p>Gets the notification status.</p>                                </div>
+                                    <p>Returns an array of event names this subscriber wants to listen to.</p>                    <p>The array keys are event names and the value can be:</p>
+
+<ul>
+<li>The method name to call (priority defaults to 0)</li>
+<li>An array composed of the method name to call and the priority</li>
+<li>An array of arrays composed of the method names to call and respective
+priorities, or 0 if unset</li>
+</ul>
+
+<p>For instance:</p>
+
+<ul>
+<li>array('eventName' => 'methodName')</li>
+<li>array('eventName' => array('methodName', $priority))</li>
+<li>array('eventName' => array(array('methodName1', $priority), array('methodName2'))</li>
+</ul>
+</p>            </div>
                 <div class="tags">
             
                             <h4>Return Value</h4>
 
                     <table class="table table-condensed">
         <tr>
-            <td>bool</td>
-            <td>TRUE if this command has notifications otherwise FALSE.</td>
+            <td>array</td>
+            <td>The event names to listen to</td>
         </tr>
     </table>
 
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_getResultMessage">
-        <div class="location">at line 274</div>
-        <code>                    
-    <strong>getResultMessage</strong>()</code>
-    </h3>
-    <div class="details">
-                <div class="tags">
-            
             
             
                     </div>
