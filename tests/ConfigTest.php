@@ -74,6 +74,7 @@ endpoints:
         'request' => [
           'circle-token' => 'private-token',
         ],
+        'notifications' => 'Circle\Notification\OsaScriptSubscriber',
       ],
       'endpoints' => [
         'get_projects' => [
@@ -87,8 +88,26 @@ endpoints:
         ],
       ],
     ];
-    $this->assertEquals($expected, $config->getAll());
-    $this->assertEquals([], (new Config(new Yaml(), 'doesnt-exist', 'doesnt-exist', 'doesnt-exist'))->getAll());
+    $this->validate($expected, $config->getAll());
+  }
+
+  /**
+   * Recursively validates an array.
+   *
+   * @param array $expected
+   *   Expected config array.
+   * @param array $config
+   *   The loaded config array.
+   */
+  protected function validate($expected, $config) {
+    foreach ($expected as $key => $value) {
+      if (is_array($value)) {
+        $this->validate($value, $config[$key]);
+      }
+      else {
+        $this->assertEquals($value, $config[$key]);
+      }
+    }
   }
 
   /**
