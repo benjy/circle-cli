@@ -12,7 +12,7 @@ This is a CLI utility built with Symfony Console to query Circle CI projects.
     composer require "codedrop/circle-cli ~1.0"
 
     # Copy the sample config file into your home directory (or your project)
-    cp vendor/codedrop/circle-cli/circle-cli.yml ~/
+    cp vendor/codedrop/circle-cli/circle-cli.yml.sample ~/circle-cli.yml
 
     # Copy the sample private file, then add your token to this file.
     cp vendor/codedrop/circle-cli/circle-cli.private.yml.sample circle-cli.private.yml
@@ -45,6 +45,4 @@ is some example output from the status and progress commands.
 
 * Investigate solutions for redrawing errors with Symfony progress bar.
 * Create upstream PR for Table helper overrides or, remove table formatter entirely?
-* Don't require empty config entries for endpoints that don't need any. This will likely require a class representing
-each endpoint to store the default definitions? Might not be worth the extra effort.
 * Release a phar download? Use box?
