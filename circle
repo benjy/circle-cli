@@ -3,8 +3,14 @@
 
 use Symfony\Component\Console\Application;
 
-// Require the autoloader.
-require_once 'vendor/autoload.php';
+// Require the autoloader, we need this crazyness for global installations.
+foreach ([__DIR__ . '/../../autoload.php', __DIR__ . '/../vendor/autoload.php', __DIR__ . '/vendor/autoload.php'] as $file) {
+  if (file_exists($file)) {
+    require_once $file;
+    break;
+  }
+}
+
 require_once __DIR__ . '/services.php';
 require_once __DIR__ . '/events.php';
 
