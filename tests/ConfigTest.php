@@ -128,6 +128,7 @@ endpoints:
 
     $this->assertEquals('test-token', $config->get(['endpoints', 'test_endpoint', 'request', 'circle-token']));
     $this->assertEquals(FALSE, $config->get(['i', 'dont', 'exist']));
+    $this->assertEquals(FALSE, $config->get('doesnt-exist'));
   }
 
 }
