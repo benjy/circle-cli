@@ -87,7 +87,7 @@
                     
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method___construct">__construct</a>(<abbr title="Circle\Symfony\Component\Yaml\Yaml">Yaml</abbr> $parser, string $global_file = &#039;&#039;, string $local_file = &#039;circle-cli.yml&#039;, string $private_file = &#039;circle-cli.private.yml&#039;)
+                    <a href="#method___construct">__construct</a>(<abbr title="Circle\Symfony\Component\Yaml\Yaml">Yaml</abbr> $parser, string $global_file = &#039;&#039;, string $local_file = &#039;circle-cliss.yml&#039;, string $private_file = &#039;circle-cli.private.yml&#039;)
                                             <p>Constructs a new circle config object.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
@@ -123,9 +123,8 @@
                     
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_setGlobalFile">setGlobalFile</a>($file_path)
-                                            <p class="no-description">No description</p>
-                                    </div>
+                    <a href="#method_setGlobalFile">setGlobalFile</a>(string $file_path)
+                                            <p>Sets the global file path.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -133,9 +132,8 @@
                     
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_setLocalFile">setLocalFile</a>($file_path)
-                                            <p class="no-description">No description</p>
-                                    </div>
+                    <a href="#method_setLocalFile">setLocalFile</a>(string $file_path)
+                                            <p>Sets the local file path.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -143,9 +141,8 @@
                     
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_setPrivateFile">setPrivateFile</a>($file_path)
-                                            <p class="no-description">No description</p>
-                                    </div>
+                    <a href="#method_setPrivateFile">setPrivateFile</a>(string $file_path)
+                                            <p>Sets the private file path.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
             </div>
@@ -156,9 +153,9 @@
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method___construct">
-        <div class="location">at line 39</div>
+        <div class="location">at line 56</div>
         <code>                    
-    <strong>__construct</strong>(<abbr title="Circle\Symfony\Component\Yaml\Yaml">Yaml</abbr> $parser, string $global_file = &#039;&#039;, string $local_file = &#039;circle-cli.yml&#039;, string $private_file = &#039;circle-cli.private.yml&#039;)</code>
+    <strong>__construct</strong>(<abbr title="Circle\Symfony\Component\Yaml\Yaml">Yaml</abbr> $parser, string $global_file = &#039;&#039;, string $local_file = &#039;circle-cliss.yml&#039;, string $private_file = &#039;circle-cli.private.yml&#039;)</code>
     </h3>
     <div class="details">
                     <div class="method-description">
@@ -198,7 +195,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_get">
-        <div class="location">at line 57</div>
+        <div class="location">at line 74</div>
         <code>                    mixed
     <strong>get</strong>(string|array $key)</code>
     </h3>
@@ -235,7 +232,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_getAll">
-        <div class="location">at line 73</div>
+        <div class="location">at line 90</div>
         <code>                    mixed
     <strong>getAll</strong>()</code>
     </h3>
@@ -261,7 +258,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_setAll">
-        <div class="location">at line 83</div>
+        <div class="location">at line 100</div>
         <code>                    
     <strong>setAll</strong>($config)</code>
     </h3>
@@ -288,20 +285,21 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_setGlobalFile">
-        <div class="location">at line 168</div>
+        <div class="location">at line 300</div>
         <code>                    
-    <strong>setGlobalFile</strong>($file_path)</code>
+    <strong>setGlobalFile</strong>(string $file_path)</code>
     </h3>
     <div class="details">
+                    <div class="method-description">
+                                    <p>Sets the global file path.</p>                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td></td>
+                <td>string</td>
                 <td>$file_path</td>
-                <td>
-</td>
+                <td>The new file path.</td>
             </tr>
             </table>
 
@@ -314,20 +312,21 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_setLocalFile">
-        <div class="location">at line 172</div>
+        <div class="location">at line 310</div>
         <code>                    
-    <strong>setLocalFile</strong>($file_path)</code>
+    <strong>setLocalFile</strong>(string $file_path)</code>
     </h3>
     <div class="details">
+                    <div class="method-description">
+                                    <p>Sets the local file path.</p>                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td></td>
+                <td>string</td>
                 <td>$file_path</td>
-                <td>
-</td>
+                <td>The new file path.</td>
             </tr>
             </table>
 
@@ -340,20 +339,21 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_setPrivateFile">
-        <div class="location">at line 176</div>
+        <div class="location">at line 320</div>
         <code>                    
-    <strong>setPrivateFile</strong>($file_path)</code>
+    <strong>setPrivateFile</strong>(string $file_path)</code>
     </h3>
     <div class="details">
+                    <div class="method-description">
+                                    <p>Sets the private file path.</p>                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td></td>
+                <td>string</td>
                 <td>$file_path</td>
-                <td>
-</td>
+                <td>The new file path.</td>
             </tr>
             </table>
 
