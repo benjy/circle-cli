@@ -1,5 +1,5 @@
 {
-  "name": "codedrop/circle-cli",
+  "name": "code-drop/circle-cli",
   "description": "A CLI utility built with Symfony Console to query Circle CI projects.",
   "license": "GPL-2.0+",
   "authors": [
