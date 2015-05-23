@@ -18,10 +18,27 @@ class Config {
    *
    * @var array
    */
-  protected $config;
+  protected $config = [];
 
+  /**
+   * The path to the global config file.
+   *
+   * @var string
+   */
   protected $globalFile;
+
+  /**
+   * The path to the local config file.
+   *
+   * @var string
+   */
   protected $localFile;
+
+  /**
+   * The path to the private config file.
+   *
+   * @var string
+   */
   protected $privateFile;
 
   /**
@@ -36,9 +53,9 @@ class Config {
    * @param string $private_file
    *   The path to the private configuration file.
    */
-  public function __construct(Yaml $parser, $global_file = '', $local_file = 'circle-cli.yml', $private_file = 'circle-cli.private.yml') {
+  public function __construct(Yaml $parser, $global_file = '', $local_file = 'circle-cliss.yml', $private_file = 'circle-cli.private.yml') {
     $this->parser = $parser;
-    $global_file = empty($global_file) ? $_SERVER['HOME'] . '/circle-cli.yml' : $global_file;
+    $global_file = empty($global_file) ? $_SERVER['HOME'] . '/circle-cli.yml.sample' : $global_file;
 
     $this->setGlobalFile($global_file);
     $this->setLocalFile($local_file);
@@ -94,8 +111,10 @@ class Config {
     // Grab config from the current folder.
     $local_config = $this->loadConfigFile($this->localFile);
 
+    $this->config = array_replace_recursive($this->getDefaultConfig(), $global_config);
+
     // Merge the local and global config.
-    $this->config = array_replace_recursive($global_config, $local_config);
+    $this->config = array_replace_recursive($this->config, $local_config);
 
     // If there is a private configuration file for the token, merge
     // that in as well.
@@ -165,15 +184,141 @@ class Config {
     return $ref;
   }
 
+  /**
+   * Gets the default configuration.
+   *
+   * @return array
+   *   The default configuration array.
+   */
+  protected function getDefaultConfig() {
+    return array(
+      'globals' => array(
+        'username' => '',
+        'project' => '',
+        'request' => ['circle-token' => ''],
+        'notifications' => 'Circle\Notification\OsaScriptSubscriber',
+      ),
+      'commands' => array(
+        'build' => [
+          'endpoint' => 'trigger_build',
+          'notifications_enabled' => FALSE,
+        ],
+        'cancel' => [
+          'endpoint' => 'cancel_build',
+          'notifications_enabled' => FALSE,
+        ],
+        'progress' => [
+          'endpoint' => 'get_single_build',
+          'notifications_enabled' => TRUE,
+        ],
+        'projects' => [
+          'endpoint' => 'get_all_projects',
+          'notifications_enabled' => FALSE,
+        ],
+        'retry' => [
+          'endpoint' => 'retry_build',
+          'notifications_enabled' => FALSE,
+        ],
+        'add-key' => [
+          'endpoint' => 'add_ssh_key',
+          'notifications_enabled' => FALSE,
+        ],
+        'status' => [
+          'endpoint' => 'get_recent_builds',
+          'notifications_enabled' => FALSE,
+        ],
+      ),
+      'endpoints' => [
+        'add_ssh_key' => [],
+        'cancel_build' => [
+          'display' => [
+            'build_num',
+            'build_url',
+            'branch',
+            'subject',
+            'status',
+          ],
+        ],
+        'trigger_build' => [
+          'display' => [
+            'build_num',
+            'build_url',
+            'branch',
+            'subject',
+            'status',
+          ],
+        ],
+        'get_single_build' => [
+          'display' => [
+            'build_num',
+            'build_url',
+            'committer_name',
+            'subject',
+            'status',
+          ],
+        ],
+        'retry_build' => [
+          'display' => [
+            'build_num',
+            'build_url',
+            'branch',
+            'subject',
+            'status',
+          ],
+        ],
+        'get_recent_builds' => [
+          'request' => [
+            'limit' => 3,
+            'offset' => 0,
+          ],
+          'display' => [
+            'build_num',
+            'build_url',
+            'committer_name',
+            'subject',
+            'status',
+          ],
+        ],
+        'get_all_projects' => [
+          'display' => [
+            'reponame',
+            'vcs_url',
+            'username',
+            'followed',
+          ],
+        ],
+      ],
+    );
+  }
+
+  /**
+   * Sets the global file path.
+   *
+   * @param string $file_path
+   *   The new file path.
+   */
   public function setGlobalFile($file_path) {
     $this->globalFile = $file_path;
   }
 
+  /**
+   * Sets the local file path.
+   *
+   * @param string $file_path
+   *   The new file path.
+   */
   public function setLocalFile($file_path) {
     $this->localFile = $file_path;
   }
 
+  /**
+   * Sets the private file path.
+   *
+   * @param string $file_path
+   *   The new file path.
+   */
   public function setPrivateFile($file_path) {
     $this->privateFile = $file_path;
   }
+
 }
