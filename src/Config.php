@@ -195,7 +195,7 @@ class Config {
       'globals' => array(
         'username' => '',
         'project' => '',
-        'request' => ['circle-token' => ''],
+        'request' => [],
         'notifications' => 'Circle\Notification\OsaScriptSubscriber',
       ),
       'commands' => array(
