@@ -136,12 +136,4 @@ interface CircleInterface {
    */
   public function triggerBuild($username, $project_name, $branch);
 
-  /**
-   * Gets the circle configuration object.
-   *
-   * @return \Circle\Config
-   *   The circle configuration object.
-   */
-  public function getConfig();
-
 }

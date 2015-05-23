@@ -4,6 +4,7 @@ namespace Circle\Tests;
 
 use Symfony\Component\Console\Application;
 use Symfony\Component\Console\Tester\CommandTester;
+use Symfony\Component\EventDispatcher\EventDispatcher;
 
 trait TestSetupTrait {
 
@@ -18,9 +19,16 @@ trait TestSetupTrait {
    * @return \PHPUnit_Framework_MockObject_MockObject
    *   The mock command.
    */
-  protected function getCommand($command_name, $circle) {
+  protected function getCommand($command_name, $circle, $config) {
     // Mock our command to null our the git parsing.
-    $command = $this->getMock($command_name, ['getGitRemote', 'parseGitBranch'], [$circle]);
+    $dispatcher = new EventDispatcher();
+    $terminal_subscriber = $this->getMock('Circle\Notification\TerminalNotifySubscriber', ['notify', 'isTerminalNotifierAvailable']);
+    $terminal_subscriber
+      ->expects($this->any())
+      ->method('isTerminalNotifierAvailable')
+      ->willReturn(TRUE);
+    $dispatcher->addSubscriber($terminal_subscriber);
+    $command = $this->getMock($command_name, ['getGitRemote', 'parseGitBranch'], [$circle, $config, $dispatcher]);
     $command
       ->expects($this->any())
       ->method('parseGitRemote')

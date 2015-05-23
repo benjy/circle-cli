@@ -12,6 +12,7 @@ class BuildCommandTest extends \PHPUnit_Framework_TestCase {
    * Test the build command executes without any issues.
    */
   public function testBuildCommand() {
+    $config['commands']['build']['endpoint'] = 'trigger_build';
     $config['endpoints']['trigger_build'] = [
       'request' => [
         'circle-token' => '',
@@ -30,7 +31,7 @@ class BuildCommandTest extends \PHPUnit_Framework_TestCase {
       ->method('queryCircle')
       ->with('project/username-in-config/project-name-in-config/tree/master', ['circle-token' => ''], 'POST')
       ->willReturn([]);
-    $command = $this->getCommand('Circle\Command\BuildCommand', $circle);
+    $command = $this->getCommand('Circle\Command\BuildCommand', $circle, $circle_config);
     $this->runCommand($command);
 
     // Test using CLI args.
@@ -40,7 +41,7 @@ class BuildCommandTest extends \PHPUnit_Framework_TestCase {
       ->method('queryCircle')
       ->with('project/username-in-config/project-name-in-config/tree/staging', ['circle-token' => ''], 'POST')
       ->willReturn([]);
-    $command = $this->getCommand('Circle\Command\BuildCommand', $circle);
+    $command = $this->getCommand('Circle\Command\BuildCommand', $circle, $circle_config);
     $this->runCommand($command, [
       '--branch' => 'staging',
     ]);
@@ -54,7 +55,7 @@ class BuildCommandTest extends \PHPUnit_Framework_TestCase {
       ->method('queryCircle')
       ->with('project/username-in-config/project-name-in-config/tree/uat', ['circle-token' => ''], 'POST')
       ->willReturn([]);
-    $command = $this->getCommand('Circle\Command\BuildCommand', $circle);
+    $command = $this->getCommand('Circle\Command\BuildCommand', $circle, $circle_config);
     $command
       ->expects($this->once())
       ->method('parseGitBranch')
@@ -66,6 +67,7 @@ class BuildCommandTest extends \PHPUnit_Framework_TestCase {
    * Test the command output.
    */
   public function testBuildCommandOutput() {
+    $config['commands']['build']['endpoint'] = 'trigger_build';
     $config['endpoints']['trigger_build'] = [
       'request' => [
         'circle-token' => '',
@@ -84,7 +86,7 @@ class BuildCommandTest extends \PHPUnit_Framework_TestCase {
       ->method('queryCircle')
       ->with('project/username-in-config/project-name-in-config/tree/master', ['circle-token' => ''], 'POST')
       ->willReturn(['build_num' => '5', 'build_url' => 'https://example.com/build/url', 'subject' => 'commit message', 'branch' => 'master', 'hidden' => 'should not be output']);
-    $command = $this->getCommand('Circle\Command\BuildCommand', $circle);
+    $command = $this->getCommand('Circle\Command\BuildCommand', $circle, $circle_config);
     $commandTester = $this->runCommand($command);
     $output = $commandTester->getDisplay();
     $this->assertContains('5', $output);
@@ -99,6 +101,7 @@ class BuildCommandTest extends \PHPUnit_Framework_TestCase {
    * @expectedExceptionMessage branch is required
    */
   public function testBuildCommandWithoutBranch() {
+    $config['commands']['build']['endpoint'] = 'trigger_build';
     $config['endpoints']['trigger_build'] = [
       'request' => [
         'circle-token' => '',
@@ -111,7 +114,7 @@ class BuildCommandTest extends \PHPUnit_Framework_TestCase {
     // Test using file config.
     $circle_config = $this->getCircleConfigMock($config);
     $circle = $this->getCircleServiceMock($circle_config, FALSE);
-    $command = $this->getCommand('Circle\Command\BuildCommand', $circle);
+    $command = $this->getCommand('Circle\Command\BuildCommand', $circle, $circle_config);
     $this->runCommand($command);
   }
 

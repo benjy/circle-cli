@@ -12,6 +12,7 @@ class RetryCommandTest extends \PHPUnit_Framework_TestCase {
    * Test the retry command executes without any issues.
    */
   public function testRetryCommand() {
+    $config['commands']['retry']['endpoint'] = 'retry_build';
     $config['endpoints']['retry_build'] = [
       'request' => [
         'circle-token' => '',
@@ -28,7 +29,7 @@ class RetryCommandTest extends \PHPUnit_Framework_TestCase {
       'hidden_field' => 'should not be output',
     ]);
 
-    $command = $this->getCommand('Circle\Command\RetryCommand', $circle);
+    $command = $this->getCommand('Circle\Command\RetryCommand', $circle, $circle_config);
     $commandTester = $this->runCommand($command, ['--build-num' => '3']);
 
     $display = $commandTester->getDisplay();

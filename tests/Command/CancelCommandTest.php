@@ -18,6 +18,7 @@ class CancelCommandTest extends \PHPUnit_Framework_TestCase {
    */
   public function setUp() {
     parent::setUp();
+    $config['commands']['cancel']['endpoint'] = 'cancel_build';
     $config['endpoints'] = [
       'cancel_build' => [
         'request' => [
@@ -44,7 +45,7 @@ class CancelCommandTest extends \PHPUnit_Framework_TestCase {
       ->method('queryCircle')
       ->with('project/username-in-config/project-name-in-config/2/cancel', ['circle-token' => ''], 'POST')
       ->willReturn([]);
-    $command = $this->getCommand('Circle\Command\CancelCommand', $circle);
+    $command = $this->getCommand('Circle\Command\CancelCommand', $circle, $this->circleConfig);
     $this->runCommand($command, [
       '--build-num' => 2,
     ]);
@@ -55,7 +56,7 @@ class CancelCommandTest extends \PHPUnit_Framework_TestCase {
       ->expects($this->exactly(2))
       ->method('queryCircle')
       ->willReturn([['build_num' => 1]]);
-    $command = $this->getCommand('Circle\Command\CancelCommand', $circle);
+    $command = $this->getCommand('Circle\Command\CancelCommand', $circle, $this->circleConfig);
     $this->runCommand($command);
   }
 
@@ -69,7 +70,7 @@ class CancelCommandTest extends \PHPUnit_Framework_TestCase {
       ->expects($this->once())
       ->method('queryCircle')
       ->willReturn([]);
-    $command = $this->getCommand('Circle\Command\CancelCommand', $circle);
+    $command = $this->getCommand('Circle\Command\CancelCommand', $circle, $this->circleConfig);
     $this->runCommand($command);
   }
 

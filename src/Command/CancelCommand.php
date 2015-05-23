@@ -20,13 +20,6 @@ class CancelCommand extends CommandBase {
   /**
    * {@inheritdoc}
    */
-  protected function getEndpointId() {
-    return 'cancel_build';
-  }
-
-  /**
-   * {@inheritdoc}
-   */
   protected function configure() {
     $this
       ->setName('cancel')
@@ -45,6 +38,7 @@ class CancelCommand extends CommandBase {
 
     // Render the output as a table.
     $this->renderAsTable([$results], $output);
+    $this->finished();
   }
 
   /**

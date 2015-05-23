@@ -5,6 +5,7 @@ $iterator = Symfony\Component\Finder\Finder::create()
   ->name('*.php')
   ->exclude(['Console', 'Output'])
   ->in('./src');
+
 return new Sami\Sami($iterator, [
   'theme' => 'circle',
   'title' => 'Circle CLI',

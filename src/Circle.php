@@ -200,7 +200,7 @@ class Circle implements CircleInterface {
   /**
    * {@inheritdoc}
    */
-  public function getConfig() {
+  protected function getConfig() {
     return $this->config;
   }
 

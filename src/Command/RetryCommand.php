@@ -21,13 +21,6 @@ class RetryCommand extends CommandBase {
   /**
    * {@inheritdoc}
    */
-  protected function getEndpointId() {
-    return 'retry_build';
-  }
-
-  /**
-   * {@inheritdoc}
-   */
   protected function configure() {
     $this
       ->setName('retry')
@@ -47,6 +40,7 @@ class RetryCommand extends CommandBase {
 
     // Render the output as a table.
     $this->renderAsTable([$results], $output);
+    $this->finished();
   }
 
 }

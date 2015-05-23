@@ -2,44 +2,17 @@
 <?php
 
 use Symfony\Component\Console\Application;
-use Pimple\Container;
-use Circle\Circle;
-use Circle\Config;
-use GuzzleHttp\Client;
-use Symfony\Component\Yaml\Yaml;
-use Circle\Command\StatusCommand;
-use Circle\Command\ProjectsCommand;
-use Circle\Command\RetryCommand;
-use Circle\Command\ProgressCommand;
-use Circle\Command\SshKeyCommand;
-use Circle\Command\BuildCommand;
-use Circle\Command\CancelCommand;
 
 // Require the autoloader.
 require_once 'vendor/autoload.php';
-
-// Register some services.
-$container = new Container();
-$container['guzzle'] = function(Container $container) {
-  return new Client();
-};
-$container['parser'] = function(Container $container) {
-  return new Yaml();
-};
-$container['circle_config'] = function(Container $container) {
-  return new Config($container['parser']);
-};
-$container['circle'] = function(Container $container) {
-  return new Circle($container['circle_config'], $container['guzzle']);
-};
+require_once __DIR__ . '/services.php';
+require_once __DIR__ . '/events.php';
 
 // Setup the app.
 $app = new Application();
-$app->add(new StatusCommand($container['circle']));
-$app->add(new ProjectsCommand($container['circle']));
-$app->add(new RetryCommand($container['circle']));
-$app->add(new ProgressCommand($container['circle']));
-$app->add(new SshKeyCommand($container['circle']));
-$app->add(new BuildCommand($container['circle']));
-$app->add(new CancelCommand($container['circle']));
+$commands = ['Status', 'Projects', 'Retry', 'Progress', 'SshKey', 'Build', 'Cancel'];
+foreach ($commands as $command) {
+  $class = sprintf('Circle\Command\%sCommand', $command);
+  $app->add(new $class($container['circle'], $container['config'], $container['dispatcher']));
+}
 $app->run();

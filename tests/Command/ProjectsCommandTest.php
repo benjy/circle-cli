@@ -33,7 +33,7 @@ class ProjectsCommandTest extends \PHPUnit_Framework_TestCase {
       ->method('queryCircle')
       ->willReturn(['results' => []]);
 
-    $command = $this->getCommand('Circle\Command\ProjectsCommand', $circle);
+    $command = $this->getCommand('Circle\Command\ProjectsCommand', $circle, $circle_config);
     $commandTester = $this->runCommand($command);
 
     $display = $commandTester->getDisplay();

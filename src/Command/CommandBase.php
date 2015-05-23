@@ -3,12 +3,16 @@
 namespace Circle\Command;
 
 use Circle\Circle;
+use Circle\CommandEvents;
+use Circle\Config;
+use Circle\Event\CommandFinishedEvent;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Helper\Table;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
+use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
-abstract class CommandBase extends Command {
+abstract class CommandBase extends Command implements CommandInterface {
 
   /**
    * The Circle CI service.
@@ -16,6 +20,20 @@ abstract class CommandBase extends Command {
    * @var \Circle\Circle
    */
   protected $circle;
+
+  /**
+   * The command configuration.
+   *
+   * @var \Circle\Config
+   */
+  protected $config;
+
+  /**
+   * The event dispatcher.
+   *
+   * @var \Symfony\Component\EventDispatcher\EventDispatcher
+   */
+  protected $dispatcher;
 
   /**
    * The base url for the API.
@@ -32,17 +50,38 @@ abstract class CommandBase extends Command {
   protected $gitRemoteParts;
 
   /**
+   * @var
+   */
+  protected $resultMessage = 'The %s command finished successfully';
+
+  /**
    * Constructs a new command object.
    *
    * @param \Circle\Circle $circle
    *   The circle CI service.
+   * @param \Circle\Config $config
+   * @param \Symfony\Component\EventDispatcher\EventDispatcher $dispatcher
+   *   The event dispatcher.
    * @param null|string $name
    *   The name of this command.
    */
-  public function __construct(Circle $circle, $name = NULL) {
+  public function __construct(Circle $circle, Config $config, EventDispatcherInterface $dispatcher, $name = NULL) {
     parent::__construct($name);
     $this->circle = $circle;
+    $this->config = $config;
+    $this->dispatcher = $dispatcher;
     $this->baseUrl = 'https://circleci.com/api/v1/';
+  }
+
+  /**
+   * Gets the notification status.
+   *
+   * @return bool
+   *   TRUE if this command has notifications otherwise FALSE.
+   */
+  public function notificationsEnabled() {
+    $config = $this->getCommandConfig();
+    return isset($config['notifications_enabled']) && $config['notifications_enabled'] === TRUE;
   }
 
   /**
@@ -70,18 +109,13 @@ abstract class CommandBase extends Command {
   }
 
   /**
-   * Gets the requested configuration.
+   * Gets the configuration object.
    *
-   * @param string|array $key
-   *   The configuration to retrieve given a key.
-   *
-   * @return mixed
-   *   The configuration array or value.
+   * @return \Circle\Config
+   *   The configuration object.
    */
-  protected function getConfig($key) {
-    $config = $this->circle->getConfig()->get($key);
-
-    return $config;
+  protected function getConfig() {
+    return $this->config;
   }
 
   /**
@@ -91,7 +125,17 @@ abstract class CommandBase extends Command {
    *   The configuration for this endpoint.
    */
   protected function getEndpointConfig() {
-    return $this->getConfig(['endpoints', $this->getEndpointId()]);
+    return $this->getConfig()->get(['endpoints', $this->getCommandConfig()['endpoint']]);
+  }
+
+  /**
+   * Gets the command config.
+   *
+   * @return array
+   *   The configuration for this command.
+   */
+  protected function getCommandConfig() {
+    return $this->getConfig()->get(['commands', $this->getName()]);
   }
 
   /**
@@ -211,6 +255,10 @@ abstract class CommandBase extends Command {
     return FALSE;
   }
 
+  protected function finished() {
+    $this->dispatcher->dispatch(CommandEvents::COMMAND_FINISHED, new CommandFinishedEvent($this));
+  }
+
   /**
    * Gets the git remote for this project.
    *
@@ -223,12 +271,7 @@ abstract class CommandBase extends Command {
     return trim(shell_exec('git config --get remote.origin.url'));
   }
 
-  /**
-   * Gets the endpoint id as declared in the circle-cli.yml config.
-   *
-   * @return string
-   *   The endpoint id.
-   */
-  abstract protected function getEndpointId();
-
+  public function getResultMessage() {
+    return sprintf($this->resultMessage, $this->getName());
+  }
 }

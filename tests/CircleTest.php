@@ -30,7 +30,6 @@ class CircleTest extends \PHPUnit_Framework_TestCase {
 
     $build = $circle->getBuild('username', 'projectname', 'buildnum');
     $this->assertTrue($build instanceof Build);
-    $this->assertTrue($circle->getConfig() === $config);
   }
 
   /**

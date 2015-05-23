@@ -28,6 +28,7 @@ class ProgressCommandTest extends \PHPUnit_Framework_TestCase {
 
   public function setUp() {
     parent::setUp();
+    $this->config['commands']['progress']['endpoint'] = 'get_single_build';
     $this->config['endpoints']['get_single_build'] = [
       'request' => [
         'circle-token' => '',
@@ -52,7 +53,7 @@ class ProgressCommandTest extends \PHPUnit_Framework_TestCase {
       ->method('queryCircle')
       ->willReturn($build_info);
 
-    $command = $this->getCommand('Circle\Command\ProgressCommand', $this->circle);
+    $command = $this->getCommand('Circle\Command\ProgressCommand', $this->circle, $this->circleConfig);
     $commandTester = $this->runCommand($command, ['--build-num' => '3']);
     $this->assertContains('Build has finished', $commandTester->getDisplay());
   }
@@ -84,7 +85,7 @@ class ProgressCommandTest extends \PHPUnit_Framework_TestCase {
       ->willReturnOnConsecutiveCalls($build_info, $build_info2, $build_info, $build_info2);
 
     // Test the progress formatter.
-    $command = $this->getCommand('Circle\Command\ProgressCommand', $this->circle);
+    $command = $this->getCommand('Circle\Command\ProgressCommand', $this->circle, $this->circleConfig);
     $commandTester = $this->runCommand($command, ['--build-num' => '3', '--refresh-interval' => '0.1']);
 
     $display_output = $commandTester->getDisplay();
@@ -95,7 +96,7 @@ class ProgressCommandTest extends \PHPUnit_Framework_TestCase {
     $this->assertContains('100%', $display_output);
 
     // Test the table formatter.
-    $command = $this->getCommand('Circle\Command\ProgressCommand', $this->circle);
+    $command = $this->getCommand('Circle\Command\ProgressCommand', $this->circle, $this->circleConfig);
     $commandTester = $this->runCommand($command, ['--build-num' => '3', '--format' => 'table']);
 
     $display_output = $commandTester->getDisplay();

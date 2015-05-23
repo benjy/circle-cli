@@ -23,13 +23,6 @@ class StatusCommand extends CommandBase {
   /**
    * {@inheritdoc}
    */
-  protected function getEndpointId() {
-    return 'get_recent_builds';
-  }
-
-  /**
-   * {@inheritdoc}
-   */
   protected function configure() {
     $this
       ->setName('status')
@@ -46,6 +39,7 @@ class StatusCommand extends CommandBase {
 
     // Render the output as a table.
     $this->renderAsTable($results, $output);
+    $this->finished();
   }
 
 }

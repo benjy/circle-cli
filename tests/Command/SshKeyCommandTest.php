@@ -14,6 +14,7 @@ class SshKeyCommandTest extends \PHPUnit_Framework_TestCase {
    * @expectedExceptionMessage You must provide the path to your private key
    */
   public function testSshKeyCommandKeyRequiredTest() {
+    $config['commands']['add-key']['endpoint'] = 'add_ssh_key';
     $config['endpoints']['add_ssh_key'] = [
       'request' => [
         'circle-token' => '',
@@ -24,7 +25,7 @@ class SshKeyCommandTest extends \PHPUnit_Framework_TestCase {
     ];
     $circle_config = $this->getCircleConfigMock($config);
     $circle = $this->getCircleServiceMock($circle_config);
-    $command = $this->getCommand('Circle\Command\SshKeyCommand', $circle);
+    $command = $this->getCommand('Circle\Command\SshKeyCommand', $circle, $circle_config);
     $this->runCommand($command);
   }
 
@@ -37,6 +38,7 @@ class SshKeyCommandTest extends \PHPUnit_Framework_TestCase {
     vfsStream::newFile('private-key-file')->at($vfs_root)->withContent('sample-private-key-contents');
     $query_args = ['circle-token' => ''];
 
+    $config['commands']['add-key']['endpoint'] = 'add_ssh_key';
     $config['endpoints']['add_ssh_key'] = [
       'request' => [
         'circle-token' => '',
@@ -58,7 +60,7 @@ class SshKeyCommandTest extends \PHPUnit_Framework_TestCase {
       ->expects($this->exactly(2))
       ->method('queryCircle')
       ->with('project/code-drop/project-name/ssh-key', $query_args, 'POST', $payload);
-    $command = $this->getCommand('Circle\Command\SshKeyCommand', $circle);
+    $command = $this->getCommand('Circle\Command\SshKeyCommand', $circle, $circle_config);
 
     // Test the basics of the command.
     $this->runCommand($command, [

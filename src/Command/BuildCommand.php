@@ -19,13 +19,6 @@ class BuildCommand extends CommandBase {
   /**
    * {@inheritdoc}
    */
-  protected function getEndpointId() {
-    return 'trigger_build';
-  }
-
-  /**
-   * {@inheritdoc}
-   */
   protected function configure() {
     $this
       ->setName('build')
@@ -41,6 +34,7 @@ class BuildCommand extends CommandBase {
   protected function execute(InputInterface $input, OutputInterface $output) {
     $results = $this->circle->triggerBuild($this->getUsername($input), $this->getProjectName($input), $this->getBranch($input));
     $this->renderAsTable([$results], $output);
+    $this->finished();
   }
 
   /**

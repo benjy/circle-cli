@@ -7,6 +7,32 @@ globals:
     # You could set your cirlce token here or prefferably in
     # circle-cli.private.yml so you can exclude it from your repo.
 
+  # Specify the class to use for notifications.
+  notifications: Circle\Notification\OsaScriptSubscriber
+
+commands:
+  build:
+    endpoint: trigger_build
+    notifications_enabled: false
+  cancel:
+    endpoint: cancel_build
+    notifications_enabled: false
+  progress:
+    endpoint: get_single_build
+    notifications_enabled: true
+  projects:
+    endpoint: get_all_projects
+    notifications_enabled: false
+  retry:
+    endpoint: retry_build
+    notifications_enabled: false
+  add-key:
+    endpoint: add_ssh_key
+    notifications_enabled: false
+  status:
+    endpoint: get_recent_builds
+    notifications_enabled: true
+
 endpoints:
   # https://circleci.com/docs/api#projects
   get_all_projects:

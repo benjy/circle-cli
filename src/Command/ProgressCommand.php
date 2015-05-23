@@ -54,13 +54,6 @@ class ProgressCommand extends CommandBase {
   /**
    * {@inheritdoc}
    */
-  protected function getEndpointId() {
-    return 'get_single_build';
-  }
-
-  /**
-   * {@inheritdoc}
-   */
   protected function configure() {
     $this
       ->setName('progress')
@@ -122,6 +115,7 @@ class ProgressCommand extends CommandBase {
     $output->writeln($this->formatCell($format, 'Build has finished.'));
     $this->renderAsTable([$build->toArray()], $output);
 
+    $this->finished();
   }
 
   /**

@@ -19,13 +19,6 @@ class SshKeyCommand extends CommandBase {
   /**
    * {@inheritdoc}
    */
-  protected function getEndpointId() {
-    return 'add_ssh_key';
-  }
-
-  /**
-   * {@inheritdoc}
-   */
   protected function configure() {
     $this
       ->setName('add-key')
@@ -41,6 +34,7 @@ class SshKeyCommand extends CommandBase {
    */
   protected function execute(InputInterface $input, OutputInterface $output) {
     $this->circle->addSshKey($this->getUsername($input), $this->getProjectName($input), $this->getPrivateKey($input), $input->getOption('hostname'));
+    $this->finished();
   }
 
   /**

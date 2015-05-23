@@ -17,15 +17,6 @@ class ProjectsCommand extends CommandBase {
 
   /**
    * {@inheritdoc}
-   *
-   * @codeCoverageIgnore
-   */
-  protected function getEndpointId() {
-    return 'get_all_projects';
-  }
-
-  /**
-   * {@inheritdoc}
    */
   protected function configure() {
     $this
@@ -39,6 +30,7 @@ class ProjectsCommand extends CommandBase {
    */
   protected function execute(InputInterface $input, OutputInterface $output) {
     $this->renderAsTable($this->circle->getAllProjects(), $output);
+    $this->finished();
   }
 
 }

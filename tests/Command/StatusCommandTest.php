@@ -12,6 +12,8 @@ class StatusCommandTest extends \PHPUnit_Framework_TestCase {
    * Test the status command executes without any issues.
    */
   public function testStatusCommand() {
+    $config['commands']['status']['endpoint'] = 'get_recent_builds';
+    $config['commands']['status']['notifications_enabled'] = TRUE;
     $config['endpoints']['get_recent_builds'] = [
       'request' => [
         'circle-token' => '',
@@ -28,7 +30,7 @@ class StatusCommandTest extends \PHPUnit_Framework_TestCase {
       'not-displayed' => 'this should not be output'
     ]]);
 
-    $command = $this->getCommand('Circle\Command\StatusCommand', $circle);
+    $command = $this->getCommand('Circle\Command\StatusCommand', $circle, $circle_config);
     $commandTester = $this->runCommand($command);
 
     $output = $commandTester->getDisplay();
