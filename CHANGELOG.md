@@ -1,4 +1,4 @@
-### [1.0.0-beta3] - 16/05/2015
+### [1.0.0-beta3] - 23/05/2015
 
   * Added symfony/event-dispatcher.
   * Added notification support using OSAScript on OS X.
