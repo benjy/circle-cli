@@ -22,6 +22,14 @@
     <!-- Move new docs into place and then clean-up. -->
     <exec command="mv ${tempdocs}/* ./docs" passthru="true" checkreturn="true"/>
     <exec command="rmdir ${tempdocs}" passthru="true" checkreturn="true"/>
+
+    <!-- Rebuild the phar file. -->
+    <phingcall target="box" />
+  </target>
+
+  <target name="box">
+    <exec command="composer install --no-dev" passthru="true"/>
+    <exec command="box build -v" passthru="true"/>
   </target>
 
   <target name="tests">

@@ -1,0 +1,17 @@
+{
+  "directories": ["src"],
+  "files": ["LICENSE.txt", "services.php", "events.php"],
+  "finder": [
+    {
+      "name": "*.php",
+      "notPath": [
+        "tests",
+        "Tests"
+      ],
+      "in": "vendor"
+    }
+  ],
+  "main": "circle",
+  "output": "docs/circle-cli.phar",
+  "stub": true
+}
