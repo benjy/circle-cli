@@ -18,7 +18,7 @@ This is a CLI utility built with Symfony Console to query Circle CI projects.
 
 ## Grab the Phar
 
-  # wget https://code-drop.github.io/Circle-CLI/circle-cli.phar
+    wget https://code-drop.github.io/Circle-CLI/circle-cli.phar
 
 # Documentation
 
