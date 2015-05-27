@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "3d1e415bcb300dda913f76d1689b30ee",
+    "hash": "5cddb3a231ca69f07693f01de2ba249c",
     "packages": [
         {
             "name": "guzzlehttp/guzzle",
@@ -1104,16 +1104,16 @@
         },
         {
             "name": "sami/sami",
-            "version": "v3.0.3",
+            "version": "v3.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/FriendsOfPHP/Sami.git",
-                "reference": "ce9f0d0ca877018e66094c6f20d8e0e941790e4d"
+                "reference": "66dc7592ecd73d8a9f612ffd7a29c0635a53dd93"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/FriendsOfPHP/Sami/zipball/ce9f0d0ca877018e66094c6f20d8e0e941790e4d",
-                "reference": "ce9f0d0ca877018e66094c6f20d8e0e941790e4d",
+                "url": "https://api.github.com/repos/FriendsOfPHP/Sami/zipball/66dc7592ecd73d8a9f612ffd7a29c0635a53dd93",
+                "reference": "66dc7592ecd73d8a9f612ffd7a29c0635a53dd93",
                 "shasum": ""
             },
             "require": {
@@ -1158,7 +1158,7 @@
             "keywords": [
                 "phpdoc"
             ],
-            "time": "2015-04-08 05:18:44"
+            "time": "2015-05-20 16:44:31"
         },
         {
             "name": "sebastian/comparator",

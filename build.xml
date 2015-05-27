@@ -4,6 +4,22 @@
       <echo message="DONE"/>
   </target>
 
+  <target name="build">
+    <!-- Make sure we have dev dependencies -->
+    <exec command="composer install" passthru="true"/>
+
+    <!-- Make sure all the tests are passing. -->
+    <phingcall target="tests"/>
+
+    <!-- Build the docs. -->
+    <phingcall target="docs"/>
+
+    <!-- Remove the dev dependencies and build the phar. -->
+    <exec command="composer install --no-dev" passthru="true"/>
+    <phingcall target="box"/>
+
+  </target>
+
   <target name="docs">
     <property name="tempdocs" value="./docs-temp"/>
 
@@ -22,13 +38,9 @@
     <!-- Move new docs into place and then clean-up. -->
     <exec command="mv ${tempdocs}/* ./docs" passthru="true" checkreturn="true"/>
     <exec command="rmdir ${tempdocs}" passthru="true" checkreturn="true"/>
-
-    <!-- Rebuild the phar file. -->
-    <phingcall target="box" />
   </target>
 
   <target name="box">
-    <exec command="composer install --no-dev" passthru="true"/>
     <exec command="box build -v" passthru="true"/>
   </target>
 
